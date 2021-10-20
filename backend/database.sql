@@ -17,16 +17,12 @@ CREATE TABLE users (
     password TEXT
 );
 
-CREATE TABLE forms (
-    id SERIAL PRIMARY KEY,
-    question_id BIGINT NOT NULL REFERENCES users(id)
-);
-
 CREATE TABLE user_forms (
     id SERIAL PRIMARY KEY,
     title TEXT,
+    descrip TEXT,
     user_id BIGINT NOT NULL REFERENCES users(id),
-    form_id BIGINT NOT NULL REFERENCES forms(id)
+    question_id BIGINT NOT NULL REFERENCES users(id)
 );
 
 CREATE TABLE questions (

@@ -5,3 +5,15 @@ exports.get_forms = async function(req, res, next) {
 
     return res.status(200).json(result.rows)
 }
+
+exports.create_form = async function(req, res, next) {
+    const result = await pool.query("INSERT INTO user_forms RETURNING id")
+
+    return res.status(200).json(result.rows[0].id)
+}
+
+exports.update_form = async function(req, res, next) {
+    pool.query("UPDATE user_forms SET", [req.user.id, req.body.form_id])
+
+    return res.status(200).json()
+}
