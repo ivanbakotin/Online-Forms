@@ -1,0 +1,8 @@
+const express = require("express");
+const router = express.Router();
+const form_controllers = require("../controllers/form_controllers");
+
+// FORM ROUTES
+router.get("/get_forms", form_controllers.get_forms);
+
+module.exports = router;
