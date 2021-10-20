@@ -22,12 +22,22 @@ CREATE TABLE user_forms (
     title TEXT,
     descrip TEXT,
     user_id BIGINT NOT NULL REFERENCES users(id),
-    question_id BIGINT NOT NULL REFERENCES users(id)
 );
+
+CREATE TABLE forms {
+    id SERIAL PRIMARY KEY,
+    form_id BIGINT NOT NULL REFERENCES user_forms(id),
+    question_id BIGINT NOT NULL REFERENCES questions(id)
+}
 
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY,
     title TEXT,
     question_type TEXT,
-    question_array text[]
+    questions_questions_id BIGINT NOT NULL REFERENCES questions_questions(id)
+);
+
+CREATE TABLE questions_questions (
+    id SERIAL PRIMARY KEY,
+    quest_title TEXT
 );

@@ -7,7 +7,7 @@ exports.get_forms = async function(req, res, next) {
 }
 
 exports.create_form = async function(req, res, next) {
-    const result = await pool.query("INSERT INTO user_forms RETURNING id")
+    const result = await pool.query("INSERT INTO user_forms (user_id) VALUES ($1) RETURNING id", [req.user.id])
 
     return res.status(200).json(result.rows[0].id)
 }
