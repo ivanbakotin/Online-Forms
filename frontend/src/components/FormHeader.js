@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { TypeContext } from "../../context/TypeContext"
+import { useState, useContext } from "react";
+import { TypeContext } from "../context/TypeContext"
 
 const FormHeader = () => {
 

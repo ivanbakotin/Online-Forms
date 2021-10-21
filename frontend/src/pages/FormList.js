@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import useFetchGet from "../hooks/useFetchGet";
 import styled from "styled-components";
+import receiveFetch from "../utils/receiveFetch"
 
 const FormSquare = styled.div`
     height: 15rem;
@@ -21,17 +21,14 @@ const FormList = () => {
     }, [fetchedData])
 
     function createForm() {
-        //fetch
-        //get form id from database send to context
-        //prop to createForm
-        //update form
-        //link to create_form
+        receiveFetch("/api/create_form", "POST", {})
+        .then(res => window.location.href = `/create_form/${res}`)
     }
 
     return (
         <div>
             <FormSquare onClick={createForm}>
-                <Link to="/create_form">Create Form</Link>
+                Create Form
             </FormSquare>
 
             {forms.length && forms.map(form => {

@@ -4,8 +4,9 @@ import LineType from "../components/Types/LineType"
 import SelectType from "../components/Types/SelectType";
 import FormHeader from "../components/FormHeader";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetchGet from "../hooks/useFetchGet";
+import receiveFetch from "../utils/receiveFetch"
 import styled from "styled-components";
 import { TypeContext } from "../context/TypeContext";
 
@@ -16,6 +17,8 @@ const Wrapper = styled.div`
     `;
 
 const FormList = () => {
+
+    const { id } = useParams()
 
     const [ open, setOpen ] = useState()
 
@@ -41,12 +44,12 @@ const FormList = () => {
     ])
 
     useEffect(() => {
-        /*
-            fetch questions / info if id present
-            create form or form in list
+        async function getFormInfo() {
+            const form_info = await receiveFetch("/api/get_form_info", "POST", {id})
+            
+        }
 
-            save on click
-        */
+        getFormInfo(id)
     }, [])
 
     function addQuestion() {

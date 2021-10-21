@@ -19,25 +19,30 @@ CREATE TABLE users (
 
 CREATE TABLE user_forms (
     id SERIAL PRIMARY KEY,
-    title TEXT,
+    form_title TEXT,
     descrip TEXT,
-    user_id BIGINT NOT NULL REFERENCES users(id),
+    user_id BIGINT NOT NULL REFERENCES users(id)
 );
 
-CREATE TABLE forms {
+CREATE TABLE forms (
     id SERIAL PRIMARY KEY,
     form_id BIGINT NOT NULL REFERENCES user_forms(id),
     question_id BIGINT NOT NULL REFERENCES questions(id)
-}
+);
 
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY,
-    title TEXT,
+    quest_title TEXT,
     question_type TEXT,
     questions_questions_id BIGINT NOT NULL REFERENCES questions_questions(id)
 );
 
 CREATE TABLE questions_questions (
     id SERIAL PRIMARY KEY,
-    quest_title TEXT
+    quest_quest_title TEXT
 );
+
+DROP TABLE questions;
+DROP TABLE questions_questions;
+DROP TABLE forms;
+DROP TABLE user_forms;

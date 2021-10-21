@@ -1,5 +1,4 @@
 import FormList from "./FormList";
-import FilloutForm from "./FilloutForm";
 import CreateForm from "./CreateForm";
 import NotFound from "../components/NotFound";
 import { Route, Switch } from "react-router-dom";
@@ -28,7 +27,7 @@ const LoggedIn = () => {
             	<button onClick={logOut}>LOGOUT</button>
               <Switch>
                 <Route exact path="/"><FormList /></Route>
-                <Route path="/create_form"><CreateForm /></Route>
+                <Route path="/create_form/:id"><CreateForm /></Route>
                 <Route><NotFound /></Route>
               </Switch>
           </Wrapper>
