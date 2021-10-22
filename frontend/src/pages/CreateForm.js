@@ -30,17 +30,20 @@ const FormList = () => {
 
     const [ questions, setQuestions ] = useState([
         {
+            id: 1,
             quest_title: "Question1?",
             type: "line",
         },
         {
+            id: 2,
             quest_title: "Question2?",
             type: "paragraph",
         },
         {
+            id: 3,
             quest_title: "Question2?",
             type: "checkbox",
-            checkbox_list: ["first check"],
+            checkbox_list: [{ id: 1, qq_title: "Option" }],
         },
     ])
 
@@ -72,7 +75,8 @@ const FormList = () => {
     const questForm = debounce((e) => saveFormQuestions(e));
    
     function addQuestion(e) {
-        setQuestions(prev => [ ...prev, { title:"Question", type:e.target.getAttribute("name"), checkbox_list:[] }])
+        const index = questions[questions.length - 1].id + 1
+        setQuestions(prev => [ ...prev, { id: index, quest_title:"Question?", type:e.target.getAttribute("name"), checkbox_list:[{ id: 1, qq_title: "Option"}] }])
         console.log(questions)
     }
  
@@ -111,6 +115,7 @@ const FormList = () => {
             })}
             <div name="checkbox" onClick={addQuestion}>Add A Checkbox</div>
             <div name="paragraph" onClick={addQuestion}>Add A Paragraph</div>
+            <div>Save Form</div>
         </Wrapper>
     )
 };

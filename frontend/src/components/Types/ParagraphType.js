@@ -9,14 +9,14 @@ const ParagraphType = (props) => {
 
     const [ paragraph, setParagraph ] = useState(value)
 
-    const handleInput = e => setParagraph(e.target.value)
+    const handleInput = e => setParagraph(e.target.value);
     
 
     return (
         <>
         {paragraph &&
         <div onChange={saveFormQuestions}>
-            <input onChange={handleInput} value={paragraph.quest_title} />
+            <input onChange={handleInput} index={value.id} name="quest_title" value={paragraph.form_title} />
             <textarea />
         </div>
         }
