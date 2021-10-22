@@ -12,14 +12,13 @@ const CheckboxType = (props) => {
     //useEffect(() => setCheckbox(value), [])
 
     const handleAdd = () => {
-        console.log(checkbox.checkbox_list)
         const index = checkbox.checkbox_list[checkbox.checkbox_list.length - 1].id + 1
         checkbox.checkbox_list.push({ id: index, qq_title: "Another option" })
         setCheckbox(prev => ({ ...prev }))
     }
 
     const handleCheckbox = e => {
-        checkbox.checkbox_list[Number(e.target.id)] = e.target.value
+        checkbox.checkbox_list[Number(e.target.id)].qq_title = e.target.value
         setCheckbox(prev => ({ ...prev }))
     }
     
@@ -38,10 +37,10 @@ const CheckboxType = (props) => {
                         <div key={index}>
                             <input 
                                 type="checkbox" 
-                                id={index} 
                                 value={box.qq_title}
                             />
                             <input
+                                id={index} 
                                 onChange={handleCheckbox}
                                 value={box.qq_title}
                             />

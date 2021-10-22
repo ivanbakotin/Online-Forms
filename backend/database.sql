@@ -21,25 +21,22 @@ CREATE TABLE user_forms (
     id SERIAL PRIMARY KEY,
     form_title TEXT,
     descrip TEXT,
-    user_id BIGINT NOT NULL REFERENCES users(id)
-);
-
-CREATE TABLE forms (
-    id SERIAL PRIMARY KEY,
-    form_id BIGINT NOT NULL REFERENCES user_forms(id),
-    question_id BIGINT NOT NULL REFERENCES questions(id)
+    user_id BIGINT NOT NULL
 );
 
 CREATE TABLE questions (
-    id SERIAL PRIMARY KEY,
+    form_id BIGINT NOT NULL,
+    question_id BIGINT NOT NULL,
     quest_title TEXT,
     question_type TEXT,
-    questions_questions_id BIGINT NOT NULL REFERENCES questions_questions(id)
+    UNIQUE (form_id, question_id)
 );
 
 CREATE TABLE questions_questions (
-    id SERIAL PRIMARY KEY,
-    quest_quest_title TEXT
+    question_id BIGINT NOT NULL,
+    qq_id BIGINT NOT NULL,
+    qq_title TEXT,
+    UNIQUE (qq_id, question_id)
 );
 
 DROP TABLE questions;

@@ -16,7 +16,7 @@ const ParagraphType = (props) => {
         <>
         {paragraph &&
         <div onChange={saveFormQuestions}>
-            <input onChange={handleInput} index={value.id} name="quest_title" value={paragraph.form_title} />
+            <input onChange={handleInput} index={value.id} name="quest_title" value={paragraph.quest_title} />
             <textarea />
         </div>
         }

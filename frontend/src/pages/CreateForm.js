@@ -10,6 +10,7 @@ import receiveFetch from "../utils/receiveFetch"
 import sendFetch from "../utils/sendFetch"
 import styled from "styled-components";
 import { TypeContext } from "../context/TypeContext";
+import { debounce } from "../utils/debounce";
 
 const Wrapper = styled.div`
     font-size: 5rem;
@@ -24,60 +25,36 @@ const FormList = () => {
     const [ open, setOpen ] = useState()
 
     const [ info, setInfo ] = useState({
-        title: "New Form Title",
+        form_title: "New Form Title",
         descrip: "Description Form"
     }) 
 
-    const [ questions, setQuestions ] = useState([
-        {
-            id: 1,
-            quest_title: "Question1?",
-            type: "line",
-        },
-        {
-            id: 2,
-            quest_title: "Question2?",
-            type: "paragraph",
-        },
-        {
-            id: 3,
-            quest_title: "Question2?",
-            type: "checkbox",
-            checkbox_list: [{ id: 1, qq_title: "Option" }],
-        },
-    ])
+    const [ questions, setQuestions ] = useState([])
 
     useEffect(() => {
         async function getFormInfo() {
             const form_info = await receiveFetch("/api/get_form_info", "POST", {id})
-            //set in state
+            console.log(form_info)
+            setInfo({form_title: form_info.form_title, descrip: form_info.descrip})
+            console.log(info)
         }
 
         getFormInfo(id)
     }, [])
 
-    function debounce(func, timeout = 500){
-        let timer;
-        return (...args) => {
-          clearTimeout(timer);
-          timer = setTimeout(() => { func.apply(this, args); }, timeout);
-        };
-      }
-
-    function saveFormQuestions(e) {
-        console.log("HELLO", e.target)
-    }
-
-    const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
+    const mainForm = debounce(e => saveFormMain(e));
     
-    const mainForm = debounce(() => saveFormMain());
+    const questForm = debounce(e => saveFormQuestions(e));
+    
+    const saveFormQuestions = e => sendFetch("/api/update_form_questions", "POST", { questions, id })
 
-    const questForm = debounce((e) => saveFormQuestions(e));
-   
+    const saveFormMain = e => sendFetch("/api/update_form_main", "POST", { info, id })
+      
     function addQuestion(e) {
-        const index = questions[questions.length - 1].id + 1
+        let index;
+        if (questions[questions.length - 1]?.id != undefined) index = questions[questions.length - 1].id + 1
+        else index = 0
         setQuestions(prev => [ ...prev, { id: index, quest_title:"Question?", type:e.target.getAttribute("name"), checkbox_list:[{ id: 1, qq_title: "Option"}] }])
-        console.log(questions)
     }
  
     return (
