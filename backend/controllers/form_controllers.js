@@ -11,8 +11,8 @@ exports.get_form_info = async function(req, res, next) {
     const result = await pool.query(`SELECT u.*, jsonb_agg(DISTINCT q.*), json_agg(DISTINCT qq.*) FROM user_forms AS u
                                     INNER JOIN questions AS q
                                         ON q.form_id = u.id
-                                    INNER JOIN questions_questions AS qq
-                                        ON qq.question_id = q.question_id
+                                        INNER JOIN questions_questions AS qq
+                                            ON qq.question_id = q.question_id
                                     WHERE u.user_id=$1 AND u.id=$2
                                     GROUP BY u.id`, 
                                     [req.user.id, req.body.id])
