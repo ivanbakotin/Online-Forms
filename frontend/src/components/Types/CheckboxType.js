@@ -1,7 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { TypeContext } from "../../context/TypeContext"
 
-const CheckboxType = () => {
+const CheckboxType = (props) => {
+
+    const { saveFormQuestions } = props
 
     const value = useContext(TypeContext);
 
@@ -21,21 +23,21 @@ const CheckboxType = () => {
     
     const handleInput= e => {
         setCheckbox(prev => ({ ...prev, [e.target.name]: e.target.value }))
-        value.title = e.target.value
+        value.quest_title = e.target.value
     }
     
     return (
         <>
         {checkbox &&
-        <div>
-            <input onChange={handleInput} name="title" value={checkbox.title}/>
+        <div onChange={saveFormQuestions}>
+            <input onChange={handleInput} name="quest_title" value={checkbox.quest_title}/>
             {checkbox.checkbox_list.map((box, index) => {
                 return (
                         <div key={index}>
                             <input 
                                 type="checkbox" 
                                 id={box} 
-                                name={box} 
+                                name={index} 
                                 value={box}
                             />
                             <input

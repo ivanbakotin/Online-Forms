@@ -1,7 +1,9 @@
 import { useState, useContext } from "react";
 import { TypeContext } from "../context/TypeContext"
 
-const FormHeader = () => {
+const FormHeader = (props) => {
+
+    const { saveFormMain } = props
 
     const value = useContext(TypeContext);
 
@@ -10,26 +12,26 @@ const FormHeader = () => {
     const [ info, setInfo ] = useState(value) 
 
     function handleInput(e) {
-        //const { name, value } = e.target
-        //setInfo(prev => ({ ...prev, [name]: value }))
-        value.title = e.target.value
+        setInfo(prev => ({ ...prev, [e.target.name]: e.target.value }))
+        if (e.target.name === "title") value.title = e.target.value
+        if (e.target.name === "descrip") value.descrip = e.target.value
     }
 
     return (
-        <>
+        <div onChange={saveFormMain}>
             <input 
                 onChange={handleInput} 
                 name="title" 
                 type="text" 
-                value={value.title}
+                value={info.title}
             />
             <textarea 
                 onChange={handleInput}
-                name="description" 
-                value={value.description}
+                name="descrip" 
+                value={info.descrip}
                 rows={rows} 
             />
-        </>
+        </div>
     )
 }
 

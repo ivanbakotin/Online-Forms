@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useFetchGet from "../hooks/useFetchGet";
 import receiveFetch from "../utils/receiveFetch"
+import sendFetch from "../utils/sendFetch"
 import styled from "styled-components";
 import { TypeContext } from "../context/TypeContext";
 
@@ -23,21 +24,21 @@ const FormList = () => {
     const [ open, setOpen ] = useState()
 
     const [ info, setInfo ] = useState({
-        title: "New Form",
-        description: ""
+        title: "New Form Title",
+        descrip: "Description Form"
     }) 
 
     const [ questions, setQuestions ] = useState([
         {
-            title: "Question?",
+            quest_title: "Question1?",
             type: "line",
         },
         {
-            title: "Question2?",
+            quest_title: "Question2?",
             type: "paragraph",
         },
         {
-            title: "Question2?",
+            quest_title: "Question2?",
             type: "checkbox",
             checkbox_list: ["first check"],
         },
@@ -46,54 +47,70 @@ const FormList = () => {
     useEffect(() => {
         async function getFormInfo() {
             const form_info = await receiveFetch("/api/get_form_info", "POST", {id})
-            
+            //set in state
         }
 
         getFormInfo(id)
     }, [])
 
-    function addQuestion() {
-        console.log(questions)
-    }
-    
-    function changeDescriptionSize() {
+    function debounce(func, timeout = 500){
+        let timer;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+      }
 
+    function saveFormQuestions(e) {
+        console.log("HELLO", e.target)
+    }
+
+    const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
+    
+    const mainForm = debounce(() => saveFormMain());
+
+    const questForm = debounce((e) => saveFormQuestions(e));
+   
+    function addQuestion(e) {
+        setQuestions(prev => [ ...prev, { title:"Question", type:e.target.getAttribute("name"), checkbox_list:[] }])
+        console.log(questions)
     }
  
     return (
         <Wrapper>
             <TypeContext.Provider value={info}>
-                <FormHeader />
+                <FormHeader saveFormMain={mainForm}/>
             </TypeContext.Provider>
             {questions.map(quest => {
                 switch (quest.type) {          
                     case "line":
                         return ( 
                             <TypeContext.Provider value={quest}>
-                                <LineType />
+                                <LineType saveFormQuestions={questForm}/>
                             </TypeContext.Provider>
                         )   
                     case "paragraph":
                         return ( 
                             <TypeContext.Provider value={quest}>
-                                <ParagraphType />
+                                <ParagraphType saveFormQuestions={questForm}/>
                             </TypeContext.Provider>
                         )   
                     case "checkbox":
                         return ( 
                             <TypeContext.Provider value={quest}>
-                                <CheckboxType />
+                                <CheckboxType saveFormQuestions={questForm}/>
                             </TypeContext.Provider>
                         ) 
                     case "select":
                         return ( 
                             <TypeContext.Provider value={quest}>
-                                <SelectType />
+                                <SelectType saveFormQuestions={questForm}/>
                             </TypeContext.Provider>
                         )                           
                 }
             })}
-            <div onClick={addQuestion}>Add A Question</div>
+            <div name="checkbox" onClick={addQuestion}>Add A Checkbox</div>
+            <div name="paragraph" onClick={addQuestion}>Add A Paragraph</div>
         </Wrapper>
     )
 };

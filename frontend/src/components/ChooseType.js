@@ -1,6 +1,6 @@
 import { ReactDOM } from "react"
 
-const QuestionTypes = () => {
+const ChooseType = () => {
  
 
     return ReactDOM.createPortal(    
@@ -10,4 +10,4 @@ const QuestionTypes = () => {
       domNode)
 }
 
-export default QuestionTypes;
+export default ChooseType;
