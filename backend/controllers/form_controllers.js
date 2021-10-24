@@ -2,7 +2,8 @@ const pool = require("../db.js");
 
 exports.get_forms = async function(req, res, next) {
     const result = await pool.query(`SELECT * FROM user_forms 
-        	                        WHERE user_id=$1`, 
+        	                        WHERE user_id=$1
+                                    ORDER BY id DESC`, 
                                     [req.user.id])
 
     return res.status(200).json(result.rows)
@@ -58,7 +59,7 @@ exports.update_form_main = async function(req, res, next) {
 }
 
 exports.update_form_questions = async function(req, res, next) {
-    console.log(req.body.questions)
+
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
@@ -74,7 +75,7 @@ exports.update_form_questions = async function(req, res, next) {
                     }
                 }
         })
-        quest?.sub_questions.forEach(check => {
+        quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 
                         VALUES ($1, $2, $3, $4)`, 

@@ -1,7 +1,7 @@
-import CheckboxType from "../components/Types/CheckboxType"
-import ParagraphType from "../components/Types/ParagraphType"
-import LineType from "../components/Types/LineType"
-import SelectType from "../components/Types/SelectType";
+import CheckboxType from "../components/createTypes/CheckboxType"
+import ParagraphType from "../components/createTypes/ParagraphType"
+import LineType from "../components/createTypes/LineType"
+import SelectType from "../components/createTypes/SelectType";
 import FormHeader from "../components/FormHeader";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import sendFetch from "../utils/sendFetch"
 import styled from "styled-components";
 import { TypeContext } from "../context/TypeContext";
 import { debounce } from "../utils/debounce";
+import QuestionOptions from "../components/QuestionOptions";
 
 const Wrapper = styled.div`
     font-size: 5rem;
@@ -47,36 +48,40 @@ const FormList = () => {
         if (questions.length) index = questions[questions.length - 1].question_id + 1
         setQuestions(prev => [ ...prev, { question_id: index, quest_title:"Question?", question_type:e.target.getAttribute("name"), sub_questions:[{ qq_id: 1, qq_title: "Option"}] }])
     }
- 
+
     return (
         <Wrapper>
             <TypeContext.Provider value={info}>
                 <FormHeader saveFormMain={mainForm}/>
             </TypeContext.Provider>
-            {!!questions?.length && questions.map(quest => {
+            {questions.map(quest => {
                 switch (quest.question_type) {          
                     case "line":
                         return ( 
                             <TypeContext.Provider value={quest}>
                                 <LineType saveFormQuestions={questForm}/>
+                                <QuestionOptions />
                             </TypeContext.Provider>
                         )   
                     case "paragraph":
                         return ( 
                             <TypeContext.Provider value={quest}>
                                 <ParagraphType saveFormQuestions={questForm}/>
+                                <QuestionOptions />
                             </TypeContext.Provider>
                         )   
                     case "checkbox":
                         return ( 
                             <TypeContext.Provider value={quest}>
                                 <CheckboxType saveFormQuestions={questForm}/>
+                                <QuestionOptions />
                             </TypeContext.Provider>
                         ) 
                     case "select":
                         return ( 
                             <TypeContext.Provider value={quest}>
                                 <SelectType saveFormQuestions={questForm}/>
+                                <QuestionOptions />
                             </TypeContext.Provider>
                         )                           
                 }

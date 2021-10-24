@@ -13,6 +13,7 @@ const ParagraphType = (props) => {
         setParagraph(e.target.value)
         value.quest_title = e.target.value
     }
+    
     return (
         <>
         {paragraph &&

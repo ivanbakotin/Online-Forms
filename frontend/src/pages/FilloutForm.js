@@ -1,0 +1,29 @@
+import { useEffect, useState } from "react";
+
+const FilloutForm = () => {
+
+    const [ questions, setQuestions ] = useState([])
+
+    const [ answers, setAnswers ] = useState([])
+
+    useEffect(() => {
+        // fetch questions
+    }, [])
+
+    return (
+        <div>
+            {questions.map(quest => {
+                //switch on type
+                return (
+                    <div>
+                        
+                    </div>
+                )
+            })
+
+            }
+        </div>
+    )
+}
+
+export default FilloutForm;
