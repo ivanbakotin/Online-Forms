@@ -20,6 +20,7 @@ const FormHeader = (props) => {
     }
 
     return (
+        <>{info &&
         <div onChange={saveFormMain}>
             <input 
                 onChange={handleInput} 
@@ -33,7 +34,8 @@ const FormHeader = (props) => {
                 value={info.descrip}
                 rows={rows} 
             />
-        </div>
+        </div>}
+        </>
     )
 }
 

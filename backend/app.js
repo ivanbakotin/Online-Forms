@@ -67,21 +67,3 @@ io.on('connection', async function(socket) {
 });
 
 module.exports = app;
-
-/*
-BACKEND:
-post images, add avatar to userprofile
-form validation for register, login, posts, comments, chat
-
-FRONTEND:
-display not read messages number
-add styling, css
-render replies, edits on frontend
-pagination / infinite scroll
-debouncing - search
-portals - errors
-
-USERPROFILE
-TABS - USER SETTINGS -  CHANGE EMAIL
-                        CHANGE PASSWORD                   
-*/

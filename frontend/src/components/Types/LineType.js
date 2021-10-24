@@ -9,7 +9,10 @@ const LineType = (props) => {
 
     const [ line, setLine ] = useState(value)
 
-    const handleInput = e => setLine(e.target.value)
+    const handleInput = e => {
+        setLine(e.target.value)
+        value.quest_title = e.target.value
+    }
 
     return (
         <>

@@ -2,8 +2,16 @@ import { useState, useEffect } from "react";
 import useFetchGet from "../hooks/useFetchGet";
 import styled from "styled-components";
 import receiveFetch from "../utils/receiveFetch"
+import { Link } from "react-router-dom";
 
 const FormSquare = styled.div`
+    height: 15rem;
+    width: 15rem;
+    background-color: lightgray;
+    margin: 3rem;
+`;
+
+const FormLink = styled(Link)`
     height: 15rem;
     width: 15rem;
     background-color: lightgray;
@@ -33,9 +41,9 @@ const FormList = () => {
 
             {forms.length && forms.map(form => {
                 return (
-                    <FormSquare>
-                        {form.title}
-                    </FormSquare>
+                    <FormLink to={{pathname:`/create_form/${form.id}`}}>
+                        {form.form_title}
+                    </FormLink>
                 )
             })
             }

@@ -33,13 +33,13 @@ CREATE TABLE questions (
 );
 
 CREATE TABLE questions_questions (
+    form_id BIGINT NOT NULL,
     question_id BIGINT NOT NULL,
     qq_id BIGINT NOT NULL,
     qq_title TEXT,
-    UNIQUE (qq_id, question_id)
+    UNIQUE (qq_id, question_id, form_id)
 );
 
 DROP TABLE questions;
 DROP TABLE questions_questions;
-DROP TABLE forms;
 DROP TABLE user_forms;
