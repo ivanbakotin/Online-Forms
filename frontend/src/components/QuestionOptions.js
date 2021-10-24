@@ -1,7 +1,4 @@
 const QuestionOptions = () => {
-
-
-
     return (
         <div>
             <button>Delete Form</button>
