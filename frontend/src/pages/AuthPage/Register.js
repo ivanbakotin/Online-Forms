@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
 import receiveFetch from "../../utils/receiveFetch"
-import { Form, Title, ErrorMessage, Button, Formfield, Label } from "./AuthStyle";
 
 const Register = () => {
 
@@ -43,9 +42,9 @@ const Register = () => {
   }
 
   return (
-    <Form onSubmit={sendregisterInfo}>
-      <Title>Register</Title>
-      <Formfield>
+    <form className="auth-form" onSubmit={sendregisterInfo}>
+      <h1>Register</h1>
+      <div>
         <input 
           autoComplete="off"
           type="text"
@@ -55,9 +54,9 @@ const Register = () => {
           name="username" 
           id="username"
         />
-        <Label htmlFor="username" active={list.has("username")}>Username:</Label>
-      </Formfield>
-      <Formfield>
+        <label className={list.has("username") ? "auth-label" : null} htmlFor="username">Username:</label>
+      </div>
+      <div>
         <input 
           type="password"
           onFocus={addToList} 
@@ -66,9 +65,9 @@ const Register = () => {
           name="password" 
           id="password"
         />
-        <Label htmlFor="password" active={list.has("password")}>Password:</Label>
-      </Formfield>
-      <Formfield>
+        <label className={list.has("password") ? "auth-label" : null} htmlFor="password">Password:</label>
+      </div>
+      <div>
         <input 
           type="password"
           onFocus={addToList} 
@@ -77,12 +76,12 @@ const Register = () => {
           name="confirmpassword" 
           id="confirmpassword"
         />
-        <Label htmlFor="confirmpassword" active={list.has("confirmpassword")}>Confirm Password:</Label>
-      </Formfield>
-      <Button value="Register" type="submit" />
-      <ErrorMessage>{errorinfo}</ErrorMessage>
+        <label className={list.has("confirmpassword") ? "auth-label" : null} htmlFor="confirmpassword">Confirm Password:</label>
+      </div>
+      <button type="submit">Register</button>
+      <p>{errorinfo}</p>
       <Link to="/">Already have an Account? Login!</Link>
-    </Form>
+    </form>
   );
 };
 

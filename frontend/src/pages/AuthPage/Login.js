@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import receiveFetch from "../../utils/receiveFetch"
-import { Form, Title, ErrorMessage, Button, Formfield, Label } from "./AuthStyle";
 
 const Login = () => {
 
@@ -34,9 +33,9 @@ const Login = () => {
   }
 
   return (
-    <Form onSubmit={sendLoginfo}>
-      <Title>Login</Title>
-      <Formfield>
+    <form className="auth-form" onSubmit={sendLoginfo}>
+      <h1>Login</h1>
+      <div>
         <input 
           autoComplete="off"
           type="text"
@@ -46,9 +45,9 @@ const Login = () => {
           name="username" 
           id="username"
         />
-        <Label htmlFor="username" active={list.has("username")}>Username:</Label>
-      </Formfield>
-      <Formfield>
+        <label className={list.has("username") ? "auth-label" : null} htmlFor="username">Username:</label>
+      </div>
+      <div>
         <input 
           type="password"
           onFocus={addToList} 
@@ -57,12 +56,12 @@ const Login = () => {
           name="password" 
           id="password"
         />
-        <Label htmlFor="password" active={list.has("password")}>Password:</Label>
-      </Formfield>
-      <Button value="Login" type="submit" />
-      <ErrorMessage>{errorinfo}</ErrorMessage>
+        <label className={list.has("password") ? "auth-label" : null} htmlFor="password">Password:</label>
+      </div>
+      <button type="submit">Login</button>
+      <p>{errorinfo}</p>
       <Link to="/register">Dont have an account? Register!</Link>
-    </Form>
+    </form>
   );
 };
 

@@ -1,0 +1,15 @@
+@import './createform';
+@import "./variables";
+@import "./auth";
+
+* {
+    font-family: 'Titillium Web', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    overflow-x: hidden;
+
+    @media(max-width: 768px) {
+        font-size: 50%;
+    }
+}

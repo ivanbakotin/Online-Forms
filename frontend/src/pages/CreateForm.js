@@ -3,20 +3,13 @@ import ParagraphType from "../components/createTypes/ParagraphType"
 import LineType from "../components/createTypes/LineType"
 import SelectType from "../components/createTypes/SelectType";
 import FormHeader from "../components/FormHeader";
+import QuestionOptions from "../components/QuestionOptions";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import receiveFetch from "../utils/receiveFetch"
 import sendFetch from "../utils/sendFetch"
-import styled from "styled-components";
-import { TypeContext } from "../context/TypeContext";
 import { debounce } from "../utils/debounce";
-import QuestionOptions from "../components/QuestionOptions";
-
-const Wrapper = styled.div`
-    font-size: 5rem;
-    display: flex;
-    flex-direction: column;
-`;
+import { TypeContext } from "../context/TypeContext";
 
 const FormList = () => {
 
@@ -50,7 +43,7 @@ const FormList = () => {
     }
 
     return (
-        <Wrapper>
+        <div className="create-form">
             <TypeContext.Provider value={info}>
                 <FormHeader saveFormMain={mainForm}/>
             </TypeContext.Provider>
@@ -88,7 +81,7 @@ const FormList = () => {
             })}
             <div name="checkbox" onClick={addQuestion}>Add A Checkbox</div>
             <div name="paragraph" onClick={addQuestion}>Add A Paragraph</div>
-        </Wrapper>
+        </div>
     )
 };
 
