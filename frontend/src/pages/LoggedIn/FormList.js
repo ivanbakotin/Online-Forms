@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
-import useFetchGet from "../hooks/useFetchGet";
-import receiveFetch from "../utils/receiveFetch"
-
+import useFetchGet from "../../hooks/useFetchGet";
+import receiveFetch from "../../utils/receiveFetch"
 
 const FormList = () => {
 
@@ -20,7 +19,7 @@ const FormList = () => {
     }
 
     return (
-        <div>
+        <article>
             <div onClick={createForm}>
                 Create Form
             </div>
@@ -33,7 +32,7 @@ const FormList = () => {
                 )
             })
             }
-        </div>
+        </article>
     )
 };
 

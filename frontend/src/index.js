@@ -4,9 +4,6 @@ import App from "./App";
 import "./styles/styles.css"
 
 ReactDOM.render(
-    <>
-
-        <App />
-    </>,
-document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );

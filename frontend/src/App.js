@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import LoggedIn from "./pages/LoggedIn.js";
-import LoggedOut from "./pages/LoggedOut.js";
+import LoggedIn from "./pages/LoggedIn/LoggedIn";
+import LoggedOut from "./pages/LoggedOut/LoggedOut.js";
 import Loading from "./components/Loading"
 import useFetchGet from "./hooks/useFetchGet.js";
 

@@ -11,7 +11,7 @@ const FilloutForm = () => {
     }, [])
 
     return (
-        <div>
+        <article>
             {questions.map(quest => {
                 //switch on type
                 return (
@@ -22,7 +22,7 @@ const FilloutForm = () => {
             })
 
             }
-        </div>
+        </article>
     )
 }
 

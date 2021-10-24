@@ -1,15 +1,15 @@
-import CheckboxType from "../components/createTypes/CheckboxType"
-import ParagraphType from "../components/createTypes/ParagraphType"
-import LineType from "../components/createTypes/LineType"
-import SelectType from "../components/createTypes/SelectType";
-import FormHeader from "../components/FormHeader";
-import QuestionOptions from "../components/QuestionOptions";
+import CheckboxType from "../../components/createTypes/CheckboxType"
+import ParagraphType from "../../components/createTypes/ParagraphType"
+import LineType from "../../components/createTypes/LineType"
+import SelectType from "../../components/createTypes/SelectType";
+import FormHeader from "../../components/FormHeader";
+import QuestionOptions from "../../components/QuestionOptions";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import receiveFetch from "../utils/receiveFetch"
-import sendFetch from "../utils/sendFetch"
-import { debounce } from "../utils/debounce";
-import { TypeContext } from "../context/TypeContext";
+import receiveFetch from "../../utils/receiveFetch"
+import sendFetch from "../../utils/sendFetch"
+import { debounce } from "../../utils/debounce";
+import { TypeContext } from "../../context/TypeContext";
 
 const FormList = () => {
 
@@ -43,7 +43,7 @@ const FormList = () => {
     }
 
     return (
-        <div className="create-form">
+        <article className="create-form">
             <TypeContext.Provider value={info}>
                 <FormHeader saveFormMain={mainForm}/>
             </TypeContext.Provider>
@@ -81,7 +81,7 @@ const FormList = () => {
             })}
             <div name="checkbox" onClick={addQuestion}>Add A Checkbox</div>
             <div name="paragraph" onClick={addQuestion}>Add A Paragraph</div>
-        </div>
+        </article>
     )
 };
 

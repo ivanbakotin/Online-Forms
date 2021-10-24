@@ -1,0 +1,13 @@
+main {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+
+    aside {
+        font-size: 5rem;
+    }
+
+    article {
+        font-size: 5rem;
+    }
+}
