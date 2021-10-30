@@ -12,7 +12,7 @@ const SelectType = (props) => {
     return (
         <>
         {select &&  
-        <div onChange={saveFormQuestions}>
+        <div onChange={saveFormQuestions(value)}>
             <input value={select.quest_title} />
             <input type="text" />
         </div>

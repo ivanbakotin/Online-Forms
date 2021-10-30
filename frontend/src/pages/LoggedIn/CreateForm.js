@@ -31,9 +31,10 @@ const FormList = () => {
     }, [])
 
     const mainForm = debounce(() => saveFormMain());
-    const questForm = debounce(() => saveFormQuestions());
-    
-    const saveFormQuestions = () => sendFetch("/api/update_form_questions", "POST", { questions, id });
+    const questForm = debounce((value) => saveFormQuestions(value));
+  
+
+    const saveFormQuestions = (value) => sendFetch("/api/update_form_questions", "POST", value); 
     const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
       
     function addQuestion(e) {
@@ -55,7 +56,7 @@ const FormList = () => {
                                 <LineType saveFormQuestions={questForm}/>
                                 <QuestionOptions />
                             </TypeContext.Provider>
-                        )   
+                        )  
                     case "paragraph":
                         return ( 
                             <TypeContext.Provider value={quest}>
@@ -76,8 +77,8 @@ const FormList = () => {
                                 <SelectType saveFormQuestions={questForm}/>
                                 <QuestionOptions />
                             </TypeContext.Provider>
-                        )                           
-                }
+                        ) 
+                    }                    
             })}
             <div name="checkbox" onClick={addQuestion}>Add A Checkbox</div>
             <div name="paragraph" onClick={addQuestion}>Add A Paragraph</div>

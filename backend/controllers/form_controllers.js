@@ -58,6 +58,7 @@ exports.update_form_main = async function(req, res, next) {
     return res.status(200).json()
 }
 
+/*
 exports.update_form_questions = async function(req, res, next) {
 
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
@@ -93,4 +94,9 @@ exports.update_form_questions = async function(req, res, next) {
     })
 
     return res.status(200).json()
+}
+*/
+
+exports.update_form_questions = async function (req, res, next) {
+    console.log(req.body)
 }

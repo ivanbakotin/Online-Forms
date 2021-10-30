@@ -17,7 +17,7 @@ const LineType = (props) => {
     return (
         <>
         {line &&
-        <div onChange={saveFormQuestions}>
+        <div onChange={saveFormQuestions(value)}>
             <input onChange={handleInput} value={line.quest_title} />
             <input type="text" />
         </div>

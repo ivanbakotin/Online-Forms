@@ -28,7 +28,7 @@ const CheckboxType = (props) => {
     return (
         <>
         {checkbox &&
-        <div onChange={saveFormQuestions}>
+        <div onChange={saveFormQuestions(value)}>
             <input onChange={handleInput} name="quest_title" value={checkbox.quest_title}/>
             {!!checkbox?.sub_questions && checkbox.sub_questions.map((box, index) => {
                 return (
