@@ -1,11 +1,8 @@
-import { useState, useContext, useEffect } from "react";
-import { TypeContext } from "../../context/TypeContext"
+import { useState } from "react";
 
 const ParagraphType = (props) => {
 
-    const { saveFormQuestions } = props
-
-    const value = useContext(TypeContext);
+    const { value, saveFormQuestions } = props
 
     const [ paragraph, setParagraph ] = useState(value)
 
@@ -17,7 +14,7 @@ const ParagraphType = (props) => {
     return (
         <>
         {paragraph &&
-        <div onChange={saveFormQuestions(value)}>
+        <div onChange={saveFormQuestions}>
             <input onChange={handleInput} value={paragraph.quest_title} />
             <textarea />
         </div>

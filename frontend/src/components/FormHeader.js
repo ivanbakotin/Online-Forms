@@ -1,11 +1,8 @@
-import { useState, useContext, useEffect } from "react";
-import { TypeContext } from "../context/TypeContext"
+import { useState, useEffect } from "react";
 
 const FormHeader = (props) => {
 
-    const { saveFormMain } = props
-
-    const value = useContext(TypeContext);
+    const { value, saveFormMain } = props
 
     const [ rows, setRows ] = useState(1)
 

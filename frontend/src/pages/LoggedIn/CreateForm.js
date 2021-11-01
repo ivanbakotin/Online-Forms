@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 import receiveFetch from "../../utils/receiveFetch"
 import sendFetch from "../../utils/sendFetch"
 import { debounce } from "../../utils/debounce";
-import { TypeContext } from "../../context/TypeContext";
 
 const FormList = () => {
 
@@ -31,52 +30,49 @@ const FormList = () => {
     }, [])
 
     const mainForm = debounce(() => saveFormMain());
-    const questForm = debounce((value) => saveFormQuestions(value));
+    const questForm = debounce(() => saveFormQuestions());
   
-
-    const saveFormQuestions = (value) => sendFetch("/api/update_form_questions", "POST", value); 
+    const saveFormQuestions = () => sendFetch("/api/update_form_questions", "POST", { questions, id }); 
     const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
       
     function addQuestion(e) {
-        let index = 0;
-        if (questions.length) index = questions[questions.length - 1].question_id + 1
-        setQuestions(prev => [ ...prev, { question_id: index, quest_title:"Question?", question_type:e.target.getAttribute("name"), sub_questions:[{ qq_id: 1, qq_title: "Option"}] }])
+        setQuestions(prev => [ ...prev, { question_id: questions.length, quest_title:"Question?", question_type:e.target.getAttribute("name"), sub_questions:[{ qq_id: 1, qq_title: "Option"}] }])
     }
 
     return (
         <article className="create-form">
-            <TypeContext.Provider value={info}>
-                <FormHeader saveFormMain={mainForm}/>
-            </TypeContext.Provider>
+            <div>
+                <FormHeader value={info} saveFormMain={mainForm}/>
+            </div>
             {questions.map(quest => {
                 switch (quest.question_type) {          
                     case "line":
                         return ( 
-                            <TypeContext.Provider value={quest}>
-                                <LineType saveFormQuestions={questForm}/>
-                                <QuestionOptions />
-                            </TypeContext.Provider>
+                            <div key={quest.question_id}>
+                                <LineType value={quest} saveFormQuestions={questForm}/>
+                                <QuestionOptions id={id} value={quest} setQuestions={setQuestions} questions={questions}/>
+                            </div>
                         )  
                     case "paragraph":
                         return ( 
-                            <TypeContext.Provider value={quest}>
-                                <ParagraphType saveFormQuestions={questForm}/>
-                                <QuestionOptions />
-                            </TypeContext.Provider>
+                            <div key={quest.question_id}>
+                                <ParagraphType value={quest} saveFormQuestions={questForm}/>
+                                <QuestionOptions id={id} value={quest} setQuestions={setQuestions} questions={questions}/>
+                            </div>
                         )   
                     case "checkbox":
                         return ( 
-                            <TypeContext.Provider value={quest}>
-                                <CheckboxType saveFormQuestions={questForm}/>
-                                <QuestionOptions />
-                            </TypeContext.Provider>
+                            <div key={quest.question_id}>
+                                <CheckboxType value={quest} saveFormQuestions={questForm}/>
+                                <QuestionOptions id={id} value={quest} setQuestions={setQuestions} questions={questions}/>
+                            </div>
                         ) 
                     case "select":
                         return ( 
-                            <TypeContext.Provider value={quest}>
-                                <SelectType saveFormQuestions={questForm}/>
-                                <QuestionOptions />
-                            </TypeContext.Provider>
+                            <div key={quest.question_id}>
+                                <SelectType value={quest} saveFormQuestions={questForm}/>
+                                <QuestionOptions id={id} value={quest} setQuestions={setQuestions} questions={questions}/>
+                            </div>
                         ) 
                     }                    
             })}

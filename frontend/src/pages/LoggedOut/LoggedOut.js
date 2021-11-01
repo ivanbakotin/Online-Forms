@@ -1,5 +1,5 @@
-import Login from "./AuthPage/Login.js";
-import Register from "./AuthPage/Register.js";
+import Login from "./Login.js";
+import Register from "./Register.js";
 import NotFound from "../../components/NotFound.js";
 import { Route, Switch } from "react-router-dom";
 

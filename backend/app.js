@@ -70,5 +70,18 @@ module.exports = app;
 
 
 /*
+    RATING ON FORM
+    POINTS ON QUESTION
+    CORRECT ANSWER ON QUESTION
+    LEADERBOARD PER FORM, OVERALL
+    LIST OF EVERY USER FORM -- SORTED BY RATING, POPULARITY, NAME
+    CATEGORY ON FORM
+    USERPROFILE -- ALL FORMS CREATED
+    SEARCHBAR // USER
+
+
+
+
+    expand textarea -- rows
     add saving portal popup while settimeout active
 */

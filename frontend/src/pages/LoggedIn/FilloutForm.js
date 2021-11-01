@@ -12,7 +12,7 @@ const FilloutForm = () => {
 
     return (
         <article>
-            {questions.map(quest => {
+            {!!questions.length && questions.map(quest => {
                 //switch on type
                 return (
                     <div>

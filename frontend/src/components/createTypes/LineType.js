@@ -1,11 +1,9 @@
-import { useState, useContext } from "react";
-import { TypeContext } from "../../context/TypeContext"
+import { useState } from "react";
+
 
 const LineType = (props) => {
 
-    const { saveFormQuestions } = props
-
-    const value = useContext(TypeContext);
+    const { value, saveFormQuestions } = props
 
     const [ line, setLine ] = useState(value)
 
@@ -17,7 +15,7 @@ const LineType = (props) => {
     return (
         <>
         {line &&
-        <div onChange={saveFormQuestions(value)}>
+        <div onChange={saveFormQuestions}>
             <input onChange={handleInput} value={line.quest_title} />
             <input type="text" />
         </div>

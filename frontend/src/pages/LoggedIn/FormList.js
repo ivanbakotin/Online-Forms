@@ -24,7 +24,7 @@ const FormList = () => {
                 Create Form
             </div>
 
-            {forms.length && forms.map(form => {
+            {!!forms.length && forms.map(form => {
                 return (
                     <Link to={{pathname:`/create_form/${form.id}`}}>
                         {form.form_title}

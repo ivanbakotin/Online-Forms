@@ -1,15 +1,20 @@
-import { TypeContext } from "../context/TypeContext"
-import { useContext } from "react";
+import sendFetch from "../utils/sendFetch"
 
-const QuestionOptions = () => {
+const QuestionOptions = (props) => {
 
-    const value = useContext(TypeContext);
+    const { value, setQuestions, questions, id } = props
+
+    function deleteQuestions() {
+        sendFetch("/delete_question", "POST", { value, id })
+
+        setQuestions(questions.filter(quest => value.question_id !== quest.question_id))
+    }
 
     return (
         <div>
-            <button>Delete Form</button>
-            <button>Portal to change type</button>
+            <button onClick={deleteQuestions}>Delete Question</button>
             <button>Required checkbox</button>
+            <button>Portal to change type</button>
         </div>
     )
 }

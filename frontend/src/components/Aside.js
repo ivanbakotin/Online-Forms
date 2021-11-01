@@ -1,4 +1,9 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
 const Aside = () => {
+
+    const [ search, setSearch ] = useState("")
 
     const logOut = () => {
         fetch("/auth/logout")
@@ -6,9 +11,16 @@ const Aside = () => {
         window.location.href="/"
     }
 
+    function searchUsers(e) {
+
+    }
+
     return (
         <aside>
-            <button onClick={logOut}>LOGOUT</button>
+            <input value={search} type="search" onChange={searchUsers}/>
+            <Link>My Profile</Link>
+            <Link>Forms</Link>
+            <button onClick={logOut}>LogOut</button>
         </aside>
     )
 };
