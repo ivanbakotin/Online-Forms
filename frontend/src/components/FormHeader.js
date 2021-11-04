@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 const FormHeader = (props) => {
 
+    const categories = ["History", "Art", "Science"]
+
     const { value, saveFormMain } = props
 
     const [ rows, setRows ] = useState(1)
@@ -33,6 +35,8 @@ const FormHeader = (props) => {
                 rows={rows} 
             />
         </div>
+
+        // select category
         }
         </>
     )

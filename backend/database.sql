@@ -43,6 +43,7 @@ CREATE TABLE questions (
     quest_title TEXT,
     question_type TEXT,
     correct_text TEXT,
+    points INT,
     UNIQUE (form_id, question_id)
 );
 
@@ -51,7 +52,6 @@ CREATE TABLE questions_questions (
     question_id BIGINT NOT NULL,
     qq_id BIGINT NOT NULL,
     qq_title TEXT,
-    correct_bool BOOLEAN,
     UNIQUE (qq_id, question_id, form_id)
 );
 

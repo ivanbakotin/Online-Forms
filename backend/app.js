@@ -11,8 +11,6 @@ const PORT = process.env.PORT || 8080;
 
 const pgSession = require('connect-pg-simple')(session)
 
-const io = require('socket.io')(http);
-
 const authCheck = (req, res, next) => {
     if (req.user) next();
 };
@@ -50,36 +48,20 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 //  res.sendFile(path.join(__dirname, "build", "index.html"));
 //});
 
-const wrap = (middleware) => (socket, next) => middleware(socket.request, {}, next);
-io.use(wrap(sessionMiddleware));
-
-io.on('connection', async function(socket) {
-
-    const result = await pool.query("SELECT sess FROM session WHERE sid=$1", [socket.request.sessionID])       
-    let curr_user = result.rows[0].sess.passport.user
-
-    socket.join(curr_user);
-    
-    socket.on("send_chat_message", message => {
-        pool.query("INSERT INTO chats (msg, username, sendername) VALUES ($1, $2, $3)", [message.msg, message.username, message.sendername])
-        io.to(message.username).emit("message", message);
-    })
-});
-
 module.exports = app;
 
 
 /*
     RATING ON FORM
-    POINTS ON QUESTION
-    CORRECT ANSWER ON QUESTION
     LEADERBOARD PER FORM, OVERALL
     LIST OF EVERY USER FORM -- SORTED BY RATING, POPULARITY, NAME
-    CATEGORY ON FORM
     USERPROFILE -- ALL FORMS CREATED
-    SEARCHBAR // USER
-
-
+    
+    
+    SEARCHBAR // USER ++
+    CATEGORY ON FORM ++
+    POINTS ON QUESTION ++
+    CORRECT ANSWER ON QUESTION ++
 
 
     expand textarea -- rows

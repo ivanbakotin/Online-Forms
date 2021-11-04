@@ -2,31 +2,30 @@ import { useState } from "react";
 
 const CheckboxType = (props) => {
 
-    const { value, saveFormQuestions } = props
+    let { value, saveFormQuestions } = props
 
     const [ checkbox, setCheckbox ] = useState(value)
+   
+    const handleCheckbox = e => {
+        checkbox.sub_questions[Number(e.target.id)].qq_title = e.target.value
+        setCheckbox(prev => ({ ...prev }))
+    }
 
     const handleAdd = () => {
         checkbox.sub_questions.push({ qq_id: checkbox.sub_questions.length, qq_title: "Another option" })
-        setCheckbox(prev => ({ ...prev }))
-        console.log(checkbox)
-    }
-
-    const handleCheckbox = e => {
-        checkbox.sub_questions[Number(e.target.id)].qq_title = e.target.value
         setCheckbox(prev => ({ ...prev }))
     }
     
     const handleInput= e => {
         setCheckbox(prev => ({ ...prev, [e.target.name]: e.target.value }))
-        value.quest_title = e.target.value
+        value[e.target.name] = e.target.value
     }
     
     return (
         <>
         {checkbox &&
         <div onChange={saveFormQuestions}>
-            <input onChange={handleInput} name="quest_title" value={checkbox.quest_title}/>
+            <input type="text" onChange={handleInput} name="quest_title" value={checkbox.quest_title}/>
             {!!checkbox?.sub_questions && checkbox.sub_questions.map((box, index) => {
                 return (
                         <div key={index}>
@@ -42,7 +41,9 @@ const CheckboxType = (props) => {
                         </div>
                 )
             })}
-            <div onClick={handleAdd}>Add checkbox1</div>
+            <div onClick={handleAdd}>Add Checkbox</div>
+            <input type="number" name="points" onChange={handleInput} value={checkbox.points} placeholder="Number of points"/>
+            <input type="text" name="correct_text" onChange={handleInput} value={checkbox.correct_text} placeholder="Correct Answer"/>
         </div>
         }
         </>

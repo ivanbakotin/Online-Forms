@@ -59,19 +59,19 @@ exports.update_form_main = async function(req, res, next) {
 }
 
 exports.update_form_questions = async function(req, res, next) {
-
+    console.log(req.body)
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
-                        (form_id, question_id, quest_title, question_type) 
-                        VALUES ($1, $2, $3, $4)`, 
-                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type], (result, err) => {
+                        (form_id, question_id, quest_title, question_type, correct_text) 
+                        VALUES ($1, $2, $3, $4, $5)`, 
+                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type, quest.correct_text], (result, err) => {
                 if (result) {
                     if (result.code == "23505") {
                         pool.query(`UPDATE questions 
-                                    SET quest_title=$1
-                                    WHERE form_id=$2 AND question_id=$3`, 
-                                    [quest.quest_title, req.body.id, quest.question_id])
+                                    SET quest_title=$1, correct_text=$2
+                                    WHERE form_id=$3 AND question_id=$4`, 
+                                    [quest.quest_title, quest.correct_text, req.body.id, quest.question_id])
                     }
                 }
         })

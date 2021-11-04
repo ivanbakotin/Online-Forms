@@ -36,7 +36,7 @@ const FormList = () => {
     const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
       
     function addQuestion(e) {
-        setQuestions(prev => [ ...prev, { question_id: questions.length, quest_title:"Question?", question_type:e.target.getAttribute("name"), sub_questions:[{ qq_id: 1, qq_title: "Option"}] }])
+        setQuestions(prev => [ ...prev, { question_id: questions.length, quest_title:"", question_type: e.target.getAttribute("name"), sub_questions:[{ qq_id: 1, qq_title: "Option"}] }])
     }
 
     return (
@@ -44,6 +44,7 @@ const FormList = () => {
             <div>
                 <FormHeader value={info} saveFormMain={mainForm}/>
             </div>
+            <div>
             {questions.map(quest => {
                 switch (quest.question_type) {          
                     case "line":
@@ -74,8 +75,9 @@ const FormList = () => {
                                 <QuestionOptions id={id} value={quest} setQuestions={setQuestions} questions={questions}/>
                             </div>
                         ) 
-                    }                    
+                    }                   
             })}
+            </div>
             <div name="checkbox" onClick={addQuestion}>Add A Checkbox</div>
             <div name="paragraph" onClick={addQuestion}>Add A Paragraph</div>
         </article>

@@ -9,7 +9,7 @@ const LineType = (props) => {
 
     const handleInput = e => {
         setLine(e.target.value)
-        value.quest_title = e.target.value
+        value[e.target.name] = e.target.value
     }
 
     return (

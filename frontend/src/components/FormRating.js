@@ -1,5 +1,8 @@
-const FormRating = () => {
+const FormRating = (props) => {
 
+    function sendRating() {
+
+    }
    
     return (
         <div>

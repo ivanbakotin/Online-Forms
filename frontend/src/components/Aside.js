@@ -17,7 +17,7 @@ const Aside = () => {
 
     return (
         <aside>
-            <input value={search} type="search" onChange={searchUsers}/>
+            <input value={search} type="search" onChange={searchUsers} placeholder="Search users..."/>
             <Link>My Profile</Link>
             <Link>Forms</Link>
             <button onClick={logOut}>LogOut</button>
