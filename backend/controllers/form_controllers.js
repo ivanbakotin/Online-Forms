@@ -59,8 +59,6 @@ exports.get_form_info = async function(req, res, next) {
     if (result.rows[0].json_build_object.form[0].questions === null) {
         result.rows[0].json_build_object.form[0].questions = []
     }
-    // IF NOT CREATOR REMOVE CORRECT ANSWER
-    if (req.user.id == req.user.id) {}
 
     return res.status(200).json(result.rows[0].json_build_object.form[0])
 }

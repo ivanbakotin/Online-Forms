@@ -25,7 +25,6 @@ const App = () => {
 
   return (
     <BrowserRouter>
-   
         {isLoading ? isLoggedIn ? 
   
           <LoggedIn />
@@ -38,8 +37,6 @@ const App = () => {
 
           <Loading />
         }
-
-   
     </BrowserRouter>
   );
 };
