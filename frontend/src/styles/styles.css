@@ -140,11 +140,9 @@ main aside {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100vh;
   max-height: 100vh;
-  font-size: 5rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  font-size: 3.5rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -155,6 +153,12 @@ main aside {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+
+@media (max-width: 768px) {
+  main aside {
+    display: none;
+  }
 }
 
 main article {
@@ -254,7 +258,6 @@ main article {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 62.5%;
-  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {

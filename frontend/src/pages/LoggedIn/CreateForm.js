@@ -10,7 +10,7 @@ import receiveFetch from "../../utils/receiveFetch"
 import sendFetch from "../../utils/sendFetch"
 import { debounce } from "../../utils/debounce";
 
-const FormList = () => {
+const CreateForm = () => {
 
     const { id } = useParams()
 
@@ -84,4 +84,4 @@ const FormList = () => {
     )
 };
 
-export default FormList;
+export default CreateForm;

@@ -9,6 +9,29 @@ exports.get_forms = async function(req, res, next) {
     return res.status(200).json(result.rows)
 }
 
+exports.get_user_forms = async function(req, res, next) {
+    const result = await pool.query(`SELECT * FROM user_forms 
+        	                        WHERE user_id=$1
+                                    ORDER BY id DESC`, 
+                                    [req.body.id])
+
+    return res.status(200).json(result.rows)
+}
+
+exports.search_users = async function (req, res, next) {
+    const { searchterm } = req.body
+    
+    if (searchterm) {
+        const result = await pool.query(`SELECT * FROM users WHERE username ILIKE $1`, 
+                                         ['%' + searchterm + '%'])
+
+        if (result.rows.length) return res.status(200).json(result.rows)
+
+        return res.status(200).json([{nousers: "No users found..."}])
+
+    } else return res.status(200).json([{nousers: "No users found..."}])
+}
+
 exports.get_form_info = async function(req, res, next) {
     const result = await pool.query(`
         SELECT json_build_object('form', json_agg(p))
@@ -36,6 +59,8 @@ exports.get_form_info = async function(req, res, next) {
     if (result.rows[0].json_build_object.form[0].questions === null) {
         result.rows[0].json_build_object.form[0].questions = []
     }
+    // IF NOT CREATOR REMOVE CORRECT ANSWER
+    if (req.user.id == req.user.id) {}
 
     return res.status(200).json(result.rows[0].json_build_object.form[0])
 }
@@ -63,9 +88,9 @@ exports.update_form_questions = async function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
-                        (form_id, question_id, quest_title, question_type, correct_text) 
+                        (form_id, question_id, quest_title, question_type, correct_text, points) 
                         VALUES ($1, $2, $3, $4, $5)`, 
-                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type, quest.correct_text], (result, err) => {
+                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type, quest.correct_text, quest.points], (result, err) => {
                 if (result) {
                     if (result.code == "23505") {
                         pool.query(`UPDATE questions 

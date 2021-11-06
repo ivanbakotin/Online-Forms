@@ -3,16 +3,19 @@ main {
     min-height: 100vh;
     flex-direction: row;
 
-    aside {
+    aside {  
         display: flex;
+        min-height: 100vh;
         max-height: 100vh;
-        
-        font-size: 5rem;
-        align-items: center;
+        font-size: 3.5rem;
         flex-direction: column;
         justify-content: space-evenly;
         position: sticky;
         top: 0;
+
+        @media (max-width: 768px) {
+            display: none;
+        }
     }
 
     article {

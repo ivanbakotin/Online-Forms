@@ -6,14 +6,17 @@ const QuestionOptions = (props) => {
 
     function deleteQuestions() {
         sendFetch("/delete_question", "POST", { value, id })
-
         setQuestions(questions.filter(quest => value.question_id !== quest.question_id))
+    }
+
+    function setRequired() {
+        value.required = true
     }
 
     return (
         <div>
             <button onClick={deleteQuestions}>Delete Question</button>
-            <button>Required checkbox</button>
+            <button onClick={setRequired}>Required checkbox</button>
             <button>Portal to change type</button>
         </div>
     )
