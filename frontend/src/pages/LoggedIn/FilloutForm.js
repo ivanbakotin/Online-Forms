@@ -17,7 +17,7 @@ const FilloutForm = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const form_info = await receiveFetch("/api/get_form_info_fillout", "POST", { id  })
+            const form_info = await receiveFetch("/api/get_form_info", "POST", { id  })
             setInfo({ form_title: form_info.form_title, descrip: form_info.descrip })
             setQuestions(form_info.questions)
         }

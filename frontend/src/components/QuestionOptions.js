@@ -1,4 +1,5 @@
 import sendFetch from "../utils/sendFetch"
+import { types } from "../utils/variables"
 
 const QuestionOptions = ({ value, setQuestions, questions, id }) => {
 
@@ -11,11 +12,18 @@ const QuestionOptions = ({ value, setQuestions, questions, id }) => {
         value.required = true
     }
 
+    function changeType(e) {
+        value.question_type = e.target.value
+    }
+
     return (
         <div>
             <button onClick={deleteQuestions}>Delete Question</button>
             <button onClick={setRequired}>Required checkbox</button>
-            <button>SELECT type</button>
+            <label htmlFor="type">Type:</label>
+            <select onChange={changeType} name="type" id="type">
+                {types.map(type => <option value={type}>{type}</option>)}
+            </select>
         </div>
     )
 }
