@@ -31,7 +31,7 @@ const FormHeader = ({ value, saveFormMain }) => {
                 rows={rows} 
             />
             <label htmlFor="category">Choose a category:</label>
-                <select value={info.category} name="cat" id="cat">
+            <select value={info.category} name="cat" id="cat">
                 {categories.map(cat => <option value={cat}>{cat}</option>)}
             </select>
         </div>
