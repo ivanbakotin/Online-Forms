@@ -1,4 +1,4 @@
-async function receiveFetch(url, request, body_data) {
+export default async function receiveFetch(url, request, body_data) {
     try {
         const data = await fetch(url, {
             method: request,
@@ -11,5 +11,3 @@ async function receiveFetch(url, request, body_data) {
         alert("Website down")
     }
 }
-
-export default receiveFetch;

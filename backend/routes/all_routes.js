@@ -13,4 +13,6 @@ router.post("/update_form_main", form_controllers.update_form_main);
 
 router.post("/update_form_questions", form_controllers.update_form_questions);
 
+router.delete("/delete_question", form_controllers.delete_question);
+
 module.exports = router;

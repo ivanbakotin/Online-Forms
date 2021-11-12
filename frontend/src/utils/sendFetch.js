@@ -1,4 +1,4 @@
-function sendFetch(url, request, body_data) {
+export default function sendFetch(url, request, body_data) {
     try {
         fetch(url, {
             method: request,
@@ -10,5 +10,3 @@ function sendFetch(url, request, body_data) {
         alert("Website down")
     }
 }
-
-export default sendFetch;

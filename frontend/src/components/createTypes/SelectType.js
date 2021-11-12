@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-const SelectType = (props) => {
-
-    const { value, saveFormQuestions } = props
+const SelectType = ({ value, saveFormQuestions }) => {
 
     const [ select, setSelect ] = useState(value)
 

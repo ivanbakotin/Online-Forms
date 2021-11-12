@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-const CheckboxType = (props) => {
-
-    let { value, saveFormQuestions } = props
+const CheckboxType = ({ value, saveFormQuestions }) => {
 
     const [ checkbox, setCheckbox ] = useState(value)
    
@@ -12,7 +10,7 @@ const CheckboxType = (props) => {
     }
 
     const handleAdd = () => {
-        checkbox.sub_questions.push({ qq_id: checkbox.sub_questions.length, qq_title: "Another option" })
+        checkbox.sub_questions.push({ qq_id: checkbox.sub_questions.length, qq_title: "Option" })
         setCheckbox(prev => ({ ...prev }))
     }
     

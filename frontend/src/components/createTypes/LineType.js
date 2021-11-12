@@ -1,14 +1,11 @@
 import { useState } from "react";
 
-
-const LineType = (props) => {
-
-    const { value, saveFormQuestions } = props
+const LineType = ({ value, saveFormQuestions }) => {
 
     const [ line, setLine ] = useState(value)
 
     const handleInput = e => {
-        setLine(e.target.value)
+        setLine(prev => ({ ...prev, [e.target.name]: e.target.value }))
         value[e.target.name] = e.target.value
     }
 

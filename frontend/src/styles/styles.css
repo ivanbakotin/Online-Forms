@@ -29,6 +29,15 @@
           flex-direction: column;
 }
 
+.choose-type-main {
+  position: relative;
+}
+
+.choose-type-main .choose-type {
+  position: absolute;
+  font-size: 5rem;
+}
+
 .auth-form {
   margin: 2rem;
   display: -webkit-box;

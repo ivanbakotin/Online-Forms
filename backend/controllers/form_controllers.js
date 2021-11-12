@@ -32,6 +32,37 @@ exports.search_users = async function (req, res, next) {
     } else return res.status(200).json([{nousers: "No users found..."}])
 }
 
+exports.get_form_info_fillout = async function(req, res, next) {
+    const result = await pool.query(`
+        SELECT json_build_object('form', json_agg(p))
+            FROM (
+               SELECT *,
+                 (
+                   SELECT json_agg(row_to_json(c))
+                   FROM (
+                        SELECT form_id, question_id, quest_title, question_type, points,
+                            (
+                                SELECT json_agg(row_to_json(w))
+                                FROM (
+                                    SELECT *
+                                    FROM questions_questions AS qq
+                                    WHERE qq.question_id = q.question_id AND qq.form_id=$2 ORDER BY qq.qq_id ASC
+                                ) w
+                            )  sub_questions
+                          FROM questions AS q WHERE q.form_id = u.id ORDER BY q.question_id ASC
+                        ) c
+                 ) AS questions
+               FROM user_forms AS u WHERE u.user_id=$1 AND u.id=$2
+        ) p`, 
+        [req.user.id, req.body.id])
+
+    if (result.rows[0].json_build_object.form[0].questions === null) {
+        result.rows[0].json_build_object.form[0].questions = []
+    }
+
+    return res.status(200).json(result.rows[0].json_build_object.form[0])
+}
+
 exports.get_form_info = async function(req, res, next) {
     const result = await pool.query(`
         SELECT json_build_object('form', json_agg(p))
@@ -64,7 +95,8 @@ exports.get_form_info = async function(req, res, next) {
 }
 
 exports.create_form = async function(req, res, next) {
-    const result = await pool.query(`INSERT INTO user_forms (user_id, form_title) 
+    const result = await pool.query(`INSERT INTO user_forms 
+                                    (user_id, form_title) 
         	                        VALUES ($1, $2) 
                                     RETURNING id`, 
                                     [req.user.id, "Form Title"])
@@ -72,7 +104,8 @@ exports.create_form = async function(req, res, next) {
     return res.status(200).json(result.rows[0].id)
 }
 
-exports.update_form_main = async function(req, res, next) {
+exports.update_form_main = function(req, res, next) {
+    // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`UPDATE user_forms 
                 SET form_title=$1, descrip=$2
                 WHERE user_id=$3 AND id=$4`, 
@@ -81,13 +114,20 @@ exports.update_form_main = async function(req, res, next) {
     return res.status(200).json()
 }
 
-exports.update_form_questions = async function(req, res, next) {
-    console.log(req.body)
+exports.delete_question = function(req, res, next) {
+    // ADD CHECK IF REQ.USER.ID OWNER OF FORM
+    pool.query("DELETE FROM questions WHERE form_id=$1 AND question_id=$2", [req.body.id, req.body.value.question_id])
+
+    return res.status(200).json()
+}
+
+exports.update_form_questions = function(req, res, next) {
+
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
                         (form_id, question_id, quest_title, question_type, correct_text, points) 
-                        VALUES ($1, $2, $3, $4, $5)`, 
+                        VALUES ($1, $2, $3, $4, $5, $6)`, 
                         [req.body.id, quest.question_id, quest.quest_title, quest.question_type, quest.correct_text, quest.points], (result, err) => {
                 if (result) {
                     if (result.code == "23505") {

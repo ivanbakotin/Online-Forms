@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { categories } from "../utils/variables";
 
-const FormHeader = (props) => {
-
-    const { value, saveFormMain } = props
+const FormHeader = ({ value, saveFormMain }) => {
 
     const [ rows, setRows ] = useState(1)
 
@@ -13,8 +11,7 @@ const FormHeader = (props) => {
 
     function handleInput(e) {
         setInfo(prev => ({ ...prev, [e.target.name]: e.target.value }))
-        if (e.target.name === "form_title") value.form_title = e.target.value
-        if (e.target.name === "descrip") value.descrip = e.target.value
+        value[e.target.name] = e.target.value
     }
 
     return (

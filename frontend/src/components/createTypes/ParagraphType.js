@@ -1,13 +1,11 @@
 import { useState } from "react";
 
-const ParagraphType = (props) => {
-
-    const { value, saveFormQuestions } = props
+const ParagraphType = ({ value, saveFormQuestions }) => {
 
     const [ paragraph, setParagraph ] = useState(value)
 
     const handleInput = e => {
-        setParagraph(e.target.value)
+        setParagraph(prev => ({ ...prev, [e.target.name]: e.target.value }))
         value[e.target.name] = e.target.value
     }
     
@@ -15,7 +13,7 @@ const ParagraphType = (props) => {
         <>
         {paragraph &&
         <div onChange={saveFormQuestions}>
-            <input type="text" onChange={handleInput} value={paragraph.quest_title} />
+            <input type="text" name="quest_title" onChange={handleInput} value={paragraph.quest_title} />
             <textarea />
         </div>
         }

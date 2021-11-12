@@ -1,11 +1,9 @@
 import sendFetch from "../utils/sendFetch"
 
-const QuestionOptions = (props) => {
-
-    const { value, setQuestions, questions, id } = props
+const QuestionOptions = ({ value, setQuestions, questions, id }) => {
 
     function deleteQuestions() {
-        sendFetch("/delete_question", "POST", { value, id })
+        sendFetch("/api/delete_question", "DELETE", { value, id })
         setQuestions(questions.filter(quest => value.question_id !== quest.question_id))
     }
 
