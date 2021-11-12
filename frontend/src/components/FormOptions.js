@@ -1,12 +1,12 @@
-import { useState } from "react"
+const FormOptions = ({ id }) => {
 
-const FormOptions = ({}) => {
-
-
+    function getLink() {
+        navigator.clipboard.writeText(`${window.location.hostname}/fillout_form/${id}`)
+    }
 
     return (
         <nav>
-
+            <button onClick={getLink}>Get Fillout Link</button>
         </nav>
     )
 }

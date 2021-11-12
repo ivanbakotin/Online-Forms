@@ -42,7 +42,7 @@ const CreateForm = () => {
     return (
         <section className="create-form">
 
-            <FormOptions />
+            <FormOptions id={id} />
             <FormHeader value={info} saveFormMain={mainForm} />
 
             <article>
