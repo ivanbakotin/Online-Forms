@@ -15,7 +15,7 @@ const QuestionOptions = ({ value, setQuestions, questions, id }) => {
         <div>
             <button onClick={deleteQuestions}>Delete Question</button>
             <button onClick={setRequired}>Required checkbox</button>
-            <button>Portal to change type</button>
+            <button>SELECT type</button>
         </div>
     )
 }

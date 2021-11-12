@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import CheckboxType from "../../components/createTypes/CheckboxType"
 import ParagraphType from "../../components/createTypes/ParagraphType"
 import LineType from "../../components/createTypes/LineType"
@@ -12,9 +11,7 @@ import receiveFetch from "../../utils/receiveFetch"
 import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
 
-const CreateForm = () => {
-
-    const { id } = useParams()
+const CreateForm = ({ id }) => {
 
     const [ open, setOpen ] = useState(false)
 
@@ -42,7 +39,6 @@ const CreateForm = () => {
     return (
         <section className="create-form">
 
-            <FormOptions id={id} />
             <FormHeader value={info} saveFormMain={mainForm} />
 
             <article>
@@ -127,4 +123,3 @@ const CreateForm = () => {
 };
 
 export default CreateForm;
-

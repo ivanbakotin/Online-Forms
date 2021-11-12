@@ -61,8 +61,8 @@ module.exports = app;
     CATEGORY ON FORM ++
     POINTS ON QUESTION ++
     CORRECT ANSWER ON QUESTION ++
+    copy link for fillout ++
 
-    copy link for fillout
     expand textarea -- rows
     add saving portal popup while settimeout active
     pagination on all forms page

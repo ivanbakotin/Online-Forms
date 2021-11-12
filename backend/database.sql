@@ -44,6 +44,7 @@ CREATE TABLE questions (
     question_type TEXT,
     correct_text TEXT,
     points INT,
+    required BOOLEAN,
     UNIQUE (form_id, question_id)
 );
 

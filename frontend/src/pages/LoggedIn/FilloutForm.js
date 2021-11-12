@@ -27,12 +27,14 @@ const FilloutForm = () => {
 
     return (
         <section className="create-form">
-            <div>
+            
+            <header>
                 <h1>{info.form_title}</h1>
                 <p>{info.form_descrip}</p>
                 <div>{info.category}</div>
-            </div>
-            <div>
+            </header>
+
+            <article>
             {questions.map(quest => {
                 switch (quest.question_type) {          
                     case "line":
@@ -61,8 +63,10 @@ const FilloutForm = () => {
                         ) 
                     }                   
             })}
-            </div>
-            <button>Submit Form</button>
+            </article>
+
+            <button>Submit</button>
+
         </section>
     )
 }

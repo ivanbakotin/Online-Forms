@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const FormOptions = ({ id }) => {
 
     function getLink() {
@@ -6,6 +8,10 @@ const FormOptions = ({ id }) => {
 
     return (
         <nav>
+            <div className="nav-links">
+                <NavLink to={{pathname:`/create_form/${id}`}}>Form</NavLink>
+                <NavLink to={{pathname:`/create_form/${id}/response_form`}}>Responses</NavLink>
+            </div>
             <button onClick={getLink}>Get Fillout Link</button>
         </nav>
     )
