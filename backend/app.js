@@ -51,16 +51,9 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
-    RATING ON FORM
-    LEADERBOARD PER FORM, OVERALL
-    LIST OF EVERY USER FORM -- SORTED BY RATING, POPULARITY, NAME
-    
+
     USERPROFILE -- ALL FORMS CREATED
-    
-    SEARCHBAR // USER ++
-    CATEGORY ON FORM ++
-    POINTS ON QUESTION ++
-    CORRECT ANSWER ON QUESTION ++
+
     copy link for fillout ++
 
     expand textarea -- rows

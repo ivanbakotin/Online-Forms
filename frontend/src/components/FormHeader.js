@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { categories } from "../utils/variables";
 
 const FormHeader = ({ value, saveFormMain }) => {
 
@@ -30,10 +29,6 @@ const FormHeader = ({ value, saveFormMain }) => {
                 value={info.descrip}
                 rows={rows} 
             />
-            <label htmlFor="category">Choose a category:</label>
-            <select value={info.category} name="cat" id="cat">
-                {categories.map(cat => <option value={cat}>{cat}</option>)}
-            </select>
         </header>
         }
         </>

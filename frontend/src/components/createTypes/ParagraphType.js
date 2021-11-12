@@ -17,8 +17,6 @@ const ParagraphType = ({ value, saveFormQuestions }) => {
             <textarea />
         </div>
         }
-        <input type="number" name="points" onChange={handleInput} value={paragraph.points} placeholder="Number of points"/>
-        <input type="text" name="correct_text" onChange={handleInput} value={paragraph.correct_text} placeholder="Correct Answer"/>
         </>
     )
 }

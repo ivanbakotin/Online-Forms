@@ -18,7 +18,7 @@ const FilloutForm = () => {
     useEffect(() => {
         async function fetchData() {
             const form_info = await receiveFetch("/api/get_form_info_fillout", "POST", { id  })
-            setInfo({ form_title: form_info.form_title, descrip: form_info.descrip, category: form_info.category })
+            setInfo({ form_title: form_info.form_title, descrip: form_info.descrip })
             setQuestions(form_info.questions)
         }
 
@@ -31,7 +31,6 @@ const FilloutForm = () => {
             <header>
                 <h1>{info.form_title}</h1>
                 <p>{info.form_descrip}</p>
-                <div>{info.category}</div>
             </header>
 
             <article>

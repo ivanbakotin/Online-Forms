@@ -40,8 +40,6 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                 )
             })}
             <div onClick={handleAdd}>Add Checkbox</div>
-            <input type="number" name="points" onChange={handleInput} value={checkbox.points} placeholder="Number of points"/>
-            <input type="text" name="correct_text" onChange={handleInput} value={checkbox.correct_text} placeholder="Correct Answer"/>
         </div>
         }
         </>

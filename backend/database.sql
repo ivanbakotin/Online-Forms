@@ -42,8 +42,6 @@ CREATE TABLE questions (
     question_id BIGINT NOT NULL,
     quest_title TEXT,
     question_type TEXT,
-    correct_text TEXT,
-    points INT,
     required BOOLEAN,
     UNIQUE (form_id, question_id)
 );

@@ -6,7 +6,6 @@ import SelectType from "../../components/createTypes/SelectType";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
 import ChooseType from "../../components/ChooseType";
-import FormOptions from "../../components/FormOptions";
 import receiveFetch from "../../utils/receiveFetch"
 import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
@@ -21,7 +20,7 @@ const CreateForm = ({ id }) => {
     useEffect(() => {
         async function getFormInfo() {
             const form_info = await receiveFetch("/api/get_form_info", "POST", { id })
-            setInfo({ form_title: form_info.form_title, descrip: form_info.descrip, category: form_info.category })
+            setInfo({ form_title: form_info.form_title, descrip: form_info.descrip })
             setQuestions(form_info.questions)
         }
 
