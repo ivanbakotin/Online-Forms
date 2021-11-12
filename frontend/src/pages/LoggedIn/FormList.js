@@ -19,7 +19,7 @@ const FormList = () => {
     }
 
     return (
-        <article>
+        <section>
             <div onClick={createForm}>
                 Create Form
             </div>
@@ -32,7 +32,7 @@ const FormList = () => {
                 )
             })
             }
-        </article>
+        </section>
     )
 };
 

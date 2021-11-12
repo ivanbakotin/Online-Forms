@@ -17,7 +17,7 @@ const FormHeader = ({ value, saveFormMain }) => {
     return (
         <>
         {info &&
-        <div className="form-header" onChange={saveFormMain}>
+        <header className="form-header" onChange={saveFormMain}>
             <input 
                 onChange={handleInput} 
                 name="form_title" 
@@ -34,7 +34,7 @@ const FormHeader = ({ value, saveFormMain }) => {
             <select value={info.category} name="cat" id="cat">
                 {categories.map(cat => <option value={cat}>{cat}</option>)}
             </select>
-        </div>
+        </header>
         }
         </>
     )

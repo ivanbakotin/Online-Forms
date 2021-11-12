@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ParagraphType = ({ value, saveFormQuestions }) => {
+const ParagraphType = ({ value }) => {
 
     const [ paragraph, setParagraph ] = useState(value)
 

@@ -26,7 +26,7 @@ const FilloutForm = () => {
     }, [])
 
     return (
-        <article className="create-form">
+        <section className="create-form">
             <div>
                 <h1>{info.form_title}</h1>
                 <p>{info.form_descrip}</p>
@@ -62,7 +62,8 @@ const FilloutForm = () => {
                     }                   
             })}
             </div>
-        </article>
+            <button>Submit Form</button>
+        </section>
     )
 }
 
