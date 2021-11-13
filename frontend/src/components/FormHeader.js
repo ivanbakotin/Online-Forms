@@ -26,7 +26,7 @@ const FormHeader = ({ value, saveFormMain }) => {
             <textarea 
                 onChange={handleInput}
                 name="descrip" 
-                value={info.descrip}
+                value={info.descrip || ""}
                 rows={rows} 
             />
         </header>

@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
-import Checkbox from "../../components/createTypes/CheckboxType"
-import Paragraph from "../../components/createTypes/ParagraphType"
-import Line from "../../components/createTypes/LineType"
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
 import ChooseType from "../../components/ChooseType";
 import receiveFetch from "../../utils/receiveFetch"
 import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
+import { componentsCreate } from "../../utils/variables";
 
 const CreateForm = ({ id }) => {
 
@@ -34,12 +32,6 @@ const CreateForm = ({ id }) => {
     const saveFormQuestions = () => sendFetch("/api/update_form_questions", "POST", { questions, id }); 
     const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
 
-    const components = {
-        Paragraph,
-        Checkbox,
-        Line,
-    }
-    
     return (
         <section className="create-form">
 
@@ -48,7 +40,7 @@ const CreateForm = ({ id }) => {
             <article>
             {questions.map(quest => {
 
-                    const SpecificType = components[quest.question_type]
+                    const SpecificType = componentsCreate[quest.question_type]
 
                     return ( 
                         <div key={quest.question_id}>

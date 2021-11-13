@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import CheckboxType from "../../components/solveTypes/CheckboxType"
-import ParagraphType from "../../components/solveTypes/ParagraphType"
-import LineType from "../../components/solveTypes/LineType"
-import SelectType from "../../components/solveTypes/SelectType";
 import receiveFetch from "../../utils/receiveFetch"
+import { componentsSolve } from "../../utils/variables";
 
 const FilloutForm = () => {
 
@@ -35,32 +32,14 @@ const FilloutForm = () => {
 
             <article>
             {questions.map(quest => {
-                switch (quest.question_type) {          
-                    case "line":
-                        return ( 
-                            <div key={quest.question_id}>
-                                <LineType value={quest} />
-                            </div>
-                        )  
-                    case "paragraph":
-                        return ( 
-                            <div key={quest.question_id}>
-                                <ParagraphType value={quest} />
-                            </div>
-                        )   
-                    case "checkbox":
-                        return ( 
-                            <div key={quest.question_id}>
-                                <CheckboxType value={quest} />
-                            </div>
-                        ) 
-                    case "select":
-                        return ( 
-                            <div key={quest.question_id}>
-                                <SelectType value={quest} />
-                            </div>
-                        ) 
-                    }                   
+
+                const SpecificType = componentsSolve[quest.question_type]
+            
+                return ( 
+                    <div key={quest.question_id}>
+                        <SpecificType value={quest} />
+                    </div>
+                )        
             })}
             </article>
 
