@@ -12,7 +12,7 @@ const CheckboxType = ({ value }) => {
                         onChange={handleInput} 
                         type="checkbox" 
                         id={box.qq_id + "" + box.question_id} 
-                        name={box.qq_title} value={box.qq_title} 
+                        value={box.qq_title} 
                     />
                     <label htmlFor={box.qq_id + "" + box.question_id}>{box.qq_title}</label>
                     </>
