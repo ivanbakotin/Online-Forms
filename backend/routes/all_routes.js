@@ -15,4 +15,6 @@ router.post("/update_form_questions", form_controllers.update_form_questions);
 
 router.delete("/delete_question", form_controllers.delete_question);
 
+router.post("/send_filled_form", form_controllers.send_filled_form);
+
 module.exports = router;

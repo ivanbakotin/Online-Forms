@@ -23,18 +23,13 @@ CREATE TABLE user_forms (
     user_id BIGINT NOT NULL
 );
 
-CREATE TABLE ratings (
-    id SERIAL PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    form_id BIGINT NOT NULL,
-    rating INT
-);
-
 CREATE TABLE user_solved (
     id SERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
     form_id BIGINT NOT NULL,
-    score INT
+    question_id BIGINT NOT NULL,
+    answer TEXT
+    UNIQUE (user_id, question_id, form_id)
 );
 
 CREATE TABLE questions (

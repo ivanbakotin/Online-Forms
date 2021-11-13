@@ -25,7 +25,7 @@ const FilloutForm = () => {
     function sendForm(e) {
         e.preventDefault()
         console.log({ questions, info })
-        //sendFetch("/api/send_filled_form", "POST", { questions, info })
+        sendFetch("/api/send_filled_form", "POST", { questions, info })
     }
 
     return (

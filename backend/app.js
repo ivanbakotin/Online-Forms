@@ -54,7 +54,7 @@ module.exports = app;
     expand textarea -- rows
     add saving portal popup while settimeout active
     pagination on all forms page
-    form validation
+    form validation errors
     response page
     styling
     skeleton loading

@@ -70,7 +70,6 @@ exports.update_form_main = function(req, res, next) {
 }
 
 exports.update_form_questions = function(req, res, next) {
-    console.log(req.body)
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
@@ -101,6 +100,27 @@ exports.update_form_questions = function(req, res, next) {
                 }
             })
         })
+    })
+
+    return res.status(200).json()
+}
+
+exports.send_filled_form = function(req, res, next) {
+
+    req.body.questions.forEach(quest => {
+        pool.query(`INSERT INTO user_solved 
+                    (form_id, question_id, user_id, answer) 
+                    VALUES ($1, $2, $3, $4)`, 
+                    [req.body.form_id, quest.question_id, req.user.id, quest.answer], (result) => {
+                        if (result) {
+                            if (result.code == "23505") {
+                                pool.query(`UPDATE user_solved 
+                                            SET answer=$1 
+                                            WHERE question_id=$2 AND form_id=$3 AND user_id=$4`, 
+                                            [quest.answer, quest.question_id, req.body.id, req.user.id])
+                            }
+                        }
+                    })
     })
 
     return res.status(200).json()
