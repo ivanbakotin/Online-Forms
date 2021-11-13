@@ -1,21 +1,11 @@
-import { useState } from "react";
-
 const ParagraphType = ({ value }) => {
 
-    const [ paragraph, setParagraph ] = useState(value)
-
-    const handleInput = e => {
-
-    }
+    const handleInput = e => value["answer"] = e.target.value
     
     return (
         <>
-        {paragraph &&
-        <div onChange={handleInput}>
-            <div>{paragraph.quest_title}</div>
-            <textarea />
-        </div>
-        }
+            <div>{value.quest_title}</div>
+            <textarea onChange={handleInput}/>
         </>
     )
 }

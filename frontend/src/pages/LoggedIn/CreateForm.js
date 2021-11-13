@@ -36,7 +36,8 @@ const CreateForm = ({ id }) => {
         <section className="create-form">
 
             <FormHeader value={info} saveFormMain={mainForm} />
-
+            
+            <div>
             <article>
             {questions.map(quest => {
 
@@ -67,6 +68,7 @@ const CreateForm = ({ id }) => {
                     questions={questions}
                 />
             </article>
+            </div>
             
         </section>
     )
