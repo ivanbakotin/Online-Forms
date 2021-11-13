@@ -8,6 +8,22 @@
     * {
         font-size: 2rem;
     }
+
+    .questions {
+        display: flex;
+
+        article {
+            margin: 3rem;
+
+            .question-div {
+                margin: 2rem;
+            }
+        }
+
+        .choose-type-main {
+            align-self: flex-end;
+        }
+    }
 }
 
 .form-header {

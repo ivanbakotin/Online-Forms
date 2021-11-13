@@ -37,14 +37,14 @@ const CreateForm = ({ id }) => {
 
             <FormHeader value={info} saveFormMain={mainForm} />
             
-            <div>
+            <div className="questions">
             <article>
             {questions.map(quest => {
 
                     const SpecificType = componentsCreate[quest.question_type]
 
                     return ( 
-                        <div key={quest.question_id}>
+                        <div className="question-div" key={quest.question_id}>
                             <SpecificType 
                                 value={quest} 
                                 saveFormQuestions={questForm}

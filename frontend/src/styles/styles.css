@@ -19,6 +19,25 @@
   font-size: 2rem;
 }
 
+.create-form .questions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.create-form .questions article {
+  margin: 3rem;
+}
+
+.create-form .questions article .question-div {
+  margin: 2rem;
+}
+
+.create-form .questions .choose-type-main {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
 .form-header {
   display: -webkit-box;
   display: -ms-flexbox;
