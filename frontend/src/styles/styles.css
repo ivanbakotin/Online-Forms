@@ -134,7 +134,7 @@
   color: red;
 }
 
-main {
+#root {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -145,7 +145,7 @@ main {
           flex-direction: row;
 }
 
-main aside {
+#root aside {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -165,12 +165,35 @@ main aside {
 }
 
 @media (max-width: 768px) {
-  main aside {
+  #root aside {
     display: none;
   }
 }
 
-main section {
+#root main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#root main nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  font-size: 3rem;
+}
+
+#root section {
   font-size: 5rem;
 }
 

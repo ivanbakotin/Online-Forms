@@ -1,4 +1,4 @@
-main {
+#root {
     display: flex;
     min-height: 100vh;
     flex-direction: row;
@@ -15,6 +15,18 @@ main {
 
         @media (max-width: 768px) {
             display: none;
+        }
+    }
+
+    main {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        nav {
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 3rem;
         }
     }
 

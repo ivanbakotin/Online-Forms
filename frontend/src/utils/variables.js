@@ -13,8 +13,8 @@ export const componentsCreate = {
 }
 
 export const componentsSolve = {
-    Paragraph: CheckboxSolve,
-    Checkbox: ParagraphSolve,
+    Paragraph: ParagraphSolve,
+    Checkbox: CheckboxSolve,
     Line: LineSolve,
 }
 

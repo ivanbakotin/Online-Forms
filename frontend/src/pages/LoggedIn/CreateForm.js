@@ -24,7 +24,7 @@ const CreateForm = ({ id }) => {
         getFormInfo(id)
     }, [])
     
-    const openTypes = () =>setOpen(!open)
+    const openTypes = () => setOpen(!open)
 
     const mainForm = debounce(() => saveFormMain());
     const questForm = debounce(() => saveFormQuestions());
