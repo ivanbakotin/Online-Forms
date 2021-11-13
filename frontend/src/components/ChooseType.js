@@ -8,11 +8,10 @@ const ChooseType = ({ open, setQuestions, questions }) => {
 
     return (    
     	<div className="choose-type">
-			<div name="checkbox" onClick={addQuestion}>Add Checkbox</div>
-            <div name="paragraph" onClick={addQuestion}>Add Paragraph</div>
+			<div name="Checkbox" onClick={addQuestion}>Add Checkbox</div>
+            <div name="Paragraph" onClick={addQuestion}>Add Paragraph</div>
       	</div>
     )
 }
-		  
 
 export default ChooseType;
