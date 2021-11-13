@@ -1,1 +1,1 @@
-export const types = ["Checkbox", "Paragraph"];
+export const types = ["checkbox", "paragraph"];

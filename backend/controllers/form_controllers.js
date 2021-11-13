@@ -103,9 +103,9 @@ exports.update_form_questions = function(req, res, next) {
                 if (result) {
                     if (result.code == "23505") {
                         pool.query(`UPDATE questions 
-                                    SET quest_title=$1
-                                    WHERE form_id=$2 AND question_id=$3`, 
-                                    [quest.quest_title, req.body.id, quest.question_id])
+                                    SET quest_title=$1, question_type=$2
+                                    WHERE form_id=$3 AND question_id=$4`, 
+                                    [quest.quest_title, quest.question_type, req.body.id, quest.question_id])
                     }
                 }
         })
