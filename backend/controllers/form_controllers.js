@@ -9,29 +9,6 @@ exports.get_forms = async function(req, res, next) {
     return res.status(200).json(result.rows)
 }
 
-exports.get_user_forms = async function(req, res, next) {
-    const result = await pool.query(`SELECT * FROM user_forms 
-        	                        WHERE user_id=$1
-                                    ORDER BY id DESC`, 
-                                    [req.body.id])
-
-    return res.status(200).json(result.rows)
-}
-
-exports.search_users = async function (req, res, next) {
-    const { searchterm } = req.body
-    
-    if (searchterm) {
-        const result = await pool.query(`SELECT * FROM users WHERE username ILIKE $1`, 
-                                         ['%' + searchterm + '%'])
-
-        if (result.rows.length) return res.status(200).json(result.rows)
-
-        return res.status(200).json([{nousers: "No users found..."}])
-
-    } else return res.status(200).json([{nousers: "No users found..."}])
-}
-
 exports.get_form_info = async function(req, res, next) {
     const result = await pool.query(`
         SELECT json_build_object('form', json_agg(p))
@@ -73,21 +50,21 @@ exports.create_form = async function(req, res, next) {
     return res.status(200).json(result.rows[0].id)
 }
 
+exports.delete_question = function(req, res, next) {
+    // ADD CHECK IF REQ.USER.ID OWNER OF FORM
+    pool.query(`DELETE FROM questions 
+                WHERE form_id=$1 AND question_id=$2`, 
+                [req.body.id, req.body.value.question_id])
+
+    return res.status(200).json()
+}
+
 exports.update_form_main = function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`UPDATE user_forms 
                 SET form_title=$1, descrip=$2
                 WHERE user_id=$3 AND id=$4`, 
                 [req.body.info.form_title, req.body.info.descrip, req.user.id, req.body.id])
-
-    return res.status(200).json()
-}
-
-exports.delete_question = function(req, res, next) {
-    // ADD CHECK IF REQ.USER.ID OWNER OF FORM
-    pool.query(`DELETE FROM questions 
-                WHERE form_id=$1 AND question_id=$2`, 
-                [req.body.id, req.body.value.question_id])
 
     return res.status(200).json()
 }

@@ -6,8 +6,6 @@ import CheckboxSolve from "../components/solveTypes/CheckboxType"
 import ParagraphSolve from "../components/solveTypes/ParagraphType"
 import LineSolve from "../components/solveTypes/LineType"
 
-export const types = ["Checkbox", "Paragraph", "Line", "Radio", "Date"];
-
 export const componentsCreate = {
     Paragraph: ParagraphCreate,
     Checkbox: CheckboxCreate,
@@ -19,3 +17,5 @@ export const componentsSolve = {
     Checkbox: ParagraphSolve,
     Line: LineSolve,
 }
+
+export const types = ["Checkbox", "Paragraph", "Line"];

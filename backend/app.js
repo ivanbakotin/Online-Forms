@@ -51,12 +51,11 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
-
-    USERPROFILE -- ALL FORMS CREATED
-
-    copy link for fillout ++
-
     expand textarea -- rows
     add saving portal popup while settimeout active
     pagination on all forms page
+    form validation
+    response page
+    styling
+    skeleton loading
 */

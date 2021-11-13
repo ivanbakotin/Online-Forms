@@ -1,4 +1,4 @@
-const ChooseType = ({ open, setQuestions, questions }) => {
+const AddType = ({ open, setQuestions, questions }) => {
 
 	if (!open) return null
 
@@ -10,8 +10,9 @@ const ChooseType = ({ open, setQuestions, questions }) => {
     	<div className="choose-type">
 			<div name="Checkbox" onClick={addQuestion}>Add Checkbox</div>
             <div name="Paragraph" onClick={addQuestion}>Add Paragraph</div>
+            <div name="Line" onClick={addQuestion}>Add Line</div>
       	</div>
     )
 }
 
-export default ChooseType;
+export default AddType;

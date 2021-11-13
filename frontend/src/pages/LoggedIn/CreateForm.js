@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
-import ChooseType from "../../components/ChooseType";
+import AddType from "../../components/AddType";
 import receiveFetch from "../../utils/receiveFetch"
 import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
@@ -61,7 +61,7 @@ const CreateForm = ({ id }) => {
 
             <article className="choose-type-main">
                 <button onClick={openTypes}>ADD TYPE +</button>
-                <ChooseType 
+                <AddType 
                     open={open} 
                     setQuestions={setQuestions} 
                     questions={questions}
