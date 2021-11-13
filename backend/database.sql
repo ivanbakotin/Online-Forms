@@ -28,7 +28,7 @@ CREATE TABLE user_solved (
     user_id BIGINT NOT NULL,
     form_id BIGINT NOT NULL,
     question_id BIGINT NOT NULL,
-    answer TEXT
+    answer TEXT,
     UNIQUE (user_id, question_id, form_id)
 );
 
@@ -52,3 +52,4 @@ CREATE TABLE questions_questions (
 DROP TABLE questions;
 DROP TABLE questions_questions;
 DROP TABLE user_forms;
+DROP TABLE user_solved;
