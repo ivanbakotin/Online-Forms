@@ -12,9 +12,9 @@ const ParagraphType = ({ value, saveFormQuestions }) => {
     return (
         <>
         {paragraph &&
-        <div onChange={saveFormQuestions}>
-            <input 
-                type="text" 
+        <div className="paragraph-create" onChange={saveFormQuestions}>
+            <textarea 
+                rows={1}
                 name="quest_title" 
                 onChange={handleInput} 
                 value={paragraph.quest_title || ""} 

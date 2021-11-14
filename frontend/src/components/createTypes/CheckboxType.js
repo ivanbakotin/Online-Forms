@@ -22,16 +22,16 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
     return (
         <>
         {checkbox &&
-        <div onChange={saveFormQuestions}>
-            <input 
-                type="text" 
+        <div className="checkbox-create" onChange={saveFormQuestions}>
+            <textarea 
+                rows={1}
                 onChange={handleInput} 
                 name="quest_title" 
-                value={checkbox.quest_title}
+                value={checkbox.quest_title || ""}
             />
             {!!checkbox?.sub_questions && checkbox.sub_questions.map((box, index) => {
                 return (
-                        <div key={index}>
+                        <div className="check-input" key={index}>
                             <input 
                                 type="checkbox" 
                                 value={box.qq_title}
@@ -44,7 +44,7 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                         </div>
                 )
             })}
-            <div onClick={handleAdd}>Add Checkbox</div>
+            <div className="add-check" onClick={handleAdd}>Add Checkbox</div>
         </div>
         }
         </>

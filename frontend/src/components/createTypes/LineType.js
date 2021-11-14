@@ -12,9 +12,14 @@ const LineType = ({ value, saveFormQuestions }) => {
     return (
         <>
         {line &&
-        <div onChange={saveFormQuestions}>
-            <input onChange={handleInput} value={line.quest_title} />
-            <input type="text" />
+        <div className="line-create" onChange={saveFormQuestions}>
+            <textarea 
+                rows={1} 
+                name="quest_title" 
+                onChange={handleInput} 
+                value={line.quest_title || ""} 
+            />
+            <textarea rows={1} />
         </div>
         }
         </>

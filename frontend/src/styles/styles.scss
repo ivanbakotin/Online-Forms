@@ -1,3 +1,4 @@
+@import "./mixin";
 @import './createform';
 @import "./filloutform";
 @import "./variables";
@@ -5,6 +6,9 @@
 @import "./wrapper";
 @import "./notFound";
 @import "./loading";
+@import "./line";
+@import "./paragraph";
+@import "./checkbox";
 
 * {
     font-family: 'Titillium Web', sans-serif;

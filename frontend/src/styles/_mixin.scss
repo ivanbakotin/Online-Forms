@@ -1,0 +1,11 @@
+@mixin textarea-create {
+    margin: 1rem;
+    outline: none;
+    border: none;
+    border-bottom: gray 0.2rem solid;
+    resize: none;
+
+    &:focus {
+        border-bottom: black 0.2rem solid;
+    }
+}

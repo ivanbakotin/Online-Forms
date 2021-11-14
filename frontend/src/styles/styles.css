@@ -31,6 +31,9 @@
 
 .create-form .questions article .question-div {
   margin: 2rem;
+  background-color: lightcyan;
+  padding: 1rem;
+  border-radius: 2rem;
 }
 
 .create-form .questions .choose-type-main {
@@ -365,6 +368,88 @@
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+.line-create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2rem;
+}
+
+.line-create textarea {
+  margin: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: gray 0.2rem solid;
+  resize: none;
+}
+
+.line-create textarea:focus {
+  border-bottom: black 0.2rem solid;
+}
+
+.paragraph-create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2rem;
+}
+
+.paragraph-create textarea {
+  margin: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: gray 0.2rem solid;
+  resize: none;
+}
+
+.paragraph-create textarea:focus {
+  border-bottom: black 0.2rem solid;
+}
+
+.checkbox-create {
+  margin: 2rem;
+}
+
+.checkbox-create textarea {
+  margin: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: gray 0.2rem solid;
+  resize: none;
+}
+
+.checkbox-create textarea:focus {
+  border-bottom: black 0.2rem solid;
+}
+
+.checkbox-create .check-input {
+  margin: 0.1rem;
+}
+
+.checkbox-create .check-input input {
+  margin: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: gray 0.2rem solid;
+  resize: none;
+}
+
+.checkbox-create .check-input input:focus {
+  border-bottom: black 0.2rem solid;
+}
+
+.checkbox-create .add-check {
+  margin: 1rem;
 }
 
 * {

@@ -1,0 +1,19 @@
+.checkbox-create {
+    margin: 2rem;
+
+    textarea {
+        @include textarea-create;
+    }
+
+    .check-input {
+        margin: 0.1rem;
+        
+        input {
+            @include textarea-create;
+        }
+    }
+
+    .add-check {
+        margin: 1rem;
+    }
+}

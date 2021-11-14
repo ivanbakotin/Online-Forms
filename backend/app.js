@@ -60,4 +60,5 @@ module.exports = app;
     styling
     skeleton loading
     make anonyomous fillout optional
+    delete checkbox input
 */
