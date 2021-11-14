@@ -35,20 +35,24 @@ exports.send_filled_form = async function(req, res, next) {
 
     pool.query (`
             SELECT * FROM user_solved
-            ORDER BY id DESC
+            ORDER BY index_id DESC
             LIMIT 1
     `, (error, result) => {
 
-        if (error) {
-            console.log(error)
+        let id;
+
+        if (result.rows.length === 0) {
+            id = 0
+        } else {
+            id = result.rows[0].index_id + 1
         }
 
         req.body.questions.forEach(quest => {
             pool.query(`INSERT INTO user_solved 
-                        (form_id, question_id, index_id, answer) 
+                        (form_id, question_id, index_id, answer_text) 
                         VALUES ($1, $2, $3, $4)
                         RETURNING id`, 
-                        [quest.form_id, quest.question_id, result.rows[0].id + 1, quest.answer])
+                        [quest.form_id, quest.question_id, id, quest.answer])
         })
     });
 

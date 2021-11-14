@@ -51,6 +51,7 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
+    send checkbox answes as array
     expand textarea -- rows
     add saving portal popup while settimeout active
     pagination on all forms page

@@ -3,7 +3,7 @@ const AddType = ({ open, setQuestions, questions }) => {
 	if (!open) return null
 
 	function addQuestion(e) {
-        setQuestions(prev => [ ...prev, { question_id: questions.length, quest_title:"", question_type: e.target.getAttribute("name"), sub_questions:[{ qq_id: 1, qq_title: "Option"}] }])
+        setQuestions(prev => [ ...prev, { question_id: questions.length, quest_title:"", question_type: e.target.getAttribute("name"), sub_questions:[{ qq_id: 0, qq_title: "Option"}] }])
     }
 
     return (    

@@ -31,7 +31,8 @@ CREATE TABLE user_solved (
     index_id BIGINT NOT NULL,
     form_id BIGINT NOT NULL,
     question_id BIGINT NOT NULL,
-    answer TEXT[]
+    answer_array TEXT[],
+    answer_text TEXT
 );
 
 CREATE TABLE questions (

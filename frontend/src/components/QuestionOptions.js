@@ -14,6 +14,7 @@ const QuestionOptions = ({ value, setQuestions, questions, id }) => {
 
     function changeType(e) {
         value.question_type = e.target.value
+        setQuestions(prev => [...prev])
     }
 
     return (
