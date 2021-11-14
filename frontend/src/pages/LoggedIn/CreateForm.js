@@ -1,29 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
 import AddType from "../../components/AddType";
-import receiveFetch from "../../utils/receiveFetch"
 import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
 import { componentsCreate } from "../../utils/variables";
 
-const CreateForm = ({ id }) => {
+const CreateForm = ({ id, info, questions, setQuestions }) => {
 
     const [ open, setOpen ] = useState(false)
 
-    const [ info, setInfo ] = useState() 
-    const [ questions, setQuestions ] = useState([])
-
-    useEffect(() => {
-        async function getFormInfo() {
-            const form_info = await receiveFetch("/api/get_form_info", "POST", { id })
-            setInfo({ form_title: form_info.form_title, descrip: form_info.descrip })
-            setQuestions(form_info.questions)
-        }
-
-        getFormInfo(id)
-    }, [])
-    
     const openTypes = () => setOpen(!open)
 
     const mainForm = debounce(() => saveFormMain());

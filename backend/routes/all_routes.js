@@ -7,14 +7,12 @@ router.get("/get_forms", form_controllers.get_forms);
 
 router.post("/create_form", form_controllers.create_form);
 
-router.post("/get_form_info", form_controllers.get_form_info);
-
 router.post("/update_form_main", form_controllers.update_form_main);
 
 router.post("/update_form_questions", form_controllers.update_form_questions);
 
-router.delete("/delete_question", form_controllers.delete_question);
+router.post("/get_form_info", form_controllers.get_form_info);
 
-router.post("/send_filled_form", form_controllers.send_filled_form);
+router.delete("/delete_question", form_controllers.delete_question);
 
 module.exports = router;

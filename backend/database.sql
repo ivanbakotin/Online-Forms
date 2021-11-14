@@ -15,6 +15,8 @@ CREATE TABLE users (
     password TEXT
 );
 
+MAYBE CREATE SPECIAL ENTITY FOR LINK (RANDOM STRING) TO FILLOUT CURRENTLY JUST USING FORM ID
+
 CREATE TABLE user_forms (
     id SERIAL PRIMARY KEY,
     form_title TEXT,
@@ -25,11 +27,11 @@ CREATE TABLE user_forms (
 
 CREATE TABLE user_solved (
     id SERIAL PRIMARY KEY,
-    user_id BIGINT NOT NULL,
+    user_id BIGINT,
+    index_id BIGINT NOT NULL,
     form_id BIGINT NOT NULL,
     question_id BIGINT NOT NULL,
-    answer TEXT,
-    UNIQUE (user_id, question_id, form_id)
+    answer TEXT[]
 );
 
 CREATE TABLE questions (

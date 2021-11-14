@@ -10,6 +10,7 @@ exports.get_forms = async function(req, res, next) {
 }
 
 exports.get_form_info = async function(req, res, next) {
+    //ADD CHECK IF USER ID == USER ID
     const result = await pool.query(`
         SELECT json_build_object('form', json_agg(p))
             FROM (
@@ -23,15 +24,15 @@ exports.get_form_info = async function(req, res, next) {
                                 FROM (
                                     SELECT *
                                     FROM questions_questions AS qq
-                                    WHERE qq.question_id = q.question_id AND qq.form_id=$2 ORDER BY qq.qq_id ASC
+                                    WHERE qq.question_id = q.question_id AND qq.form_id=$1 ORDER BY qq.qq_id ASC
                                 ) w
                             )  sub_questions
                           FROM questions AS q WHERE q.form_id = u.id ORDER BY q.question_id ASC
                         ) c
                  ) AS questions
-               FROM user_forms AS u WHERE u.user_id=$1 AND u.id=$2
+               FROM user_forms AS u WHERE u.id=$1
         ) p`, 
-        [req.user.id, req.body.id])
+        [req.body.id])
 
     if (result.rows[0].json_build_object.form[0].questions === null) {
         result.rows[0].json_build_object.form[0].questions = []
@@ -75,9 +76,9 @@ exports.update_form_questions = function(req, res, next) {
         pool.query(`INSERT INTO questions
                         (form_id, question_id, quest_title, question_type) 
                         VALUES ($1, $2, $3, $4)`, 
-                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type], (result) => {
-                if (result) {
-                    if (result.code == "23505") {
+                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type], (error) => {
+                if (error) {
+                    if (error.code == "23505") {
                         pool.query(`UPDATE questions 
                                     SET quest_title=$1, question_type=$2
                                     WHERE form_id=$3 AND question_id=$4`, 
@@ -89,9 +90,9 @@ exports.update_form_questions = function(req, res, next) {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 
                         VALUES ($1, $2, $3, $4)`, 
-                        [req.body.id, check.qq_id, check.qq_title, quest.question_id], (result) => {
-                if (result) {
-                    if (result.code == "23505") {
+                        [req.body.id, check.qq_id, check.qq_title, quest.question_id], (error) => {
+                if (error) {
+                    if (error.code == "23505") {
                         pool.query(`UPDATE questions_questions 
                                     SET qq_title=$1 
                                     WHERE question_id=$2 AND qq_id=$3 AND form_id=$4`, 
@@ -100,26 +101,6 @@ exports.update_form_questions = function(req, res, next) {
                 }
             })
         })
-    })
-
-    return res.status(200).json()
-}
-
-exports.send_filled_form = function(req, res, next) {
-    req.body.questions.forEach(quest => {
-        pool.query(`INSERT INTO user_solved 
-                    (form_id, question_id, user_id, answer) 
-                    VALUES ($1, $2, $3, $4)`, 
-                    [quest.form_id, quest.question_id, req.user.id, quest.answer], (result) => {
-                        if (result) {
-                            if (result.code == "23505") {
-                                pool.query(`UPDATE user_solved 
-                                            SET answer=$1 
-                                            WHERE question_id=$2 AND form_id=$3 AND user_id=$4`, 
-                                            [quest.answer, quest.question_id, quest.form_id, req.user.id])
-                            }
-                        }
-                    })
     })
 
     return res.status(200).json()

@@ -14,8 +14,6 @@ const FormHeader = ({ value, saveFormMain }) => {
     }
 
     return (
-        <>
-        {info &&
         <header className="form-header" onChange={saveFormMain}>
             <input 
                 onChange={handleInput} 
@@ -30,8 +28,6 @@ const FormHeader = ({ value, saveFormMain }) => {
                 rows={rows} 
             />
         </header>
-        }
-        </>
     )
 }
 
