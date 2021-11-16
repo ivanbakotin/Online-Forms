@@ -7,8 +7,12 @@
 
     .check-input {
         margin: 0.1rem;
+
+        .check {
+            @include check;
+        }
         
-        input {
+        .check-input {
             @include textarea-create;
         }
     }

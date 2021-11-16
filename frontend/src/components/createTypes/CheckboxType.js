@@ -33,10 +33,12 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                 return (
                         <div className="check-input" key={index}>
                             <input 
+                                className="check"
                                 type="checkbox" 
                                 value={box.qq_title}
                             />
                             <input
+                                className="check-input"
                                 id={index} 
                                 onChange={handleCheckbox}
                                 value={box.qq_title}

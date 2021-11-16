@@ -33,7 +33,8 @@
   margin: 2rem;
   background-color: lightcyan;
   padding: 1rem;
-  border-radius: 2rem;
+  border-left: solid 0.5rem lightgreen;
+  border-radius: 1rem;
 }
 
 .create-form .questions .choose-type-main {
@@ -436,7 +437,21 @@
   margin: 0.1rem;
 }
 
-.checkbox-create .check-input input {
+.checkbox-create .check-input .check {
+  width: 2rem;
+  height: 2rem;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  border: 0.1rem gray solid;
+}
+
+.checkbox-create .check-input .check:checked {
+  background-color: green;
+}
+
+.checkbox-create .check-input .check-input {
   margin: 1rem;
   outline: none;
   border: none;
@@ -444,7 +459,7 @@
   resize: none;
 }
 
-.checkbox-create .check-input input:focus {
+.checkbox-create .check-input .check-input:focus {
   border-bottom: black 0.2rem solid;
 }
 
