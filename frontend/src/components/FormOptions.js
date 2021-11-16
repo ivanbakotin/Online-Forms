@@ -8,12 +8,14 @@ const FormOptions = ({ id }) => {
 
     return (
         <nav>
+            <div className="nav-options">
+                <div onClick={getLink}>Get Fillout Link</div>
+                <div onClick={getLink}>Preview</div>
+            </div>
             <div className="nav-links">
                 <NavLink to={{pathname:`/create_form/${id}`}}>Form</NavLink>
                 <NavLink to={{pathname:`/create_form/${id}/response_form`}}>Responses</NavLink>
             </div>
-            <button onClick={getLink}>Get Fillout Link</button>
-            <button>Preview</button>
         </nav>
     )
 }

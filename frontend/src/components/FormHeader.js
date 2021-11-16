@@ -15,11 +15,11 @@ const FormHeader = ({ value, saveFormMain }) => {
 
     return (
         <header className="form-header" onChange={saveFormMain}>
-            <input 
+            <textarea 
                 onChange={handleInput} 
                 name="form_title" 
-                type="text" 
                 value={info.form_title}
+                rows={rows}
             />
             <textarea 
                 onChange={handleInput}

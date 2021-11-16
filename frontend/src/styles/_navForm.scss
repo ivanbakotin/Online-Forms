@@ -1,0 +1,15 @@
+.nav-links {
+    display: flex;
+    justify-content: center;
+
+    a {
+        padding: 2rem;
+        padding-inline: 15rem;
+        background-color: lightpink;
+    }
+}
+
+.nav-options {
+    display: flex;
+    justify-content: flex-end;
+}

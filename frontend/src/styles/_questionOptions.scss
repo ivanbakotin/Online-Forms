@@ -1,0 +1,10 @@
+.question-options {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: gray 0.1rem solid;
+    padding-top: 1.5rem;
+
+    button {
+        border-radius: 3rem;
+    }
+}
