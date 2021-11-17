@@ -38,7 +38,7 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                 name="quest_title" 
                 value={checkbox.quest_title || ""}
             />
-            {!!checkbox?.sub_questions && checkbox.sub_questions.map(box => {
+            {!!checkbox?.sub_questions && checkbox.sub_questions.map((box, index) => {
                 return (
                         <div className="check-box" key={box.qq_id}>
                             <div>
@@ -49,7 +49,7 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                                 />
                                 <input
                                     className="check-input"
-                                    id={box.qq_id} 
+                                    id={index} 
                                     onChange={handleCheckbox}
                                     value={box.qq_title}
                                 />
