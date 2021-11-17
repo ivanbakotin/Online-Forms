@@ -19,7 +19,7 @@ const FormList = () => {
     }
 
     return (
-        <section>
+        <section className="form-list">
             <div onClick={createForm}>
                 Create Form
             </div>

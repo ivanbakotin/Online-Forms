@@ -5,6 +5,7 @@ import AddType from "../../components/AddType";
 import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
 import { componentsCreate } from "../../utils/variables";
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const CreateForm = ({ id, info, questions, setQuestions }) => {
 
@@ -23,25 +24,35 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
 
             <FormHeader value={info} saveFormMain={mainForm} />
             
+            <TransitionGroup
+                component={null}
+            >
             {questions.map(quest => {
 
                     const SpecificType = componentsCreate[quest.question_type]
                     
                     return ( 
-                        <div className="question-div" key={quest.question_id}>
-                            <SpecificType 
-                                value={quest} 
-                                saveFormQuestions={questForm}
-                            />
-                            <QuestionOptions 
-                                id={id} 
-                                value={quest} 
-                                setQuestions={setQuestions} 
-                                questions={questions}
-                            />
-                        </div>
+                        <CSSTransition
+                            key={quest.question_id}
+                            classNames="example"
+                            timeout={{ enter: 500, exit: 300 }}
+                        >
+                            <div className="question-div" key={quest.question_id}>
+                                <SpecificType 
+                                    value={quest} 
+                                    saveFormQuestions={questForm}
+                                />
+                                <QuestionOptions 
+                                    id={id} 
+                                    value={quest} 
+                                    setQuestions={setQuestions} 
+                                    questions={questions}
+                                />
+                            </div>
+                        </CSSTransition>
                     )        
             })}
+            </TransitionGroup>
 
             <article className="choose-type-main">
                 <div className="fas fa-plus-circle" onClick={openTypes}></div>

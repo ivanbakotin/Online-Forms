@@ -1,0 +1,10 @@
+.form-list {
+    display: flex;
+    flex: wrap;
+    flex: 1;
+    background-color: lightgray;
+    
+    * {
+        font-size: 3rem;
+    }
+}
