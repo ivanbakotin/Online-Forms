@@ -60,5 +60,4 @@ module.exports = app;
     skeleton loading
     make anonyomous fillout optional
     delete checkbox input
-    double checkbox if one sent
 */

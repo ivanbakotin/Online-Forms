@@ -42,6 +42,43 @@
           box-shadow: 0 0.5rem 1rem #c5d9d4;
 }
 
+.create-form .choose-type-main {
+  margin-bottom: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem;
+  background-color: lightgray;
+  border-radius: 3rem;
+}
+
+.create-form .choose-type-main .fa-plus-circle {
+  font-size: 5rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 1rem;
+}
+
+.create-form .choose-type-main .fa-plus-circle:hover {
+  color: gray;
+}
+
+.create-form .choose-type-main .choose-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.create-form .choose-type-main .choose-type div {
+  font-size: 5rem;
+  margin: 1rem;
+}
+
+.create-form .choose-type-main .choose-type div:hover {
+  color: gray;
+}
+
 .fillout-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -466,6 +503,10 @@ nav .nav-links a {
   padding: 1rem;
   text-decoration: none;
   color: black;
+}
+
+nav .nav-links .selected {
+  border-bottom: purple solid 0.5rem;
 }
 
 nav .nav-options {

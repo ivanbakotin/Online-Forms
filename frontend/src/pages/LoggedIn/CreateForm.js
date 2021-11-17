@@ -44,7 +44,7 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
             })}
 
             <article className="choose-type-main">
-                <div onClick={openTypes}>ADD TYPE +</div>
+                <div className="fas fa-plus-circle" onClick={openTypes}></div>
                 <AddType 
                     open={open} 
                     setQuestions={setQuestions} 

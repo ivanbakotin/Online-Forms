@@ -30,4 +30,35 @@
         border-radius: 1rem;
         box-shadow: 0 0.5rem 1rem #c5d9d4;
     }
+
+    .choose-type-main {
+        margin-bottom: 10rem;
+        display: flex;
+        margin: 1rem;
+        background-color: lightgray;
+        border-radius: 3rem;
+
+        .fa-plus-circle {
+            font-size: 5rem;
+            align-self: center;
+            margin: 1rem;
+
+            &:hover {
+                color: gray;
+            }
+        }
+
+        .choose-type {
+            display: flex;
+
+            div {
+                font-size: 5rem; 
+                margin: 1rem;
+
+                &:hover {
+                    color: gray;
+                }
+            }
+        }
+    }
 }

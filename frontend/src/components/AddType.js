@@ -8,9 +8,9 @@ const AddType = ({ open, setQuestions, questions }) => {
 
     return (    
     	<div className="choose-type">
-			<div name="Checkbox" onClick={addQuestion}>Add Checkbox</div>
-            <div name="Paragraph" onClick={addQuestion}>Add Paragraph</div>
-            <div name="Line" onClick={addQuestion}>Add Line</div>
+			<div className="fas fa-check-square" name="Checkbox" onClick={addQuestion}></div>
+            <div className="fas fa-align-left" name="Paragraph" onClick={addQuestion}></div>
+            <div className="fab fa-line" name="Line" onClick={addQuestion}></div>
       	</div>
     )
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import sendFetch from "../../utils/sendFetch"
 import TextareaAutosize from 'react-textarea-autosize';
 
 const CheckboxType = ({ value, saveFormQuestions }) => {
@@ -21,7 +22,9 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
     }
 
     const deleteCheckbox = e => {
-
+        sendFetch("/api/delete_quest_sub", "DELETE", { value })
+        const array = checkbox.sub_questions.filter(sub => sub.qq_id != e.target.id)
+        setCheckbox(prev => ({ ...prev, sub_questions: array }))
     }
     
     return (
@@ -33,9 +36,9 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                 name="quest_title" 
                 value={checkbox.quest_title || ""}
             />
-            {!!checkbox?.sub_questions && checkbox.sub_questions.map((box, index) => {
+            {!!checkbox?.sub_questions && checkbox.sub_questions.map(box => {
                 return (
-                        <div className="check-box" key={index}>
+                        <div className="check-box" key={box.qq_id}>
                             <div>
                                 <input 
                                     className="check"
@@ -44,12 +47,12 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                                 />
                                 <input
                                     className="check-input"
-                                    id={index} 
+                                    id={box.qq_id} 
                                     onChange={handleCheckbox}
                                     value={box.qq_title}
                                 />
                             </div>
-                            <div className="fas fa-times"></div>
+                            <div id={box.qq_id} onClick={deleteCheckbox} className="fas fa-times"></div>
                         </div>
                 )
             })}

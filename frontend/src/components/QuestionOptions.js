@@ -23,7 +23,7 @@ const QuestionOptions = ({ value, setQuestions, questions, id }) => {
             <div onClick={setRequired}>Required checkbox</div>
             <div>
                 <label htmlFor="type">Type:</label>
-                <select onChange={changeType} name="type" id="type">
+                <select value={value.question_type} onChange={changeType} name="type" id="type">
                     {types.map(type => <option key={type} value={type}>{type}</option>)}
                 </select>
             </div>

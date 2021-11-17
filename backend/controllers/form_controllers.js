@@ -57,6 +57,10 @@ exports.delete_question = function(req, res, next) {
                 WHERE form_id=$1 AND question_id=$2`, 
                 [req.body.id, req.body.value.question_id])
 
+    pool.query(`DELETE FROM questions_questions 
+                WHERE form_id=$1 AND question_id=$2`, 
+                [req.body.id, req.body.value.question_id])
+
     return res.status(200).json()
 }
 
@@ -86,7 +90,6 @@ exports.update_form_questions = function(req, res, next) {
                     }
                 }
         })
-        console.log(quest.sub_questions)
         quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 

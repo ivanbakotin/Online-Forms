@@ -13,8 +13,8 @@ const FormOptions = ({ id }) => {
                 <div className="fas fa-share-square" onClick={getLink}></div>
             </div>
             <div className="nav-links">
-                <NavLink to={{pathname:`/create_form/${id}`}}>Form</NavLink>
-                <NavLink to={{pathname:`/create_form/${id}/response_form`}}>Responses</NavLink>
+                <NavLink exact activeClassName="selected" to={{pathname:`/create_form/${id}`}}>Form</NavLink>
+                <NavLink exact activeClassName="selected" to={{pathname:`/create_form/${id}/response_form`}}>Responses</NavLink>
             </div>
         </nav>
     )
