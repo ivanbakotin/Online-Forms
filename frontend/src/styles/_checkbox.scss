@@ -1,12 +1,17 @@
 .checkbox-create {
     margin: 2rem;
+    display: flex;
+    flex-direction: column;
 
     textarea {
         @include textarea-create;
     }
 
-    .check-input {
+    .check-box {
         margin: 0.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         .check {
             @include check;

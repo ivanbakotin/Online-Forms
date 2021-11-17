@@ -20,23 +20,5 @@
             }
         }
 
-        .choose-type-main {
-            align-self: flex-end;
-            margin-bottom: 10rem;
-        }
-    }
-}
-
-.form-header {
-    display: flex;
-    flex-direction: column;
-}
-
-.choose-type-main {
-    position: relative;
-    
-    .choose-type{
-        position: absolute;
-        font-size: 5rem;      
     }
 }

@@ -86,6 +86,7 @@ exports.update_form_questions = function(req, res, next) {
                     }
                 }
         })
+        console.log(quest.sub_questions)
         quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 

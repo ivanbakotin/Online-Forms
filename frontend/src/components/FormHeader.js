@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const FormHeader = ({ value, saveFormMain }) => {
-
-    const [ rows, setRows ] = useState(1)
-
+    
     const [ info, setInfo ] = useState(value) 
 
     useEffect(() => setInfo(value), [value])
@@ -15,17 +14,16 @@ const FormHeader = ({ value, saveFormMain }) => {
 
     return (
         <header className="form-header" onChange={saveFormMain}>
-            <textarea 
+            <TextareaAutosize 
                 onChange={handleInput} 
                 name="form_title" 
                 value={info.form_title}
-                rows={rows}
             />
-            <textarea 
+            <TextareaAutosize 
                 onChange={handleInput}
                 name="descrip" 
                 value={info.descrip || ""}
-                rows={rows} 
+                minRows={3}
             />
         </header>
     )

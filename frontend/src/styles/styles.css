@@ -2,64 +2,44 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #DBFCFF;
 }
 
 .create-form * {
   font-size: 2rem;
 }
 
-.create-form .questions {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.create-form .questions article {
-  margin: 3rem;
-}
-
-.create-form .questions article .question-div {
-  margin: 2rem;
-  background-color: lightcyan;
+.create-form header {
+  margin: 1rem;
   padding: 1rem;
-  border-left: solid 0.5rem lightgreen;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 60rem;
+  max-width: 80%;
+  background-color: #DBDAEA;
+  border-top: solid 1rem purple;
+}
+
+.create-form .question-div {
+  width: 60rem;
+  max-width: 80%;
+  margin: 1rem;
+  background-color: #DBDAEA;
+  padding: 1rem;
+  border-left: solid 0.5rem purple;
   border-radius: 1rem;
   -webkit-box-shadow: 0 0.5rem 1rem #c5d9d4;
           box-shadow: 0 0.5rem 1rem #c5d9d4;
-  width: 60rem;
-}
-
-.create-form .questions .choose-type-main {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  margin-bottom: 10rem;
-}
-
-.form-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.choose-type-main {
-  position: relative;
-}
-
-.choose-type-main .choose-type {
-  position: absolute;
-  font-size: 5rem;
 }
 
 .fillout-form {
@@ -95,31 +75,6 @@
 
 .fillout-form .questions article .question-div {
   margin: 2rem;
-}
-
-.fillout-form .questions .choose-type-main {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  margin-bottom: 10rem;
-}
-
-.form-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.choose-type-main {
-  position: relative;
-}
-
-.choose-type-main .choose-type {
-  position: absolute;
-  font-size: 5rem;
 }
 
 .auth-form {
@@ -222,7 +177,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
+  min-height: 100vh;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 #root aside {
@@ -242,6 +200,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  background-color: #AFB3F7;
 }
 
 @media (max-width: 768px) {
@@ -258,14 +217,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-#root section {
-  font-size: 5rem;
-  background-color: #faf7f9;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -378,6 +329,8 @@
   border: none;
   border-bottom: gray 0.2rem solid;
   resize: none;
+  -webkit-transition: border-bottom 0.3s ease-in-out;
+  transition: border-bottom 0.3s ease-in-out;
 }
 
 .line-create textarea:focus {
@@ -401,6 +354,8 @@
   border: none;
   border-bottom: gray 0.2rem solid;
   resize: none;
+  -webkit-transition: border-bottom 0.3s ease-in-out;
+  transition: border-bottom 0.3s ease-in-out;
 }
 
 .paragraph-create textarea:focus {
@@ -409,6 +364,13 @@
 
 .checkbox-create {
   margin: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .checkbox-create textarea {
@@ -417,17 +379,28 @@
   border: none;
   border-bottom: gray 0.2rem solid;
   resize: none;
+  -webkit-transition: border-bottom 0.3s ease-in-out;
+  transition: border-bottom 0.3s ease-in-out;
 }
 
 .checkbox-create textarea:focus {
   border-bottom: black 0.2rem solid;
 }
 
-.checkbox-create .check-input {
+.checkbox-create .check-box {
   margin: 0.1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.checkbox-create .check-input .check {
+.checkbox-create .check-box .check {
   width: 2rem;
   height: 2rem;
   background-color: white;
@@ -437,19 +410,21 @@
   border: 0.1rem gray solid;
 }
 
-.checkbox-create .check-input .check:checked {
+.checkbox-create .check-box .check:checked {
   background-color: green;
 }
 
-.checkbox-create .check-input .check-input {
+.checkbox-create .check-box .check-input {
   margin: 1rem;
   outline: none;
   border: none;
   border-bottom: gray 0.2rem solid;
   resize: none;
+  -webkit-transition: border-bottom 0.3s ease-in-out;
+  transition: border-bottom 0.3s ease-in-out;
 }
 
-.checkbox-create .check-input .check-input:focus {
+.checkbox-create .check-box .check-input:focus {
   border-bottom: black 0.2rem solid;
 }
 
@@ -472,28 +447,47 @@
   border-radius: 3rem;
 }
 
-.nav-links {
+nav {
+  display: -ms-grid;
+  display: grid;
+}
+
+nav .nav-links {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-size: 4rem;
 }
 
-.nav-links a {
-  padding: 2rem;
-  padding-inline: 15rem;
-  background-color: lightpink;
+nav .nav-links a {
+  padding: 1rem;
+  text-decoration: none;
+  color: black;
 }
 
-.nav-options {
+nav .nav-options {
+  font-size: 6rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-self: right;
+}
+
+nav .nav-options div {
+  margin: 3rem;
+}
+
+.form-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .form-header textarea {
@@ -502,6 +496,8 @@
   border: none;
   border-bottom: gray 0.2rem solid;
   resize: none;
+  -webkit-transition: border-bottom 0.3s ease-in-out;
+  transition: border-bottom 0.3s ease-in-out;
 }
 
 .form-header textarea:focus {
@@ -511,6 +507,7 @@
 * {
   font-family: 'Titillium Web', sans-serif;
   margin: 0;
+  padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 62.5%;

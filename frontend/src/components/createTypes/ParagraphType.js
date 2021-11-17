@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const ParagraphType = ({ value, saveFormQuestions }) => {
 
@@ -13,13 +14,12 @@ const ParagraphType = ({ value, saveFormQuestions }) => {
         <>
         {paragraph &&
         <div className="paragraph-create" onChange={saveFormQuestions}>
-            <textarea 
-                rows={1}
+            <TextareaAutosize 
                 name="quest_title" 
                 onChange={handleInput} 
                 value={paragraph.quest_title || ""} 
             />
-            <textarea />
+            <TextareaAutosize minRows={3} />
         </div>
         }
         </>

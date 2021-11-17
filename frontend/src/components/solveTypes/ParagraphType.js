@@ -1,3 +1,5 @@
+import TextareaAutosize from 'react-textarea-autosize';
+
 const ParagraphType = ({ value }) => {
 
     const handleInput = e => value["answer"] = e.target.value
@@ -5,7 +7,7 @@ const ParagraphType = ({ value }) => {
     return (
         <>
             <div>{value.quest_title}</div>
-            <textarea onChange={handleInput}/>
+            <TextareaAutosize minRows={3} onChange={handleInput}/>
         </>
     )
 }

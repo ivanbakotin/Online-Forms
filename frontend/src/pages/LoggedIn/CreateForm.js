@@ -23,12 +23,10 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
 
             <FormHeader value={info} saveFormMain={mainForm} />
             
-            <div className="questions">
-            <article>
             {questions.map(quest => {
 
                     const SpecificType = componentsCreate[quest.question_type]
-
+                    
                     return ( 
                         <div className="question-div" key={quest.question_id}>
                             <SpecificType 
@@ -44,18 +42,16 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
                         </div>
                     )        
             })}
-            </article>
 
             <article className="choose-type-main">
-                <button onClick={openTypes}>ADD TYPE +</button>
+                <div onClick={openTypes}>ADD TYPE +</div>
                 <AddType 
                     open={open} 
                     setQuestions={setQuestions} 
                     questions={questions}
                 />
             </article>
-            </div>
-            
+    
         </section>
     )
 };

@@ -1,4 +1,7 @@
 .form-header {
+    display: flex;
+    flex-direction: column;
+    
     textarea {
         @include textarea-create;
     }

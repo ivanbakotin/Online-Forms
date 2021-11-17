@@ -4,6 +4,7 @@
     border: none;
     border-bottom: gray 0.2rem solid;
     resize: none;
+    transition: border-bottom 0.3s ease-in-out;
 
     &:focus {
         border-bottom: black 0.2rem solid;

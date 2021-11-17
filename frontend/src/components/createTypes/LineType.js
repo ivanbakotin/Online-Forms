@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const LineType = ({ value, saveFormQuestions }) => {
 
@@ -13,13 +14,12 @@ const LineType = ({ value, saveFormQuestions }) => {
         <>
         {line &&
         <div className="line-create" onChange={saveFormQuestions}>
-            <textarea 
-                rows={1} 
+            <TextareaAutosize 
                 name="quest_title" 
                 onChange={handleInput} 
                 value={line.quest_title || ""} 
             />
-            <textarea rows={1} />
+            <TextareaAutosize />
         </div>
         }
         </>

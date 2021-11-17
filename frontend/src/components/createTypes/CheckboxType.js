@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const CheckboxType = ({ value, saveFormQuestions }) => {
 
@@ -18,31 +19,37 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
         setCheckbox(prev => ({ ...prev, [e.target.name]: e.target.value }))
         value[e.target.name] = e.target.value
     }
+
+    const deleteCheckbox = e => {
+
+    }
     
     return (
         <>
         {checkbox &&
         <div className="checkbox-create" onChange={saveFormQuestions}>
-            <textarea 
-                rows={1}
+            <TextareaAutosize 
                 onChange={handleInput} 
                 name="quest_title" 
                 value={checkbox.quest_title || ""}
             />
             {!!checkbox?.sub_questions && checkbox.sub_questions.map((box, index) => {
                 return (
-                        <div className="check-input" key={index}>
-                            <input 
-                                className="check"
-                                type="checkbox" 
-                                value={box.qq_title}
-                            />
-                            <input
-                                className="check-input"
-                                id={index} 
-                                onChange={handleCheckbox}
-                                value={box.qq_title}
-                            />
+                        <div className="check-box" key={index}>
+                            <div>
+                                <input 
+                                    className="check"
+                                    type="checkbox" 
+                                    value={box.qq_title}
+                                />
+                                <input
+                                    className="check-input"
+                                    id={index} 
+                                    onChange={handleCheckbox}
+                                    value={box.qq_title}
+                                />
+                            </div>
+                            <div className="fas fa-times"></div>
                         </div>
                 )
             })}

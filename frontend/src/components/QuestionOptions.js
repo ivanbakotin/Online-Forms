@@ -21,10 +21,12 @@ const QuestionOptions = ({ value, setQuestions, questions, id }) => {
         <div className="question-options">
             <div className="far fa-trash-alt" onClick={deleteQuestions}></div>
             <div onClick={setRequired}>Required checkbox</div>
-            <label htmlFor="type">Type:</label>
-            <select onChange={changeType} name="type" id="type">
-                {types.map(type => <option key={type} value={type}>{type}</option>)}
-            </select>
+            <div>
+                <label htmlFor="type">Type:</label>
+                <select onChange={changeType} name="type" id="type">
+                    {types.map(type => <option key={type} value={type}>{type}</option>)}
+                </select>
+            </div>
         </div>
     )
 }
