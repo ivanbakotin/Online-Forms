@@ -12,6 +12,7 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
     }
 
     const handleAdd = () => {
+        console.log(checkbox)
         checkbox.sub_questions.push({ qq_id: checkbox.sub_questions.length, qq_title: "Option" })
         setCheckbox(prev => ({ ...prev }))
     }
@@ -22,8 +23,9 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
     }
 
     const deleteCheckbox = e => {
-        sendFetch("/api/delete_quest_sub", "DELETE", { value })
-        const array = checkbox.sub_questions.filter(sub => sub.qq_id != e.target.id)
+        const qq_id = e.target.id
+        sendFetch("/api/delete_quest_sub", "DELETE", { value, qq_id })
+        const array = checkbox.sub_questions.filter(sub => sub.qq_id != qq_id)
         setCheckbox(prev => ({ ...prev, sub_questions: array }))
     }
     

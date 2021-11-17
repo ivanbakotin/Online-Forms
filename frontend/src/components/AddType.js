@@ -1,10 +1,14 @@
 const AddType = ({ open, setQuestions, questions }) => {
 
-	if (!open) return null
-
 	function addQuestion(e) {
-        setQuestions(prev => [ ...prev, { question_id: questions.length, quest_title:"", question_type: e.target.getAttribute("name"), sub_questions:[{ qq_id: 0, qq_title: "Option"}] }])
+        setQuestions(prev => [ ...prev, { question_id: questions.length, 
+                                          quest_title: "Question?", 
+                                          question_type: e.target.getAttribute("name"), 
+                                          sub_questions: [{ qq_id: 0, qq_title: "Option" }] 
+                                        }])
     }
+
+    if (!open) return null
 
     return (    
     	<div className="choose-type">

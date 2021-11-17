@@ -12,7 +12,7 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: #DBFCFF;
+  background-color: #edf7f6;
 }
 
 .create-form * {
@@ -26,17 +26,17 @@
   border-top-right-radius: 1rem;
   width: 60rem;
   max-width: 80%;
-  background-color: #DBDAEA;
-  border-top: solid 1rem purple;
+  background-color: #f7fffa;
+  border-top: solid 1rem #379683;
 }
 
 .create-form .question-div {
   width: 60rem;
   max-width: 80%;
   margin: 1rem;
-  background-color: #DBDAEA;
+  background-color: #f7fffa;
   padding: 1rem;
-  border-left: solid 0.5rem purple;
+  border-left: solid 0.5rem #379683;
   border-radius: 1rem;
   -webkit-box-shadow: 0 0.5rem 1rem #c5d9d4;
           box-shadow: 0 0.5rem 1rem #c5d9d4;
@@ -48,7 +48,7 @@
   display: -ms-flexbox;
   display: flex;
   margin: 1rem;
-  background-color: lightgray;
+  background-color: #f7fffa;
   border-radius: 3rem;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .create-form .choose-type-main .fa-plus-circle:hover {
-  color: gray;
+  opacity: 0.5;
 }
 
 .create-form .choose-type-main .choose-type {
@@ -76,7 +76,7 @@
 }
 
 .create-form .choose-type-main .choose-type div:hover {
-  color: gray;
+  opacity: 0.5;
 }
 
 .example-enter {
@@ -85,8 +85,8 @@
 
 .example-enter.example-enter-active {
   opacity: 1;
-  -webkit-transition: opacity 500ms ease-in;
-  transition: opacity 500ms ease-in;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
 .example-exit {
@@ -95,8 +95,8 @@
 
 .example-exit.example-exit-active {
   opacity: 0.01;
-  -webkit-transition: opacity 300ms ease-in;
-  transition: opacity 300ms ease-in;
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
 }
 
 .fillout-form {
@@ -159,7 +159,7 @@
   margin-top: 2rem;
   text-decoration: none;
   font-size: 2rem;
-  border: solid 0.2rem gray;
+  border: solid 0.2rem #379683;
   color: #282c34;
 }
 
@@ -171,7 +171,7 @@
   text-align: center;
   width: 25%;
   margin-bottom: 2rem;
-  border-bottom: solid 0.4rem #61dafb;
+  border-bottom: solid 0.4rem #379683;
 }
 
 .auth-form div {
@@ -193,7 +193,7 @@
 }
 
 .auth-form div input:focus {
-  border-bottom-color: #61dafb;
+  border-bottom-color: #379683;
 }
 
 .auth-form div label {
@@ -218,7 +218,7 @@
   padding-right: 1.5rem;
   border-radius: 1rem;
   border: none;
-  background: #61dafb;
+  background: #379683;
   color: white;
 }
 
@@ -257,7 +257,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: #AFB3F7;
+  background-color: #05386B;
 }
 
 @media (max-width: 768px) {
@@ -384,6 +384,7 @@
   margin: 1rem;
   outline: none;
   border: none;
+  background-color: #e8f9ff;
   border-bottom: gray 0.2rem solid;
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
@@ -409,6 +410,7 @@
   margin: 1rem;
   outline: none;
   border: none;
+  background-color: #e8f9ff;
   border-bottom: gray 0.2rem solid;
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
@@ -434,6 +436,7 @@
   margin: 1rem;
   outline: none;
   border: none;
+  background-color: #e8f9ff;
   border-bottom: gray 0.2rem solid;
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
@@ -475,6 +478,7 @@
   margin: 1rem;
   outline: none;
   border: none;
+  background-color: #e8f9ff;
   border-bottom: gray 0.2rem solid;
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
@@ -496,7 +500,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  border-top: gray 0.1rem solid;
+  border-top: black 0.2rem solid;
   padding-top: 1.5rem;
 }
 
@@ -516,7 +520,7 @@ nav .nav-links {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 nav .nav-links a {
@@ -526,11 +530,11 @@ nav .nav-links a {
 }
 
 nav .nav-links .selected {
-  border-bottom: purple solid 0.5rem;
+  border-bottom: #379683 solid 0.5rem;
 }
 
 nav .nav-options {
-  font-size: 6rem;
+  font-size: 5.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -538,7 +542,8 @@ nav .nav-options {
 }
 
 nav .nav-options div {
-  margin: 3rem;
+  margin: 2.5rem;
+  margin-inline: 4rem;
 }
 
 .form-header {
@@ -555,6 +560,7 @@ nav .nav-options div {
   margin: 1rem;
   outline: none;
   border: none;
+  background-color: #e8f9ff;
   border-bottom: gray 0.2rem solid;
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;

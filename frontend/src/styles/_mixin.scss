@@ -2,12 +2,13 @@
     margin: 1rem;
     outline: none;
     border: none;
+    background-color: $background-input;
     border-bottom: gray 0.2rem solid;
     resize: none;
     transition: border-bottom 0.3s ease-in-out;
 
     &:focus {
-        border-bottom: black 0.2rem solid;
+        border-bottom: $black-color 0.2rem solid;
     }
 }
 

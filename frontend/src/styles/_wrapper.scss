@@ -12,7 +12,7 @@
         justify-content: space-evenly;
         position: sticky;
         top: 0;
-        background-color: #AFB3F7;
+        background-color: $aside-color;
 
         @media (max-width: 768px) {
             display: none;

@@ -35,7 +35,7 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
                         <CSSTransition
                             key={quest.question_id}
                             classNames="example"
-                            timeout={{ enter: 500, exit: 300 }}
+                            timeout={{ enter: 300, exit: 300 }}
                         >
                             <div className="question-div" key={quest.question_id}>
                                 <SpecificType 
