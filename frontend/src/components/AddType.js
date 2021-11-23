@@ -1,22 +1,23 @@
-const AddType = ({ open, setQuestions, questions }) => {
+import { useDispatch } from "react-redux"
+import { addQuestion } from "../redux/formSlice";
 
-	function addQuestion(e) {
-        setQuestions(prev => [ ...prev, { question_id: questions.length, 
-                                          quest_title: "Question?", 
-                                          question_type: e.target.getAttribute("name"), 
-                                          sub_questions: [{ qq_id: 0, qq_title: "Option" }] 
-                                        }])
-    }
+const AddType = ({ open }) => {
 
-    if (!open) return null
+      const dispatch = useDispatch();    
 
-    return (    
-    	<div className="choose-type">
-			<div className="fas fa-check-square" name="Checkbox" onClick={addQuestion}></div>
-            <div className="fas fa-align-left" name="Paragraph" onClick={addQuestion}></div>
-            <div className="fab fa-line" name="Line" onClick={addQuestion}></div>
-      	</div>
-    )
+      function newQuestion(e) {
+            dispatch(addQuestion({question_type: e.target.getAttribute("name")}))                  
+      }
+
+      if (!open) return null
+
+      return (    
+      	<div className="choose-type">
+	      	<div className="fas fa-check-square" name="Checkbox" onClick={newQuestion}></div>
+                  <div className="fas fa-align-left" name="Paragraph" onClick={newQuestion}></div>
+                  <div className="fab fa-line" name="Line" onClick={newQuestion}></div>
+        	</div>
+      )
 }
 
 export default AddType;

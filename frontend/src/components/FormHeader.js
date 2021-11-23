@@ -1,19 +1,22 @@
-import { useState, useEffect } from "react";
 import TextareaAutosize from 'react-textarea-autosize';
+import { useSelector } from "react-redux"
+import debounce from '../utils/debounce';
+import sendFetch from '../utils/sendFetch';
 
-const FormHeader = ({ value, saveFormMain }) => {
-    
-    const [ info, setInfo ] = useState(value) 
+const FormHeader = ({ id }) => {
 
-    useEffect(() => setInfo(value), [value])
+    const info = useSelector(state => ({ form_title: state.form.form_title, descrip: state.form.descrip }))
+
+    const mainForm = debounce(() => saveFormMain());
+
+    const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
 
     function handleInput(e) {
-        setInfo(prev => ({ ...prev, [e.target.name]: e.target.value }))
-        value[e.target.name] = e.target.value
+        
     }
 
     return (
-        <header className="form-header" onChange={saveFormMain}>
+        <header className="form-header" onChange={mainForm}>
             <TextareaAutosize 
                 onChange={handleInput} 
                 name="form_title" 

@@ -27,7 +27,7 @@ const FilloutForm = () => {
     }
 
     return (
-        <section className="fillout-form">
+        <main className="fillout-form">
             
             <header>
                 <h1>{info.form_title}</h1>
@@ -50,9 +50,7 @@ const FilloutForm = () => {
 
                 <button type="submit">Submit</button>
             </form>
-
-
-        </section>
+        </main>
     )
 }
 

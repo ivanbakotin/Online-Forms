@@ -6,26 +6,29 @@ import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
 import { componentsCreate } from "../../utils/variables";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useSelector } from "react-redux"
 
-const CreateForm = ({ id, info, questions, setQuestions }) => {
+const CreateForm = ({ id }) => {
+
+    const questions = useSelector(state => state.form.questions)
 
     const [ open, setOpen ] = useState(false)
 
     const openTypes = () => setOpen(!open)
 
-    const mainForm = debounce(() => saveFormMain());
     const questForm = debounce(() => saveFormQuestions());
+
+    console.log(questions)
   
     const saveFormQuestions = () => sendFetch("/api/update_form_questions", "POST", { questions, id }); 
-    const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
 
     return (
-        <section className="create-form">
+        <main className="create-form">
 
-            <FormHeader value={info} saveFormMain={mainForm} />
+            <FormHeader id={id}/>
             
-            <TransitionGroup component={null} >
-            {questions.map(quest => {
+            <TransitionGroup component={null}>
+            {questions?.map(quest => {
 
                     const SpecificType = componentsCreate[quest.question_type]
                     
@@ -42,9 +45,7 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
                             />
                             <QuestionOptions 
                                 id={id} 
-                                value={quest} 
-                                setQuestions={setQuestions} 
-                                questions={questions}
+                                value={quest}   
                             />
                         </div>
                         </CSSTransition>
@@ -54,14 +55,10 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
 
             <article className="choose-type-main">
                 <div className="fas fa-plus-circle" onClick={openTypes}></div>
-                <AddType 
-                    open={open} 
-                    setQuestions={setQuestions} 
-                    questions={questions}
-                />
+                <AddType open={open}/>
             </article>
     
-        </section>
+        </main>
     )
 };
 

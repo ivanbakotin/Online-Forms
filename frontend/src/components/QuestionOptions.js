@@ -1,29 +1,30 @@
 import sendFetch from "../utils/sendFetch"
+import { useDispatch } from "react-redux"
+import { deleteQuestion, changeType } from "../redux/formSlice"
 import { types } from "../utils/variables"
 
-const QuestionOptions = ({ value, setQuestions, questions, id }) => {
+const QuestionOptions = ({ value, id }) => {
 
-    function deleteQuestions() {
+    const dispatch = useDispatch();
+
+    function toDeleteQuestions() {
         sendFetch("/api/delete_question", "DELETE", { value, id })
-        setQuestions(questions.filter(quest => value.question_id !== quest.question_id))
+        dispatch(deleteQuestion({ id: value.question_id }))
     }
 
     function setRequired() {
         value.required = !value.required
     }
 
-    function changeType(e) {
-        value.question_type = e.target.value
-        setQuestions(prev => [...prev])
-    }
+    const toChangeType = e => dispatch(changeType({ id: value.question_id, type: e.target.value }))
 
     return (
         <div className="question-options">
-            <div className="far fa-trash-alt" onClick={deleteQuestions}></div>
+            <div className="far fa-trash-alt" onClick={toDeleteQuestions}></div>
             <div onClick={setRequired}>Required checkbox</div>
             <div>
                 <label htmlFor="type">Type:</label>
-                <select value={value.question_type} onChange={changeType} name="type" id="type">
+                <select value={value.question_type} onChange={toChangeType} name="type" id="type">
                     {types.map(type => <option key={type} value={type}>{type}</option>)}
                 </select>
             </div>

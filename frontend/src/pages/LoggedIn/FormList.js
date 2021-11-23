@@ -19,7 +19,7 @@ const FormList = () => {
     }
 
     return (
-        <section className="form-list">
+        <main className="form-list">
             <div onClick={createForm}>
                 Create Form
             </div>
@@ -32,7 +32,7 @@ const FormList = () => {
                 )
             })
             }
-        </section>
+        </main>
     )
 };
 

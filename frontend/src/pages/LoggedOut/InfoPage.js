@@ -1,8 +1,8 @@
 const SuccessPage = () => {
     return (    
-    	<div>
+    	<main>
             Success or Fail
-      	</div>
+      	</main>
     )
 }
 

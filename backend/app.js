@@ -51,7 +51,7 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
-    send checkbox answes as array
+    send checkbox answers as array
     add saving portal popup while settimeout active
     pagination on all forms page
     form validation errors
@@ -59,9 +59,7 @@ module.exports = app;
     styling
     skeleton loading
     make anonyomous fillout optional
-    delete checkbox input
     if sub quest empty got null from server = []
-    aside add link to git
     when adding subquest or quest get max id not array length
     add button copy question
 */

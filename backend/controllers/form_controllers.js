@@ -84,6 +84,7 @@ exports.update_form_main = function(req, res, next) {
 }
 
 exports.update_form_questions = function(req, res, next) {
+
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
