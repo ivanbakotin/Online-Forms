@@ -73,10 +73,12 @@
 }
 
 .example-exit {
+    transform: translateX(0px);
     opacity: 1;
 }
 
 .example-exit.example-exit-active {
     opacity: 0.01;
-    transition: opacity 300ms ease-in-out;
+    transform: translateX(-150px);
+    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 }

@@ -89,31 +89,14 @@ exports.update_form_questions = function(req, res, next) {
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
                         (form_id, question_id, quest_title, question_type) 
-                        VALUES ($1, $2, $3, $4)`, 
-                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type], (error) => {
-                if (error) {
-                    if (error.code == "23505") {
-                        pool.query(`UPDATE questions 
-                                    SET quest_title=$1, question_type=$2
-                                    WHERE form_id=$3 AND question_id=$4`, 
-                                    [quest.quest_title, quest.question_type, req.body.id, quest.question_id])
-                    }
-                }
-        })
+                        VALUES ($1, $2, $3, $4) ON CONFLICT DO UPDATE`, 
+                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type])
+                        
         quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 
-                        VALUES ($1, $2, $3, $4)`, 
-                        [req.body.id, check.qq_id, check.qq_title, quest.question_id], (error) => {
-                if (error) {
-                    if (error.code == "23505") {
-                        pool.query(`UPDATE questions_questions 
-                                    SET qq_title=$1 
-                                    WHERE question_id=$2 AND qq_id=$3 AND form_id=$4`, 
-                                    [check.qq_title, quest.question_id, check.qq_id, req.body.id])
-                    }
-                }
-            })
+                        VALUES ($1, $2, $3, $4) ON CONFLICT DO UPDATE`, 
+                        [req.body.id, check.qq_id, check.qq_title, quest.question_id])
         })
     })
 

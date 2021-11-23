@@ -9,7 +9,7 @@ const QuestionOptions = ({ value, setQuestions, questions, id }) => {
     }
 
     function setRequired() {
-        value.required = true
+        value.required = !value.required
     }
 
     function changeType(e) {

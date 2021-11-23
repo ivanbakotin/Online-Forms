@@ -10,10 +10,11 @@ nav {
             padding: 1rem;
             text-decoration: none;
             color: $black-color;
-
         }
+
         .selected {
             border-bottom: $border-color solid 0.5rem;
+            transition: border-bottom 300ms linear, border-width 300ms linear;
         }
     }
     
