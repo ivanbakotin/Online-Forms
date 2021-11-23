@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const FormOptions = ({ id }) => {
     
     function getLink() {
-        navigator.clipboard.writeText(`${window.location.hostname}/fillout_form/${id}`)
+        //navigator.clipboard.writeText
     }
 
     return (

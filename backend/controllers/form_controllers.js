@@ -65,7 +65,6 @@ exports.delete_question = function(req, res, next) {
 }
 
 exports.delete_quest_sub = function(req, res, next) {
-    console.log(req.body)
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`DELETE FROM questions_questions 
                 WHERE form_id=$1 AND question_id=$2 AND qq_id=$3`, 
@@ -92,18 +91,15 @@ exports.update_form_questions = function(req, res, next) {
                     VALUES ($1, $2, $3, $4) 
                     ON CONFLICT (form_id, question_id) 
                     DO UPDATE SET quest_title=$3, question_type=$4`, 
-                    [req.body.id, quest.question_id, quest.quest_title, quest.question_type], (error) => {
-                
-        })
+                    [req.body.id, quest.question_id, quest.quest_title, quest.question_type])
+
         quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 
                         VALUES ($1, $2, $3, $4) 
                         ON CONFLICT (form_id, question_id, qq_id)
                         DO UPDATE SET qq_title=$3`, 
-                        [req.body.id, check.qq_id, check.qq_title, quest.question_id], (error) => {
-                
-            })
+                        [req.body.id, check.qq_id, check.qq_title, quest.question_id])
         })
     })
 

@@ -4,7 +4,7 @@ import receiveFetch from "../../utils/receiveFetch"
 
 const Register = () => {
 
-  const [ list, setList ] = useState(new Set())
+  const [ list, setList ] = useState([])
   const [ errorinfo, setErrorinfo ] = useState("")
   const [ registerInfo, setregisterInfo ] = useState({
     username: "",
@@ -29,16 +29,15 @@ const Register = () => {
   }
 
   function handleInput(e) {
-    const { name, value } = e.target;
-    setregisterInfo(prevInfo => ({ ...prevInfo, [name]: value }))
+    setregisterInfo(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   function addToList(e) {
-    setList(prevInfo => new Set(prevInfo.add(e.target.name)))
+    setList(prev => [...prev, e.target.name])
   }
 
   function removeFromList(e) {
-    if (!e.target.value) setList(prev => new Set([...prev].filter(x => x != e.target.name)))
+    if (!e.target.value) setList(prev => [...prev].filter(x => x != e.target.name))
   }
 
   return (
@@ -54,7 +53,7 @@ const Register = () => {
           name="username" 
           id="username"
         />
-        <label className={list.has("username") ? "auth-label" : null} htmlFor="username">Username:</label>
+        <label className={list.includes("username") ? "auth-label" : null} htmlFor="username">Username:</label>
       </div>
       <div>
         <input 
@@ -65,7 +64,7 @@ const Register = () => {
           name="password" 
           id="password"
         />
-        <label className={list.has("password") ? "auth-label" : null} htmlFor="password">Password:</label>
+        <label className={list.includes("password") ? "auth-label" : null} htmlFor="password">Password:</label>
       </div>
       <div>
         <input 
@@ -76,7 +75,7 @@ const Register = () => {
           name="confirmpassword" 
           id="confirmpassword"
         />
-        <label className={list.has("confirmpassword") ? "auth-label" : null} htmlFor="confirmpassword">Confirm Password:</label>
+        <label className={list.includes("confirmpassword") ? "auth-label" : null} htmlFor="confirmpassword">Confirm Password:</label>
       </div>
       <button type="submit">Register</button>
       <p>{errorinfo}</p>

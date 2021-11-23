@@ -24,9 +24,7 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
 
             <FormHeader value={info} saveFormMain={mainForm} />
             
-            <TransitionGroup
-                component={null}
-            >
+            <TransitionGroup component={null} >
             {questions.map(quest => {
 
                     const SpecificType = componentsCreate[quest.question_type]
@@ -37,18 +35,18 @@ const CreateForm = ({ id, info, questions, setQuestions }) => {
                             classNames="example"
                             timeout={{ enter: 300, exit: 300 }}
                         >
-                            <div className="question-div" key={quest.question_id}>
-                                <SpecificType 
-                                    value={quest} 
-                                    saveFormQuestions={questForm}
-                                />
-                                <QuestionOptions 
-                                    id={id} 
-                                    value={quest} 
-                                    setQuestions={setQuestions} 
-                                    questions={questions}
-                                />
-                            </div>
+                        <div className="question-div">
+                            <SpecificType 
+                                value={quest} 
+                                saveFormQuestions={questForm}
+                            />
+                            <QuestionOptions 
+                                id={id} 
+                                value={quest} 
+                                setQuestions={setQuestions} 
+                                questions={questions}
+                            />
+                        </div>
                         </CSSTransition>
                     )        
             })}

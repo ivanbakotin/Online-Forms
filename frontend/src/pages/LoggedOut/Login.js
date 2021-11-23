@@ -4,7 +4,7 @@ import receiveFetch from "../../utils/receiveFetch"
 
 const Login = () => {
 
-  const [ list, setList ] = useState(new Set())
+  const [ list, setList ] = useState([])
   const [ loginfo, setLoginfo ] = useState({ username:"", password:"" })
   const [ errorinfo, setErrorinfo ] = useState("")
 
@@ -20,16 +20,15 @@ const Login = () => {
   }
 
   function handleInput(e) {
-    const { name, value } = e.target
-    setLoginfo(prevInfo => ({ ...prevInfo, [name]: value }))
+    setLoginfo(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   function addToList(e) {
-    setList(prevInfo => new Set(prevInfo.add(e.target.name)))
+    setList(prev => [...prev, e.target.name])
   }
 
   function removeFromList(e) {
-    if (!e.target.value) setList(prev => new Set([...prev].filter(x => x != e.target.name)))
+    if (!e.target.value) setList(prev => [...prev].filter(x => x != e.target.name))
   }
 
   return (
@@ -45,7 +44,7 @@ const Login = () => {
           name="username" 
           id="username"
         />
-        <label className={list.has("username") ? "auth-label" : null} htmlFor="username">Username:</label>
+        <label className={list.includes("username") ? "auth-label" : null} htmlFor="username">Username:</label>
       </div>
       <div>
         <input 
@@ -56,7 +55,7 @@ const Login = () => {
           name="password" 
           id="password"
         />
-        <label className={list.has("password") ? "auth-label" : null} htmlFor="password">Password:</label>
+        <label className={list.includes("password") ? "auth-label" : null} htmlFor="password">Password:</label>
       </div>
       <button type="submit">Login</button>
       <p>{errorinfo}</p>
