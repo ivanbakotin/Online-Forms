@@ -88,15 +88,22 @@ exports.update_form_questions = function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
-                        (form_id, question_id, quest_title, question_type) 
-                        VALUES ($1, $2, $3, $4) ON CONFLICT DO UPDATE`, 
-                        [req.body.id, quest.question_id, quest.quest_title, quest.question_type])
-                        
+                    (form_id, question_id, quest_title, question_type) 
+                    VALUES ($1, $2, $3, $4) 
+                    ON CONFLICT (form_id, question_id) 
+                    DO UPDATE SET quest_title=$3, question_type=$4`, 
+                    [req.body.id, quest.question_id, quest.quest_title, quest.question_type], (error) => {
+                
+        })
         quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 
-                        VALUES ($1, $2, $3, $4) ON CONFLICT DO UPDATE`, 
-                        [req.body.id, check.qq_id, check.qq_title, quest.question_id])
+                        VALUES ($1, $2, $3, $4) 
+                        ON CONFLICT (form_id, question_id, qq_id)
+                        DO UPDATE SET qq_title=$3`, 
+                        [req.body.id, check.qq_id, check.qq_title, quest.question_id], (error) => {
+                
+            })
         })
     })
 
