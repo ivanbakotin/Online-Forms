@@ -3,13 +3,11 @@ import { useSelector } from "react-redux"
 import debounce from '../utils/debounce';
 import sendFetch from '../utils/sendFetch';
 
-const FormHeader = ({ id }) => {
+const FormHeader = ({ form_id }) => {
 
     const info = useSelector(state => ({ form_title: state.form.form_title, descrip: state.form.descrip }))
 
-    const mainForm = debounce(() => saveFormMain());
-
-    const saveFormMain = () => sendFetch("/api/update_form_main", "POST", { info, id })
+    const mainForm = debounce(() => sendFetch("/api/update_form_main", "POST", { info, form_id }));
 
     function handleInput(e) {
         

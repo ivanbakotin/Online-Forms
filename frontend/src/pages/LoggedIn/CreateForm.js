@@ -12,14 +12,14 @@ import { useDispatch } from "react-redux";
 const CreateForm = ({ form_id }) => {
 
     const questions = useSelector(state => state.form.questions)
-    
+
     const [ open, setOpen ] = useState(false)
     
     const openTypes = () => setOpen(!open)
 
     const dispatch = useDispatch()
 
-    const questForm = useCallback(debounce(() => dispatch(sendQuestionsToApi({ form_id }))), []);
+    const questForm = useCallback(debounce(() => dispatch(sendQuestionsToApi())), []);
 
     return (
         <main className="create-form">
@@ -42,10 +42,7 @@ const CreateForm = ({ form_id }) => {
                                 value={quest} 
                                 saveFormQuestions={questForm}
                             />
-                            <QuestionOptions 
-                                form_id={form_id} 
-                                value={quest}   
-                            />
+                            <QuestionOptions value={quest}/>
                         </div>
                         </CSSTransition>
                     )        
@@ -54,7 +51,7 @@ const CreateForm = ({ form_id }) => {
 
             <article className="choose-type-main">
                 <div className="fas fa-plus-circle" onClick={openTypes}></div>
-                <AddType open={open}/>
+                <AddType form_id={form_id} open={open}/>
             </article>
     
         </main>

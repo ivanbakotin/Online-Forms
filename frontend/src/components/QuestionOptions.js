@@ -2,11 +2,11 @@ import { useDispatch } from "react-redux"
 import { deleteQuestion, changeType, setRequired } from "../redux/formSlice"
 import { types } from "../utils/variables"
 
-const QuestionOptions = ({ value, form_id }) => {
+const QuestionOptions = ({ value }) => {
 
     const dispatch = useDispatch();
 
-    const toDeleteQuestions = () => dispatch(deleteQuestion({ value, form_id }))
+    const toDeleteQuestions = () => dispatch(deleteQuestion({ value }))
     
     const toSetRequired = () => dispatch(setRequired({ id: value.question_id }))
 

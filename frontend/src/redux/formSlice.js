@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { findMaxMain } from "../utils/findMax"
+import { findMaxMain, findMaxSub } from "../utils/findMax"
 import receiveFetch from "../utils/receiveFetch"
 import sendFetch from "../utils/sendFetch"
 
@@ -17,12 +17,26 @@ const formSlice = createSlice({
     reducers: {
         addQuestion: ( state, action ) => {
             const newQuest = {
+                form_id: action.payload.form_id,
                 question_id: findMaxMain(state.questions), 
                 quest_title: "Question?", 
                 question_type: action.payload.question_type,
                 sub_questions: [{ qq_id: 0, qq_title: "Option" }],
             };
             state.questions.push(newQuest)
+        },
+
+        addSubQuestion: ( state, action ) => {
+            const index = state.questions.findIndex(q => q.question_id === action.payload.id)
+
+            const newQuest = {
+                form_id: action.payload.form_id,
+                question_id: action.payload.question_id,
+                qq_id: findMaxSub(state.questions[index].sub_questions), 
+                qq_title: "Option", 
+            };
+
+            state.questions[index].sub_questions.push(newQuest)
         },
 
         updateQuestion: ( state, action ) => {
@@ -37,7 +51,7 @@ const formSlice = createSlice({
         },
 
         deleteQuestion: ( state, action ) => {
-            sendFetch("/api/delete_question", "DELETE", { value: action.payload.value, id: action.payload.form_id })
+            sendFetch("/api/delete_question", "DELETE", { value: action.payload.value })
             return { ...state, questions: state.questions.filter(q => q.question_id != action.payload.value.question_id)}
         },
 
@@ -60,7 +74,11 @@ const formSlice = createSlice({
         },
 
         sendQuestionsToApi: ( state, action ) => {
-            sendFetch("/api/update_form_questions", "POST", { questions: state.questions, id: action.payload.id })
+            sendFetch("/api/update_form_questions", "POST", { questions: state.questions })
+        },
+
+        sendInfoToApi: ( state, action ) => {
+            
         },
     },
     extraReducers: {
@@ -80,6 +98,8 @@ export const {
         updateForm,
         sendQuestionsToApi,
         updateSubQuestion,
+        addSubQuestion,
+        sendInfoToApi,
     } = formSlice.actions;
 
 export default formSlice.reducer;

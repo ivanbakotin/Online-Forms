@@ -56,11 +56,11 @@ exports.delete_question = function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`DELETE FROM questions 
                 WHERE form_id=$1 AND question_id=$2`, 
-                [req.body.id, req.body.value.question_id])
+                [req.body.value.form_id, req.body.value.question_id])
 
     pool.query(`DELETE FROM questions_questions 
                 WHERE form_id=$1 AND question_id=$2`, 
-                [req.body.id, req.body.value.question_id])
+                [req.body.value.form_id, req.body.value.question_id])
 
     return res.status(200).json()
 }
@@ -69,7 +69,7 @@ exports.delete_quest_sub = function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`DELETE FROM questions_questions 
                 WHERE form_id=$1 AND question_id=$2 AND qq_id=$3`, 
-                [req.body.value.form_id, req.body.value.question_id, req.body.qq_id])
+                [req.body.value.form_id, req.body.value.question_id, req.body.value.qq_id])
 
     return res.status(200).json()
 }
@@ -85,7 +85,6 @@ exports.update_form_main = function(req, res, next) {
 }
 
 exports.update_form_questions = function(req, res, next) {
-
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
@@ -93,15 +92,15 @@ exports.update_form_questions = function(req, res, next) {
                     VALUES ($1, $2, $3, $4) 
                     ON CONFLICT (form_id, question_id) 
                     DO UPDATE SET quest_title=$3, question_type=$4`, 
-                    [req.body.id, quest.question_id, quest.quest_title, quest.question_type])
-
+                    [quest.form_id, quest.question_id, quest.quest_title, quest.question_type])
+                    
         quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
                         (form_id, qq_id, qq_title, question_id) 
                         VALUES ($1, $2, $3, $4) 
                         ON CONFLICT (form_id, question_id, qq_id)
                         DO UPDATE SET qq_title=$3`, 
-                        [req.body.id, check.qq_id, check.qq_title, quest.question_id])
+                        [quest.form_id, check.qq_id, check.qq_title, quest.question_id])
         })
     })
 

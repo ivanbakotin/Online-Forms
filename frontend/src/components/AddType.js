@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux"
 import { addQuestion } from "../redux/formSlice";
 
-const AddType = ({ open }) => {
+const AddType = ({ open, form_id }) => {
 
       const dispatch = useDispatch();    
 
       function newQuestion(e) {
-            dispatch(addQuestion({question_type: e.target.getAttribute("name")}))                  
+            dispatch(addQuestion({question_type: e.target.getAttribute("name"), form_id}))                  
       }
 
       if (!open) return null

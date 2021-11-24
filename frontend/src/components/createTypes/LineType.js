@@ -12,7 +12,7 @@ const LineType = ({ value, saveFormQuestions }) => {
             <input 
                 name="quest_title" 
                 onChange={handleInput} 
-                value={value.quest_title || ""} 
+                value={value.quest_title} 
             />
             <input />
         </div>

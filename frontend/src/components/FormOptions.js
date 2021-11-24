@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const FormOptions = ({ id }) => {
+const FormOptions = ({ form_id }) => {
     
     function getLink() {
         //navigator.clipboard.writeText
@@ -14,8 +14,16 @@ const FormOptions = ({ id }) => {
             </div>
             <div className="nav-links">
                 <span>
-                    <NavLink exact activeClassName="selected" to={{pathname:`/create_form/${id}`}}>Form</NavLink>
-                    <NavLink exact activeClassName="selected" to={{pathname:`/create_form/${id}/response_form`}}>Responses</NavLink>
+                    <NavLink 
+                        exact activeClassName="selected" 
+                        to={{pathname:`/create_form/${form_id}`}}>
+                            Form
+                    </NavLink>
+                    <NavLink 
+                        exact activeClassName="selected" 
+                        to={{pathname:`/create_form/${form_id}/response_form`}}>
+                            Responses
+                    </NavLink>
                 </span>
             </div>
         </nav>

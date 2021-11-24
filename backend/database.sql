@@ -21,7 +21,6 @@ CREATE TABLE user_forms (
     id SERIAL PRIMARY KEY,
     form_title TEXT,
     descrip TEXT,
-    category TEXT,
     user_id BIGINT NOT NULL
 );
 
