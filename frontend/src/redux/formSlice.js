@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { findMaxMain } from "../utils/findMax"
 import receiveFetch from "../utils/receiveFetch"
+import sendFetch from "../utils/sendFetch"
 
 export const getFormInfo = createAsyncThunk(
     "getFormInfoAsync",
@@ -23,25 +24,38 @@ const formSlice = createSlice({
             };
             state.questions.push(newQuest)
         },
+
         updateQuestion: ( state, action ) => {
             const index = state.questions.findIndex(q => q.question_id === action.payload.id)
             state.questions[index].quest_title = action.payload.value
         },
+
         deleteQuestion: ( state, action ) => {
-            return state.questions.filter(quest => quest.question_id != action.payload.id)
+            sendFetch("/api/delete_question", "DELETE", { value: action.payload.value, id: action.payload.id })
+            return { questions: state.questions.filter(q => q.question_id != action.payload.id)}
         },
+
         deleteSubQuestion: ( state, action ) => {
             
         },
+
         setRequired: ( state, action ) => {
-            
+            const index = state.questions.findIndex(q => q.question_id === action.payload.id)
+            state.questions[index].required = !state.questions[index].required
         },
+
         changeType: ( state, action ) => {
             const index = state.questions.findIndex(q => q.question_id === action.payload.id)
             state.questions[index].question_type = action.payload.value
         },
+
         updateForm: ( state, action ) => {
             
+        },
+
+        sendQuestionsToApi: ( state, action ) => {
+            console.log("SEND")
+            sendFetch("/api/update_form_questions", "POST", { questions: state.questions, id: action.payload.id })
         },
     },
     extraReducers: {
@@ -59,6 +73,7 @@ export const {
         setRequired,
         changeType,
         updateForm,
+        sendQuestionsToApi,
     } = formSlice.actions;
 
 export default formSlice.reducer;

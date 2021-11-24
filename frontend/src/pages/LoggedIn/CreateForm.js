@@ -1,26 +1,25 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
 import AddType from "../../components/AddType";
-import sendFetch from "../../utils/sendFetch"
 import debounce  from "../../utils/debounce";
 import { componentsCreate } from "../../utils/variables";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useSelector } from "react-redux"
+import { sendQuestionsToApi } from "../../redux/formSlice";
+import { useDispatch } from "react-redux";
 
 const CreateForm = ({ id }) => {
 
     const questions = useSelector(state => state.form.questions)
-
+    
     const [ open, setOpen ] = useState(false)
-
+    
     const openTypes = () => setOpen(!open)
 
-    const questForm = debounce(() => saveFormQuestions());
+    const dispatch = useDispatch()
 
-    console.log(questions)
-  
-    const saveFormQuestions = () => sendFetch("/api/update_form_questions", "POST", { questions, id }); 
+    const questForm = useCallback(debounce(() => dispatch(sendQuestionsToApi({ id }))), []);
 
     return (
         <main className="create-form">
@@ -31,7 +30,7 @@ const CreateForm = ({ id }) => {
             {questions?.map(quest => {
 
                     const SpecificType = componentsCreate[quest.question_type]
-                    
+
                     return ( 
                         <CSSTransition
                             key={quest.question_id}

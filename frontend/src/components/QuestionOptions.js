@@ -7,14 +7,9 @@ const QuestionOptions = ({ value, id }) => {
 
     const dispatch = useDispatch();
 
-    function toDeleteQuestions() {
-        sendFetch("/api/delete_question", "DELETE", { value, id })
-        dispatch(deleteQuestion({ id: value.question_id }))
-    }
-
-    function setRequired() {
-        value.required = !value.required
-    }
+    const toDeleteQuestions = () => dispatch(deleteQuestion({ value, id: value.question_id }))
+    
+    const setRequired = () => value.required = !value.required
 
     const toChangeType = e => dispatch(changeType({ id: value.question_id, type: e.target.value }))
 
