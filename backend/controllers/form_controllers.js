@@ -52,6 +52,7 @@ exports.create_form = async function(req, res, next) {
 }
 
 exports.delete_question = function(req, res, next) {
+    console.log(req.body)
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`DELETE FROM questions 
                 WHERE form_id=$1 AND question_id=$2`, 

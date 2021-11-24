@@ -6,7 +6,7 @@ import sendFetch from "../utils/sendFetch"
 export const getFormInfo = createAsyncThunk(
     "getFormInfoAsync",
     async (payload) => {
-        const response = await receiveFetch("/api/get_form_info", "POST", { id: payload.id })
+        const response = await receiveFetch("/api/get_form_info", "POST", { id: payload.form_id })
         return { response }
     }
 )
@@ -30,13 +30,19 @@ const formSlice = createSlice({
             state.questions[index].quest_title = action.payload.value
         },
 
+        updateSubQuestion: ( state, action ) => {
+            const index = state.questions.findIndex(q => q.question_id === action.payload.id)
+            const index_2 = state.questions[index].sub_questions.findIndex(q => q.qq_id == action.payload.qq_id)
+            state.questions[index].sub_questions[index_2].qq_title = action.payload.value
+        },
+
         deleteQuestion: ( state, action ) => {
-            sendFetch("/api/delete_question", "DELETE", { value: action.payload.value, id: action.payload.id })
-            return { questions: state.questions.filter(q => q.question_id != action.payload.id)}
+            sendFetch("/api/delete_question", "DELETE", { value: action.payload.value, id: action.payload.form_id })
+            return { ...state, questions: state.questions.filter(q => q.question_id != action.payload.value.question_id)}
         },
 
         deleteSubQuestion: ( state, action ) => {
-            
+            sendFetch("/api/delete_quest_sub", "DELETE", { value: action.payload.value, qq_id: action.payload.qq_id })
         },
 
         setRequired: ( state, action ) => {
@@ -54,7 +60,6 @@ const formSlice = createSlice({
         },
 
         sendQuestionsToApi: ( state, action ) => {
-            console.log("SEND")
             sendFetch("/api/update_form_questions", "POST", { questions: state.questions, id: action.payload.id })
         },
     },
@@ -74,6 +79,7 @@ export const {
         changeType,
         updateForm,
         sendQuestionsToApi,
+        updateSubQuestion,
     } = formSlice.actions;
 
 export default formSlice.reducer;

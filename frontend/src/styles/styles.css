@@ -526,10 +526,10 @@ nav .nav-links {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 3.5rem;
 }
 
 nav .nav-links a {
+  font-size: 2.5rem;
   padding: 1rem;
   text-decoration: none;
   color: black;

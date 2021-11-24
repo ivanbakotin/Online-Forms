@@ -60,6 +60,5 @@ module.exports = app;
     skeleton loading
     make anonyomous fillout optional
     if sub quest empty got null from server = []
-    when adding subquest or quest get max id not array length
     add button copy question
 */

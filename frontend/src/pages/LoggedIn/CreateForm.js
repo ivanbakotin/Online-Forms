@@ -9,7 +9,7 @@ import { useSelector } from "react-redux"
 import { sendQuestionsToApi } from "../../redux/formSlice";
 import { useDispatch } from "react-redux";
 
-const CreateForm = ({ id }) => {
+const CreateForm = ({ form_id }) => {
 
     const questions = useSelector(state => state.form.questions)
     
@@ -19,12 +19,12 @@ const CreateForm = ({ id }) => {
 
     const dispatch = useDispatch()
 
-    const questForm = useCallback(debounce(() => dispatch(sendQuestionsToApi({ id }))), []);
+    const questForm = useCallback(debounce(() => dispatch(sendQuestionsToApi({ form_id }))), []);
 
     return (
         <main className="create-form">
 
-            <FormHeader id={id}/>
+            <FormHeader form_id={form_id}/>
             
             <TransitionGroup component={null}>
             {questions?.map(quest => {
@@ -43,7 +43,7 @@ const CreateForm = ({ id }) => {
                                 saveFormQuestions={questForm}
                             />
                             <QuestionOptions 
-                                id={id} 
+                                form_id={form_id} 
                                 value={quest}   
                             />
                         </div>

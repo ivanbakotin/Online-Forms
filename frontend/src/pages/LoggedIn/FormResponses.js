@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const FormResponses = ({ id }) => {
+const FormResponses = ({ form_id }) => {
 
     return (
         <section>

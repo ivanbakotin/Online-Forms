@@ -1,24 +1,25 @@
-import sendFetch from "../../utils/sendFetch"
 import TextareaAutosize from 'react-textarea-autosize';
 import { findMaxSub } from "../../utils/findMax";
+import { useDispatch } from "react-redux"
+import { updateQuestion, updateSubQuestion } from "../../redux/formSlice";
 
 const CheckboxType = ({ value, saveFormQuestions }) => {
 
+    const dispatch = useDispatch()
+
+    const handleInput = e => dispatch(updateQuestion({id: value.question_id, value: e.target.value}))
+    
     const handleCheckbox = e => {
-        value.sub_questions[Number(e.target.id)].qq_title = e.target.value
+        dispatch(updateSubQuestion({id: value.question_id, value: e.target.value, qq_id: e.target.id}))
     }
 
     const handleAdd = () => {
         value.sub_questions.push({ qq_id: findMaxSub(value.sub_questions), qq_title: "Option" })
     }
     
-    const handleInput= e => {
-        value[e.target.name] = e.target.value
-    }
-
     const deleteCheckbox = e => {
         const qq_id = e.target.id
-        sendFetch("/api/delete_quest_sub", "DELETE", { value, qq_id })
+
         value.sub_questions.filter(sub => sub.qq_id != qq_id)
     }
     

@@ -13,13 +13,15 @@ const FormMain = () => {
 
     const { id } = useParams()
 
+	const form_id = id
+
 	const dispatch = useDispatch()
 
-	useEffect(() => dispatch(getFormInfo({ id })), [])
+	useEffect(() => dispatch(getFormInfo({ form_id })), [])
 
     useEffect(() => {
         async function fetchData() {
-            const form_result = await receiveFetch("/api/get_form_responses", "POST", { id })
+            const form_result = await receiveFetch("/api/get_form_responses", "POST", { form_id })
 	}
 
         fetchData()
@@ -27,14 +29,14 @@ const FormMain = () => {
 
   	return (    
         <main>
-        	<FormOptions id={id} />  
+        	<FormOptions form_id={form_id} />  
 
   	  		<Switch>
   	  			<Route exact path="/create_form/:id">
-					<CreateForm id={id} />
+					<CreateForm form_id={form_id} />
 				</Route>
 				<Route exact path="/create_form/:id/response_form">
-					<FormResponses id={id} />
+					<FormResponses form_id={form_id} />
 				</Route>
   	  		  	<Route>
 					<NotFound />
