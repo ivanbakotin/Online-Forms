@@ -52,7 +52,6 @@ exports.create_form = async function(req, res, next) {
 }
 
 exports.delete_question = function(req, res, next) {
-    console.log(req.body)
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`DELETE FROM questions 
                 WHERE form_id=$1 AND question_id=$2`, 
@@ -69,7 +68,7 @@ exports.delete_quest_sub = function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     pool.query(`DELETE FROM questions_questions 
                 WHERE form_id=$1 AND question_id=$2 AND qq_id=$3`, 
-                [req.body.value.form_id, req.body.value.question_id, req.body.value.qq_id])
+                [req.body.value.form_id, req.body.value.question_id, req.body.qq_id])
 
     return res.status(200).json()
 }
@@ -79,7 +78,7 @@ exports.update_form_main = function(req, res, next) {
     pool.query(`UPDATE user_forms 
                 SET form_title=$1, descrip=$2
                 WHERE user_id=$3 AND id=$4`, 
-                [req.body.info.form_title, req.body.info.descrip, req.user.id, req.body.id])
+                [req.body.form_title, req.body.descrip, req.user.id, req.body.form_id])
 
     return res.status(200).json()
 }

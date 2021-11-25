@@ -1,5 +1,6 @@
 export function findMaxSub(array) {
 
+    if (!array) return 0
     if (!array.length) return 0
 
     let max = array[0].qq_id
@@ -13,6 +14,7 @@ export function findMaxSub(array) {
 
 export function findMaxMain(array) {
 
+    if (!array) return 0
     if (!array.length) return 0
 
     let max = array[0].question_id

@@ -109,35 +109,81 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-flex: 4;
-      -ms-flex: 4;
-          flex: 4;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-color: #edf7f6;
 }
 
 .fillout-form * {
   font-size: 2rem;
 }
 
-.fillout-form .questions {
+.fillout-form header {
+  margin: 1rem;
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 60rem;
+  max-width: 80%;
+  background-color: #f7fffa;
+  border-top: solid 1rem #379683;
+}
+
+.fillout-form .question-div {
+  width: 60rem;
+  max-width: 80%;
+  margin: 1rem;
+  background-color: #f7fffa;
+  padding: 1rem;
+  border-left: solid 0.5rem #379683;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0 0.5rem 1rem #c5d9d4;
+          box-shadow: 0 0.5rem 1rem #c5d9d4;
+}
+
+.fillout-form .choose-type-main {
+  margin-bottom: 10rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem;
+  background-color: #f7fffa;
+  border-radius: 3rem;
+}
+
+.fillout-form .choose-type-main .fa-plus-circle {
+  font-size: 5rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 1rem;
+}
+
+.fillout-form .choose-type-main .fa-plus-circle:hover {
+  opacity: 0.5;
+}
+
+.fillout-form .choose-type-main .choose-type {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.fillout-form .questions article {
-  margin: 3rem;
+.fillout-form .choose-type-main .choose-type div {
+  font-size: 5rem;
+  margin: 1rem;
 }
 
-.fillout-form .questions article .question-div {
-  margin: 2rem;
+.fillout-form .choose-type-main .choose-type div:hover {
+  opacity: 0.5;
 }
 
 .auth-form {

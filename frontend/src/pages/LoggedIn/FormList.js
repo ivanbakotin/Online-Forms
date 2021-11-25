@@ -18,17 +18,24 @@ const FormList = () => {
         .then(res => window.location.href = `/create_form/${res}`)
     }
 
+    function deleteForm() {
+
+    }
+
     return (
         <main className="form-list">
             <div onClick={createForm}>
                 Create Form
             </div>
 
-            {!!forms.length && forms.map(form => {
+            {forms?.map(form => {
                 return (
-                    <Link to={{pathname:`/create_form/${form.id}`}}>
-                        {form.form_title}
-                    </Link>
+                    <div>
+                        <Link to={{pathname:`/create_form/${form.id}`}}>
+                            {form.form_title}
+                        </Link>
+                        <button onClick={deleteForm}>Delete</button>
+                    </div>
                 )
             })
             }

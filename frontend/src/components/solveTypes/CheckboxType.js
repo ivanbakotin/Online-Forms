@@ -5,7 +5,7 @@ const CheckboxType = ({ value }) => {
     return (
         <>
         <h2>{value.quest_title}</h2>
-        {!!value.sub_questions && value.sub_questions.map(box => {
+        {value?.sub_questions.map(box => {
             return (
                 <>
                 <input 

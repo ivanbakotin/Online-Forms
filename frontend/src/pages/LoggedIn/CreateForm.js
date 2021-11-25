@@ -1,13 +1,12 @@
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useSelector, useDispatch } from "react-redux"
 import { useState, useCallback } from "react";
+import debounce  from "../../utils/debounce";
+import { componentsCreate } from "../../utils/variables";
+import { sendQuestionsToApi } from "../../redux/formSlice";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
 import AddType from "../../components/AddType";
-import debounce  from "../../utils/debounce";
-import { componentsCreate } from "../../utils/variables";
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { useSelector } from "react-redux"
-import { sendQuestionsToApi } from "../../redux/formSlice";
-import { useDispatch } from "react-redux";
 
 const CreateForm = ({ form_id }) => {
 
@@ -24,7 +23,7 @@ const CreateForm = ({ form_id }) => {
     return (
         <main className="create-form">
 
-            <FormHeader form_id={form_id}/>
+            <FormHeader/>
             
             <TransitionGroup component={null}>
             {questions?.map(quest => {

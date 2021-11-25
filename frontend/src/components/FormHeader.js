@@ -1,17 +1,18 @@
 import TextareaAutosize from 'react-textarea-autosize';
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import debounce from '../utils/debounce';
-import sendFetch from '../utils/sendFetch';
+import { useCallback } from 'react';
+import { sendInfoToApi, updateForm } from '../redux/formSlice';
 
-const FormHeader = ({ form_id }) => {
+const FormHeader = () => {
 
-    const info = useSelector(state => ({ form_title: state.form.form_title, descrip: state.form.descrip }))
+    const dispatch = useDispatch()
 
-    const mainForm = debounce(() => sendFetch("/api/update_form_main", "POST", { info, form_id }));
+    const info = useSelector(state => state.form)
 
-    function handleInput(e) {
-        
-    }
+    const mainForm = useCallback(debounce(() => dispatch(sendInfoToApi())), []);
+
+    const handleInput = e => dispatch(updateForm({ name: e.target.name, value: e.target.value}))
 
     return (
         <header className="form-header" onChange={mainForm}>

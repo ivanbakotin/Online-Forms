@@ -31,7 +31,7 @@ const formSlice = createSlice({
 
             const newQuest = {
                 form_id: action.payload.form_id,
-                question_id: action.payload.question_id,
+                question_id: action.payload.id,
                 qq_id: findMaxSub(state.questions[index].sub_questions), 
                 qq_title: "Option", 
             };
@@ -56,7 +56,13 @@ const formSlice = createSlice({
         },
 
         deleteSubQuestion: ( state, action ) => {
+
             sendFetch("/api/delete_quest_sub", "DELETE", { value: action.payload.value, qq_id: action.payload.qq_id })
+            const indexElement = state.questions.findIndex(q => q.question_id === action.payload.value.question_id)
+            return  {...state,
+            questions: state.questions.map((prev, index) =>
+                index === indexElement ? { ...prev, sub_questions: state.questions[indexElement].sub_questions.filter(q => q.qq_id != action.payload.qq_id) } : prev,
+            )}
         },
 
         setRequired: ( state, action ) => {
@@ -66,19 +72,19 @@ const formSlice = createSlice({
 
         changeType: ( state, action ) => {
             const index = state.questions.findIndex(q => q.question_id === action.payload.id)
-            state.questions[index].question_type = action.payload.value
+            state.questions[index].question_type = action.payload.type
         },
-
-        updateForm: ( state, action ) => {
-            
-        },
-
+        
         sendQuestionsToApi: ( state, action ) => {
             sendFetch("/api/update_form_questions", "POST", { questions: state.questions })
         },
 
+        updateForm: ( state, action ) => {
+            state[action.payload.name] = action.payload.value
+        },
+
         sendInfoToApi: ( state, action ) => {
-            
+            sendFetch("/api/update_form_main", "POST", { form_title: state.form_title, descrip: state.descrip, form_id : state.id })
         },
     },
     extraReducers: {

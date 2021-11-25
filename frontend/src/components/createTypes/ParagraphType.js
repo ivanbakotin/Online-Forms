@@ -13,7 +13,7 @@ const ParagraphType = ({ value, saveFormQuestions }) => {
             <TextareaAutosize 
                 name="quest_title" 
                 onChange={handleInput} 
-                value={value.quest_title || ""} 
+                value={value.quest_title} 
             />
             <TextareaAutosize minRows={3} />
         </div>

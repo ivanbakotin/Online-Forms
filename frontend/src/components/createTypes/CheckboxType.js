@@ -12,19 +12,19 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
         dispatch(updateSubQuestion({id: value.question_id, qq_id: e.target.id, value: e.target.value}))
     }
 
-    const handleAdd = () => dispatch(addSubQuestion({ id: value.question_id }))
+    const handleAdd = () => dispatch(addSubQuestion({ id: value.question_id, form_id: value.form_id }))
     
     const deleteCheckbox = e => dispatch(deleteSubQuestion({ value, qq_id: e.target.id }))
 
     return (
         <>
-        <div className="checkbox-create" onChange={saveFormQuestions}>
+        <div className="checkbox-create" onClick={saveFormQuestions}>
             <TextareaAutosize 
                 onChange={handleInput} 
                 name="quest_title" 
-                value={value.quest_title || ""}
+                value={value.quest_title}
             />
-            {!!value.sub_questions && value.sub_questions.map((box, index) => {
+            {value?.sub_questions.map(box => {
                 return (
                     <div className="check-box" key={box.qq_id}>
                         <div>
@@ -35,7 +35,7 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                             />
                             <input
                                 className="check-input"
-                                id={index} 
+                                id={box.qq_id} 
                                 onChange={handleCheckbox}
                                 value={box.qq_title}
                             />
