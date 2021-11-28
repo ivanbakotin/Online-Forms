@@ -10,12 +10,12 @@ const FormHeader = () => {
 
     const info = useSelector(state => state.form)
 
-    const mainForm = useCallback(debounce(() => dispatch(sendInfoToApi())), []);
+    const saveForm = useCallback(debounce(() => dispatch(sendInfoToApi())), []);
 
     const handleInput = e => dispatch(updateForm({ name: e.target.name, value: e.target.value}))
 
     return (
-        <header className="form-header" onChange={mainForm}>
+        <header className="form-header" onChange={saveForm}>
             <TextareaAutosize 
                 onChange={handleInput} 
                 name="form_title" 

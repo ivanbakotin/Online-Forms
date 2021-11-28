@@ -17,4 +17,6 @@ router.delete("/delete_question", form_controllers.delete_question);
 
 router.delete("/delete_quest_sub", form_controllers.delete_quest_sub);
 
+router.delete("/delete_form", form_controllers.delete_form);
+
 module.exports = router;

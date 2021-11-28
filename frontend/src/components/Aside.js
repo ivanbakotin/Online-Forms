@@ -11,7 +11,7 @@ const Aside = () => {
     return (
         <aside>
             <Link to="/">My Forms</Link>
-            <button onClick={logOut}>LogOut</button>
+            <div onClick={logOut}>LogOut</div>
         </aside>
     )
 };

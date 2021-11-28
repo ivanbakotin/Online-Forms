@@ -12,19 +12,17 @@ const FormOptions = ({ form_id }) => {
                 <div className="fas fa-eye" onClick={getLink}></div>
                 <div className="fas fa-share-square" onClick={getLink}></div>
             </div>
-            <div className="nav-links">
-                <span>
-                    <NavLink 
-                        exact activeClassName="selected" 
-                        to={{pathname:`/create_form/${form_id}`}}>
-                            Form
-                    </NavLink>
-                    <NavLink 
-                        exact activeClassName="selected" 
-                        to={{pathname:`/create_form/${form_id}/response_form`}}>
-                            Responses
-                    </NavLink>
-                </span>
+            <div className="nav-links">        
+                <NavLink 
+                    exact activeClassName="selected" 
+                    to={{pathname:`/create_form/${form_id}`}}>
+                        Form
+                </NavLink>
+                <NavLink 
+                    exact activeClassName="selected" 
+                    to={{pathname:`/create_form/${form_id}/response_form`}}>
+                        Responses
+                </NavLink>          
             </div>
         </nav>
     )

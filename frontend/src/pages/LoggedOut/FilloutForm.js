@@ -31,11 +31,11 @@ const FilloutForm = () => {
             
             <header>
                 <h1>{info.form_title}</h1>
-                <p>{info.form_descrip}</p>
+                <p>{info.descrip}</p>
             </header>
 
             <form onSubmit={sendForm}>
-                <div>
+
                 {questions.map(quest => {
 
                     const SpecificType = componentsSolve[quest.question_type]
@@ -46,7 +46,6 @@ const FilloutForm = () => {
                         </div>
                     )        
                 })} 
-                </div>
 
                 <button type="submit">Submit</button>
             </form>

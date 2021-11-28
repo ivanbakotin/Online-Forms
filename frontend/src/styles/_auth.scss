@@ -1,3 +1,12 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .auth-form {
     margin: 2rem;
     display: flex;
@@ -6,7 +15,8 @@
     align-items: center;
     justify-content: center;
     font-size: 5rem;
-  
+    animation: fade-in 2s 1;
+
     a {
         margin-top: 2rem;
         text-decoration: none;

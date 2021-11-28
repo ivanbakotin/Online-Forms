@@ -7,6 +7,7 @@ import { sendQuestionsToApi } from "../../redux/formSlice";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
 import AddType from "../../components/AddType";
+import { useDrag } from 'react-dnd'
 
 const CreateForm = ({ form_id }) => {
 

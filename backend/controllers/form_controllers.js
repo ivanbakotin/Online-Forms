@@ -106,6 +106,23 @@ exports.update_form_questions = function(req, res, next) {
     return res.status(200).json()
 }
 
+exports.delete_form = async function(req, res, next) {
+
+    pool.query(`DELETE FROM user_forms 
+                WHERE id=$1`, 
+                [req.body.id])
+
+    pool.query(`DELETE FROM questions 
+                WHERE form_id=$1`, 
+                [req.body.id])
+
+    pool.query(`DELETE FROM questions_questions 
+                WHERE form_id=$1`, 
+                [req.body.id])
+
+    return res.status(200).json()
+}
+
 exports.get_reponses = async function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     const result = await pool.query("SELECT * FROM user_solved", [])

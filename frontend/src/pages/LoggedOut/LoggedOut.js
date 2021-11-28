@@ -3,11 +3,13 @@ import Register from "./Register.js";
 import FilloutForm from "./FilloutForm";
 import InfoPage from "./InfoPage";
 import NotFound from "../../components/NotFound.js";
+import Background from "./Background.js";
 import { Route, Switch } from "react-router-dom";
 
 const LoggedOut = () => {
     return (
         <>
+            <Background />
             <Switch>
               <Route exact path="/"><Login /></Route>
               <Route path="/register"><Register /></Route>
