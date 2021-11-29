@@ -51,7 +51,6 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
-    store array in db 
     response page
     drag and drop
     add button copy question
@@ -60,4 +59,5 @@ module.exports = app;
     form validation errors
     make anonyomous fillout optional
     add saving portal popup while settimeout active
+    charts
 */

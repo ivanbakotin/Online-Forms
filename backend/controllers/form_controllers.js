@@ -125,7 +125,10 @@ exports.delete_form = async function(req, res, next) {
 
 exports.get_responses = async function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
-    const result = await pool.query("SELECT * FROM user_solved WHERE form_id=$1", [req.body.form_id])
+    const result = await pool.query(`SELECT u.*, q.quest_title FROM user_solved AS u
+                                    LEFT JOIN questions AS q
+                                        ON q.question_id = u.question_id
+                                    WHERE u.form_id=$1`, [req.body.form_id])
 
     return res.status(200).json(result.rows)
 }

@@ -45,10 +45,10 @@ exports.send_filled_form = async function(req, res, next) {
 
         req.body.questions.forEach(quest => {
             pool.query(`INSERT INTO user_solved 
-                        (form_id, question_id, index_id, answer_text) 
-                        VALUES ($1, $2, $3, $4)
+                        (form_id, question_id, index_id, answer_text, answer_array) 
+                        VALUES ($1, $2, $3, $4, $5)
                         RETURNING id`, 
-                        [quest.form_id, quest.question_id, id, quest.answer])
+                        [quest.form_id, quest.question_id, id, quest.answer_text, quest.answer_array])
         })
     });
 

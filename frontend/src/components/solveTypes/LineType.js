@@ -1,6 +1,6 @@
 const LineType = ({ value }) => {
 
-    const handleInput = e => value["answer"] = e.target.value
+    const handleInput = e => value.answer_text = e.target.value
      
     return (
         <>

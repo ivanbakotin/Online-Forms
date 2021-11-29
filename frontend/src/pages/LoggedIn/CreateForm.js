@@ -22,7 +22,7 @@ const CreateForm = ({ form_id }) => {
     const questForm = useCallback(debounce(() => dispatch(sendQuestionsToApi())), []);
 
     return (
-        <main className="create-form">
+        <section className="create-form">
 
             <FormHeader/>
             
@@ -54,7 +54,7 @@ const CreateForm = ({ form_id }) => {
                 <AddType form_id={form_id} open={open}/>
             </article>
     
-        </main>
+        </section>
     )
 };
 

@@ -12,6 +12,18 @@
     }
 }
 
+@mixin button {
+        background-color: $white-color;
+        margin-top: 1rem;
+        padding: 1rem;
+        border: solid 0.1rem gray;
+
+        &:hover {
+            background-color: $button-color;
+            transition: background-color 200ms linear;
+        }
+}
+
 @mixin check {
     width: 2rem;
     height: 2rem;

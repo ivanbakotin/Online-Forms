@@ -25,7 +25,6 @@ const FormMain = () => {
         async function fetchData() {
             const result = await receiveFetch("/api/get_responses", "POST", { form_id })
 			setAnswers(result)
-			console.log(result)
 		}
 	
         fetchData()

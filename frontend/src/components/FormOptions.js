@@ -9,7 +9,6 @@ const FormOptions = ({ form_id }) => {
     return (
         <nav>
             <div className="nav-options">
-                <div className="fas fa-share-square" onClick={getLink}></div>
                 <div className="fas fa-eye" onClick={getLink}></div>
                 <div className="fas fa-share-square" onClick={getLink}></div>
             </div>

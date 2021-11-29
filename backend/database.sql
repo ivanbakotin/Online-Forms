@@ -19,8 +19,8 @@ MAYBE CREATE SPECIAL ENTITY FOR LINK (RANDOM STRING) TO FILLOUT CURRENTLY JUST U
 
 CREATE TABLE user_forms (
     id SERIAL PRIMARY KEY,
-    form_title TEXT,
-    descrip TEXT,
+    form_title TEXT DEFAULT '',
+    descrip TEXT DEFAULT '',
     user_id BIGINT NOT NULL
 );
 
@@ -30,16 +30,16 @@ CREATE TABLE user_solved (
     index_id BIGINT NOT NULL,
     form_id BIGINT NOT NULL,
     question_id BIGINT NOT NULL,
-    answer_array TEXT[],
-    answer_text TEXT
+    answer_array TEXT[] DEFAULT ARRAY[]::TEXT[],
+    answer_text TEXT DEFAULT ''
 );
 
 CREATE TABLE questions (
     form_id BIGINT NOT NULL,
     question_id BIGINT NOT NULL,
-    quest_title TEXT,
+    quest_title TEXT DEFAULT '',
     question_type TEXT,
-    required BOOLEAN,
+    required BOOLEAN DEFAULT false,
     UNIQUE (form_id, question_id)
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE questions_questions (
     form_id BIGINT NOT NULL,
     question_id BIGINT NOT NULL,
     qq_id BIGINT NOT NULL,
-    qq_title TEXT,
+    qq_title TEXT DEFAULT '',
     UNIQUE (qq_id, question_id, form_id)
 );
 

@@ -1,9 +1,11 @@
 const CheckboxType = ({ value }) => {
 
     const handleInput = e => {
-        if (!value["answer"]) value["answer"] = []
-        if (value["answer"].includes(e.target.value)) value["answer"] = value["answer"].filter(a => e.target.value != a)
-        else value["answer"].push(e.target.value)
+        if (!value["answer_array"]) value["answer_array"] = []
+        if (value["answer_array"].includes(e.target.value)) {
+            value["answer_array"] = value["answer_array"].filter(answer => answer != e.target.value)
+        }
+        else value["answer_array"].push(e.target.value)
     }
 
     return (

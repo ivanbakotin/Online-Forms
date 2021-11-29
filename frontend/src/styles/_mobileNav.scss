@@ -11,7 +11,7 @@
         margin: 1rem;
         width: 3.5rem;
         height: 0.5rem;
-        background: black;
+        background-color: black;
         transition: 0.5s;
     }
 
@@ -33,7 +33,7 @@
         margin: 1rem;
         width: 3.5rem;
         height: 0.5rem;
-        background: black;
+        background-color: black;
         transition: 0.5s;
     }
 
@@ -58,17 +58,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #4B5C77;
+    background-color: $border-color;
     height: 100vh;
+    width: 60vw;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     transition: transform 0.3s ease-in-out;
-    transform: translateY(0);
+    transform: translateX(0);
 
     @media (min-width: 769px) {
-        transform: translateY(-100%);
+        transform: translateX(-100%);
     }
 
     a {
@@ -92,17 +93,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: #4B5C77;
+    background-color: $border-color;
     height: 100vh;
+    width: 60vw;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    transform: translateY(-100%);
+    transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
 
     @media (min-width: 769px) {
-        transform: translateY(-100%);
+        transform: translateX(-100%);
     }
 
     a {

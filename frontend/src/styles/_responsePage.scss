@@ -1,6 +1,14 @@
 .responses {
+    align-items: center;
+
+    div {
+        div {
+            margin: 1rem;
+        }
+    }
+
     * {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
 }
