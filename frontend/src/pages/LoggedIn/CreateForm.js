@@ -1,13 +1,13 @@
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useCallback } from "react";
+import { useDrag } from 'react-dnd'
+import { sendQuestionsToApi } from "../../redux/formSlice";
 import debounce  from "../../utils/debounce";
 import { componentsCreate } from "../../utils/variables";
-import { sendQuestionsToApi } from "../../redux/formSlice";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
 import AddType from "../../components/AddType";
-import { useDrag } from 'react-dnd'
 
 const CreateForm = ({ form_id }) => {
 

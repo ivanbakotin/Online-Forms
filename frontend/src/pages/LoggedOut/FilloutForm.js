@@ -7,14 +7,12 @@ const FilloutForm = () => {
 
     const { id } = useParams()
 
-    const [ info, setInfo ] = useState({})
-    const [ questions, setQuestions ] = useState([])
+    const [ form, setForm ] = useState([])
 
     useEffect(() => {
         async function fetchData() {
             const form_info = await receiveFetch("/auth/get_form_info", "POST", { id })
-            setInfo({ form_title: form_info.form_title, descrip: form_info.descrip })
-            setQuestions(form_info.questions)
+            setForm(form_info)
         }
 
         fetchData()
@@ -22,7 +20,7 @@ const FilloutForm = () => {
 
     function sendForm(e) {
         e.preventDefault()
-        receiveFetch("/auth/send_filled_form", "POST", { questions })
+        receiveFetch("/auth/send_filled_form", "POST", form )
         .then(() => {})
     }
 
@@ -30,18 +28,18 @@ const FilloutForm = () => {
         <main className="fillout-form">
             
             <header>
-                <h1>{info.form_title}</h1>
-                <p>{info.descrip}</p>
+                <h1>{form?.form_title}</h1>
+                <p>{form?.descrip}</p>
             </header>
 
             <form onSubmit={sendForm}>
 
-                {questions.map(quest => {
+                {form?.questions?.map(quest => {
 
                     const SpecificType = componentsSolve[quest.question_type]
                 
                     return ( 
-                        <div className="question-div" key={quest.question_id}>
+                        <div className="fillout-quest-div" key={quest.question_id}>
                             <SpecificType value={quest} />
                         </div>
                     )        

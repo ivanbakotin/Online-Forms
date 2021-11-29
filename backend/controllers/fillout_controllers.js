@@ -24,15 +24,11 @@ exports.get_form_info = async function(req, res, next) {
         ) p`, 
         [req.body.id])
 
-    if (result.rows[0].json_build_object.form[0].questions === null) {
-        result.rows[0].json_build_object.form[0].questions = []
-    }
-
     return res.status(200).json(result.rows[0].json_build_object.form[0])
 }
 
 exports.send_filled_form = async function(req, res, next) {
-
+    console.log(req.body)
     pool.query (`
             SELECT * FROM user_solved
             ORDER BY index_id DESC

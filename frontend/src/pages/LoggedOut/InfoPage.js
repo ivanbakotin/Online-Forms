@@ -1,4 +1,4 @@
-const SuccessPage = () => {
+const SuccessPage = ({  }) => {
     return (    
     	<main>
             Success or Fail

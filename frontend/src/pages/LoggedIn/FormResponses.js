@@ -1,11 +1,22 @@
-import { useEffect, useState } from "react"
+const FormResponses = ({ form_id, answers, setAnswers }) => {
 
-const FormResponses = ({ form_id }) => {
+    function filterArray() {
+        
+    }
 
     return (
-        <section>
-            RESPONSES
-        </section>
+        <main className="responses">
+            {
+                answers?.map(answer => {
+                    return (
+                        <div key={answer.question_id}>
+                            {answer.quest_title}:
+                            {answer.answer_text}
+                        </div>
+                    )
+                })
+            }
+        </main>
     )
 }
 

@@ -51,14 +51,13 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
-    send checkbox answers as array
-    add saving portal popup while settimeout active
-    pagination on all forms page
-    form validation errors
+    store array in db 
     response page
-    styling
-    skeleton loading
-    make anonyomous fillout optional
-    if sub quest empty got null from server = []
+    drag and drop
     add button copy question
+    pagination on all forms page
+    skeleton loading
+    form validation errors
+    make anonyomous fillout optional
+    add saving portal popup while settimeout active
 */

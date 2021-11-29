@@ -23,6 +23,9 @@ const formSlice = createSlice({
                 question_type: action.payload.question_type,
                 sub_questions: [{ qq_id: 0, qq_title: "Option" }],
             };
+
+            if (state.questions === null) state.questions = []
+
             state.questions.push(newQuest)
         },
 
@@ -35,6 +38,8 @@ const formSlice = createSlice({
                 qq_id: findMaxSub(state.questions[index].sub_questions), 
                 qq_title: "Option", 
             };
+            
+            if (state.questions[index].sub_questions === null) state.questions[index].sub_questions = []
 
             state.questions[index].sub_questions.push(newQuest)
         },

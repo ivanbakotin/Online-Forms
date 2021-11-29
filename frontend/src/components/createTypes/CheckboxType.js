@@ -24,7 +24,7 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                 name="quest_title" 
                 value={value.quest_title}
             />
-            {value?.sub_questions.map(box => {
+            {value?.sub_questions?.map(box => {
                 return (
                     <div className="check-box" key={box.qq_id}>
                         <div>

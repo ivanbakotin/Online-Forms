@@ -4,9 +4,10 @@ import FormOptions from "../../components/FormOptions";
 import NotFound from "../../components/NotFound";
 import { Route, Switch } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { getFormInfo } from "../../redux/formSlice"
+import receiveFetch from "../../utils/receiveFetch"
 
 const FormMain = () => {
 
@@ -18,13 +19,17 @@ const FormMain = () => {
 
 	useEffect(() => dispatch(getFormInfo({ form_id })), [])
 
-    //useEffect(() => {
-    //    async function fetchData() {
-    //        const form_result = await receiveFetch("/api/get_form_responses", "POST", { form_id })
-	//}
-	//
-    //    fetchData()
-    //}, [])
+	const [ answers, setAnswers ] = useState();
+
+    useEffect(() => {
+        async function fetchData() {
+            const result = await receiveFetch("/api/get_responses", "POST", { form_id })
+			setAnswers(result)
+			console.log(result)
+		}
+	
+        fetchData()
+    }, [])
 
   	return (    
         <main>
@@ -35,7 +40,7 @@ const FormMain = () => {
 					<CreateForm form_id={form_id} />
 				</Route>
 				<Route exact path="/create_form/:id/response_form">
-					<FormResponses form_id={form_id} />
+					<FormResponses answers={answers} setAnswers={setAnswers} form_id={form_id} />
 				</Route>
   	  		  	<Route>
 					<NotFound />
