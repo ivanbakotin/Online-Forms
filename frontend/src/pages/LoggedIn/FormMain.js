@@ -19,12 +19,34 @@ const FormMain = () => {
 
 	useEffect(() => dispatch(getFormInfo({ form_id })), [])
 
-	const [ answers, setAnswers ] = useState();
+	const [ answersUser, setAnswersUser ] = useState();
+	const [ answersQuest, setAnswersQuest ] = useState();
 
     useEffect(() => {
         async function fetchData() {
-            const result = await receiveFetch("/api/get_responses", "POST", { form_id })
-			setAnswers(result)
+            let result = await receiveFetch("/api/get_responses", "POST", { form_id })
+
+			let userMap = {};
+			let questionMap = {};
+
+			result.forEach(element => {
+				let makeQuest = element.question_id;			
+				let makeUser = element.index_id;
+				
+				if(!questionMap[makeQuest]) {
+				   	questionMap[makeQuest] = [];
+				}
+			
+				if(!userMap[makeUser]) {
+					userMap[makeUser] = [];
+				}
+
+				questionMap[makeQuest].push(element);
+				userMap[makeUser].push(element);
+			});
+
+			setAnswersUser(userMap)
+			setAnswersQuest(questionMap)
 		}
 	
         fetchData()
@@ -39,7 +61,7 @@ const FormMain = () => {
 					<CreateForm form_id={form_id} />
 				</Route>
 				<Route exact path="/create_form/:id/response_form">
-					<FormResponses answers={answers} setAnswers={setAnswers} form_id={form_id} />
+					<FormResponses answersUser={answersUser} answersQuest={answersQuest} form_id={form_id} />
 				</Route>
   	  		  	<Route>
 					<NotFound />

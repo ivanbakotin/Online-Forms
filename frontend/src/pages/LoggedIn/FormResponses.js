@@ -1,27 +1,28 @@
-const FormResponses = ({ form_id, answers, setAnswers }) => {
-
-    function filterArray() {
-        
-    }
-
+const FormResponses = ({ answersUser, answersQuest }) => {
     return (
         <section className="responses">
-            <div>
-            {answers?.map(answer => {
+        {answersUser && answersQuest &&
+        <>
+            {Object.entries(answersQuest).map(answer => {
                 return (
-                    <div key={answer.question_id}>
-                        {answer.quest_title}: {answer.answer_text}
-                        {answer.answer_array?.map(ans => {
+                    <article>
+                        <h2> 
+                            {answer[1][0].quest_title}
+                        </h2>
+                        <div>
+                        {answer[1].map(ans => {
                             return (
                                 <>
-                                {` ${ans}`}
+                                <p>{ans.answer_text}</p>
+                                {ans.answer_array?.map(a => <p>{a}</p> )}
                                 </>
                             )
                         })}
-                    </div>
+                        </div>
+                    </article>
                 )
             })}
-            </div>
+        </>}
         </section>
     )
 }

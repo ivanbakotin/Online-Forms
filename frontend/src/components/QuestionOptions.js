@@ -12,15 +12,14 @@ const QuestionOptions = ({ value }) => {
 
     const toChangeType = e => dispatch(changeType({ id: value.question_id, type: e.target.value }))
 
-    const toCopyQuestion = () => dispatch()
-
     return (
         <div className="question-options">
             <div className="far fa-trash-alt" onClick={toDeleteQuestions}></div>
-            <div onClick={toSetRequired}>Required checkbox</div>
-            <div onClick={toCopyQuestion}>Copy</div>
             <div>
-                <label htmlFor="type">Type:</label>
+                <label htmlFor="required">Required</label>
+                <input checked={value.required} id="required" type="checkbox" className="checkbox-fake" onClick={toSetRequired} />
+            </div>
+            <div>
                 <select value={value.question_type} onChange={toChangeType} name="type" id="type">
                     {types.map(type => <option key={type} value={type}>{type}</option>)}
                 </select>

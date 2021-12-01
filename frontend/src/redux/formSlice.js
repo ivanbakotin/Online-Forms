@@ -80,7 +80,7 @@ const formSlice = createSlice({
             state.questions[index].question_type = action.payload.type
         },
         
-        sendQuestionsToApi: ( state, action ) => {
+        sendQuestionsToApi: ( state ) => {
             sendFetch("/api/update_form_questions", "POST", { questions: state.questions })
         },
 
@@ -88,7 +88,7 @@ const formSlice = createSlice({
             state[action.payload.name] = action.payload.value
         },
 
-        sendInfoToApi: ( state, action ) => {
+        sendInfoToApi: ( state ) => {
             sendFetch("/api/update_form_main", "POST", { form_title: state.form_title, descrip: state.descrip, form_id : state.id })
         },
     },

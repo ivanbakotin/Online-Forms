@@ -1,7 +1,6 @@
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useCallback } from "react";
-import { useDrag } from 'react-dnd'
 import { sendQuestionsToApi } from "../../redux/formSlice";
 import debounce  from "../../utils/debounce";
 import { componentsCreate } from "../../utils/variables";

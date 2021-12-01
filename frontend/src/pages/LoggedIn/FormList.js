@@ -26,21 +26,22 @@ const FormList = () => {
 
     return (
         <main className="form-list">
-            <div onClick={createForm}>
+            <div className="create-new" onClick={createForm}>
                 <p>Create New Form</p>
             </div>
-
+            <article>
             {forms?.map(form => {
                 return (
-                    <div key={form.id}>
+                    <div className="form-div" key={form.id}>
                         <Link to={{pathname:`/create_form/${form.id}`}}>
                             {form.form_title}
                         </Link>
-                        <button id={form.id} onClick={deleteForm}>Delete</button>
+                        <div className="far fa-trash-alt" id={form.id} onClick={deleteForm}></div>
                     </div>
                 )
             })
             }
+            </article>
         </main>
     )
 };

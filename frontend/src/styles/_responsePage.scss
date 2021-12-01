@@ -1,14 +1,24 @@
 .responses {
     align-items: center;
 
-    div {
-        div {
+    article {
+        border: solid black 0.1rem;
+
+        h2 {
             margin: 1rem;
+            border-bottom: solid black 0.1rem;
+        }
+
+        div {
+            background-color: lightgrey;
+
+            p {
+                margin: 0.5rem;
+            }
         }
     }
 
     * {
         font-size: 2rem;
     }
-
 }

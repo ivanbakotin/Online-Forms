@@ -87,11 +87,11 @@ exports.update_form_questions = function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     req.body.questions.forEach(quest => {
         pool.query(`INSERT INTO questions
-                    (form_id, question_id, quest_title, question_type) 
-                    VALUES ($1, $2, $3, $4) 
+                    (form_id, question_id, quest_title, question_type, required) 
+                    VALUES ($1, $2, $3, $4, $5) 
                     ON CONFLICT (form_id, question_id) 
-                    DO UPDATE SET quest_title=$3, question_type=$4`, 
-                    [quest.form_id, quest.question_id, quest.quest_title, quest.question_type])
+                    DO UPDATE SET quest_title=$3, question_type=$4, required=$5`, 
+                    [quest.form_id, quest.question_id, quest.quest_title, quest.question_type, quest.required])
                     
         quest.sub_questions.forEach(check => {
             pool.query(`INSERT INTO questions_questions 
@@ -127,8 +127,8 @@ exports.get_responses = async function(req, res, next) {
     // ADD CHECK IF REQ.USER.ID OWNER OF FORM
     const result = await pool.query(`SELECT u.*, q.quest_title FROM user_solved AS u
                                     LEFT JOIN questions AS q
-                                        ON q.question_id = u.question_id
-                                    WHERE u.form_id=$1`, [req.body.form_id])
+                                        ON q.question_id = u.question_id AND u.form_id = q.form_id
+                                    WHERE u.form_id=$1 ORDER BY u.id`, [req.body.form_id])
 
     return res.status(200).json(result.rows)
 }

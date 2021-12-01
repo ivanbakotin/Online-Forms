@@ -22,7 +22,9 @@
         }
     }
 
-    .add-check {
-        margin: 1rem;
+    .fa-plus {
+        input {
+            @include textarea-create;
+        }
     }
 }

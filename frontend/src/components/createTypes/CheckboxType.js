@@ -44,7 +44,9 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
                     </div>
                 )
             })}
-            <div className="add-check" onClick={handleAdd}>Add Checkbox</div>
+            <div className="fas fa-plus" onClick={handleAdd}>
+                <input placeholder="Add Option..."/>
+            </div>
         </div>
         </>
     )

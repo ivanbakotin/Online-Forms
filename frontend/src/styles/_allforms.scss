@@ -1,36 +1,58 @@
 .form-list {
     display: flex;
-    flex-direction: row;
 
     * {
         font-size: 2rem;
     }
 
-    div {
-        display: flex;
-        padding: 5rem;
-        background-color: lightgray;
-        margin: 3rem;
-
-        p {
-            padding: 2rem;
-            border-radius: 1rem;
-            justify-self: flex-start;
-            cursor: pointer;
-            background-color: #a2a3a6;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+    .create-new {
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        width: 20%;
+        min-width: 50%;
+        border-radius: 0.5rem;
+        margin: 2rem;
+        padding: 3rem;
+        text-decoration: underline;
+        align-self: center;
+        text-align: center;
 
         &:hover {
-            background-color: #bebfc2;
+            background-color: lightgray;
+            transition: 300ms background-color ease-in-out;
         }
+    }
 
-        a {
-            text-decoration: none;
-            color: black;
+    article {
+        background-color: $background-div-color;
+        display: flex;
+        border-top: black 0.2rem solid;
+        flex-wrap: wrap;
+        justify-content:  center;
+
+        .form-div {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            width: 40%;
+            border-radius: 0.5rem;
+            margin: 2rem;
+            padding: 3rem;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            align-items: center;
+
+            &:hover {
+                background-color: $button-color;
+                transition: 300ms background-color ease-in-out;
+            }
+
+            a {
+                color: black;
+            }
+
+            div {
+                cursor: pointer;
+            }
         }
     }
 }

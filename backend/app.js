@@ -52,8 +52,6 @@ module.exports = app;
 
 /*
     response page
-    drag and drop
-    add button copy question
     pagination on all forms page
     skeleton loading
     form validation errors

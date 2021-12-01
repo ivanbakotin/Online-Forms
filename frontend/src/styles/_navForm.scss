@@ -10,6 +10,11 @@ nav {
             padding: 1rem;
             text-decoration: none;
             color: $black-color;
+
+            &:hover {
+                background-color: $button-color;
+                transition: background-color 300ms linear;
+            }
         }
 
         .selected {

@@ -11,7 +11,7 @@
         display: flex;
         min-height: 100vh;
         max-height: 100vh;
-        font-size: 3.5rem;
+        font-size: 4rem;
         flex-direction: column;
         justify-content: space-evenly;
         position: sticky;
@@ -22,16 +22,29 @@
         @media (max-width: 768px) {
             display: none;
         }
-
+        padding: 2rem;
         a {
             color: white;
-            padding: 1rem;
-            text-decoration: none;
+            padding: 2rem;
+            border-radius: 1rem;
+
+            &:hover {
+                background-color: $border-color;
+                transition: background-color 300ms linear;
+            }
         }
 
         div {
             color: white;
-            padding: 1rem;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-decoration: underline;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $border-color;
+                transition: background-color 300ms linear;
+            }
         }
     }
 

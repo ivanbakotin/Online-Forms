@@ -40,7 +40,7 @@ exports.send_filled_form = async function(req, res, next) {
         if (result.rows.length === 0) {
             id = 0
         } else {
-            id = result.rows[0].index_id + 1
+            id = Number(result.rows[0].index_id) + 1
         }
 
         req.body.questions.forEach(quest => {
