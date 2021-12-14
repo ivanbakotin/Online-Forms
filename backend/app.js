@@ -57,6 +57,6 @@ module.exports = app;
     form validation errors
     make anonyomous fillout optional
     add saving portal popup while settimeout active
-    get link
     required useless currently
+    delete indvid response
 */

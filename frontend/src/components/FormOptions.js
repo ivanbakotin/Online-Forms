@@ -3,13 +3,17 @@ import { NavLink } from "react-router-dom";
 const FormOptions = ({ form_id }) => {
     
     function getLink() {
-        //navigator.clipboard.writeText
+        navigator.clipboard.writeText(`${window.location.origin}\\fillout_form\\${form_id}`) 
+    }
+
+    function sendToFillout() {
+        window.location.href = `${window.location.origin}\\fillout_form\\${form_id}`
     }
 
     return (
         <nav>
             <div className="nav-options">
-                <div className="fas fa-eye" onClick={getLink}></div>
+                <div className="fas fa-eye" onClick={sendToFillout}></div>
                 <div className="fas fa-share-square" onClick={getLink}></div>
             </div>
             <div className="nav-links">        

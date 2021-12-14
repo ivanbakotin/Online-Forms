@@ -478,6 +478,8 @@
 }
 
 .logged-out-main footer .div-down {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -485,7 +487,6 @@
   height: 20rem;
   background-color: #6bc999;
   z-index: -1;
-  bottom: 0;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
@@ -833,27 +834,26 @@ nav .nav-options div {
 
 .form-list article {
   background-color: #f7fffa;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  border-top: black 0.2rem solid;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border-top: black 0.2rem solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
 
 .form-list article .form-div {
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 40%;
   border-radius: 0.5rem;
+  height: 10rem;
+  width: 20rem;
   margin: 2rem;
-  padding: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -863,6 +863,7 @@ nav .nav-options div {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  word-break: break-all;
 }
 
 .form-list article .form-div:hover {

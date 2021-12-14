@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { getFormInfo } from "../../redux/formSlice"
 import receiveFetch from "../../utils/receiveFetch"
+import groupArray from "../../utils/groupArray";
 
 const FormMain = () => {
 
@@ -24,29 +25,10 @@ const FormMain = () => {
 
     useEffect(() => {
         async function fetchData() {
-            let result = await receiveFetch("/api/get_responses", "POST", { form_id })
+            const result = await receiveFetch("/api/get_responses", "POST", { form_id })
 
-			let userMap = {};
-			let questionMap = {};
-
-			result.forEach(element => {
-				let makeQuest = element.question_id;			
-				let makeUser = element.index_id;
-				
-				if(!questionMap[makeQuest]) {
-				   	questionMap[makeQuest] = [];
-				}
-			
-				if(!userMap[makeUser]) {
-					userMap[makeUser] = [];
-				}
-
-				questionMap[makeQuest].push(element);
-				userMap[makeUser].push(element);
-			});
-
-			setAnswersUser(userMap)
-			setAnswersQuest(questionMap)
+			setAnswersUser(groupArray(result, "index_id"))
+			setAnswersQuest(groupArray(result, "question_id"))
 		}
 	
         fetchData()

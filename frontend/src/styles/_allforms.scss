@@ -25,22 +25,23 @@
 
     article {
         background-color: $background-div-color;
-        display: flex;
-        flex: 1;
         border-top: black 0.2rem solid;
+        flex: 1;
+        display: flex;
         flex-wrap: wrap;
-        justify-content:  center;
+        align-content: flex-start;
 
         .form-div {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            width: 40%;
             border-radius: 0.5rem;
+            height: 10rem;
+            width: 20rem;
             margin: 2rem;
-            padding: 3rem;
             display: flex;
             justify-content: space-around;
             text-align: center;
             align-items: center;
+            word-break: break-all;
 
             &:hover {
                 background-color: $button-color;
