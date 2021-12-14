@@ -42,7 +42,7 @@ const FormMain = () => {
   	  			<Route exact path="/create_form/:id">
 					<CreateForm form_id={form_id} />
 				</Route>
-				<Route exact path="/create_form/:id/response_form">
+				<Route path="/create_form/:id/response_form">
 					<FormResponses answersUser={answersUser} answersQuest={answersQuest} form_id={form_id} />
 				</Route>
   	  		  	<Route>
