@@ -26,6 +26,7 @@
     article {
         background-color: $background-div-color;
         display: flex;
+        flex: 1;
         border-top: black 0.2rem solid;
         flex-wrap: wrap;
         justify-content:  center;

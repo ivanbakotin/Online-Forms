@@ -9,7 +9,7 @@ import { Route, Switch } from "react-router-dom";
 
 const LoggedIn = () => {
   	return (     
-  	  	<>
+  	  	<main className="logged-in-main">
   	  	    <Aside />
 			<MobileAside />
   	  	    <Switch>
@@ -19,7 +19,7 @@ const LoggedIn = () => {
               	<Route path="/infopage"><InfoPage /></Route>
   	  	      	<Route><NotFound /></Route>
   	  	    </Switch>
-  	  	</>
+  	  	</main>
   	);
 };
 

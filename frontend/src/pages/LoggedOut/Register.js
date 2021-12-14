@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
 import receiveFetch from "../../utils/receiveFetch"
-import Background from "../../components/Background"
 
 const Register = () => {
 
@@ -42,8 +41,6 @@ const Register = () => {
   	}
 
   	return (
-		<>
-		<Background/>
     	<form className="auth-form" onSubmit={sendregisterInfo}>
     	  	<h1>Register</h1>
     	  	<div>
@@ -84,7 +81,6 @@ const Register = () => {
     	  	<p>{errorinfo}</p>
     	  	<Link to="/">Already have an Account? Login!</Link>
     	</form>
-		</>
   );
 };
 

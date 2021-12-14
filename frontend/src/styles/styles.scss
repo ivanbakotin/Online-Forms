@@ -3,7 +3,8 @@
 @import './createform';
 @import "./filloutform";
 @import "./auth";
-@import "./wrapper";
+@import "./_wrapper-log-in";
+@import "./_wrapper-log-out";
 @import "./notFound";
 @import "./loading";
 @import "./line";
@@ -13,7 +14,6 @@
 @import "./navForm";
 @import "./infoForm";
 @import "./allforms";
-@import "./background";
 @import "./mobileNav";
 @import "./responsePage";
 
