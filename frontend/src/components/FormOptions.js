@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const FormOptions = ({ form_id }) => {
+
+    const { pathname } = useLocation();
     
     function getLink() {
         navigator.clipboard.writeText(`${window.location.origin}\\fillout_form\\${form_id}`) 
@@ -23,7 +25,8 @@ const FormOptions = ({ form_id }) => {
                         Form
                 </NavLink>
                 <NavLink 
-                    exact activeClassName="selected" 
+                    isActive={() => [`/create_form/${form_id}/response_form`, 
+                                    `/create_form/${form_id}/response_form/user`].includes(pathname)}
                     to={{pathname:`/create_form/${form_id}/response_form`}}>
                         Responses
                 </NavLink>          

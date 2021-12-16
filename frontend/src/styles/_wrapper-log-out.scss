@@ -14,13 +14,17 @@
             font-size: 2.5rem;
             text-align: center;
             position: absolute;
+
+            a {
+                color: black;
+                font-size: 2.5rem;
+            }
         }
 
         .div-up {
             display: flex;
             width: 100%;
             height: 20rem;
-      
             background-color: $button-color;
             z-index: -1;
             border-bottom-left-radius: 50%;

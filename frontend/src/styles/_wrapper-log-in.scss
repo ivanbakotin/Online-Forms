@@ -2,6 +2,7 @@
     display: flex;
     min-height: 100vh;
     flex: 1;
+    
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -22,7 +23,9 @@
         @media (max-width: 768px) {
             display: none;
         }
+        
         padding: 2rem;
+
         a {
             color: white;
             padding: 2rem;

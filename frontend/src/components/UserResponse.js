@@ -11,6 +11,7 @@ const UserResponse = ({ answersUser }) => {
                         {answer[1].map(ans => {
                             return (
                                 <>
+                                <p>{ans.quest_title}:</p>
                                 <p>{ans.answer_text}</p>
                                 {ans.answer_array?.map(a => <p>{a}</p>)}
                                 </>

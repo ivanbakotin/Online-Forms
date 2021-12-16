@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom"
+
 const Nav = () => {
     return (
         <nav>
             <div className="div-up"></div>
-            <h2>Not a member yet? Sign up now!</h2>
+            <h2>Not a member yet? <Link to="/register">Sign up now!</Link></h2>
         </nav>
     )
 };

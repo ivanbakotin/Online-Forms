@@ -1,27 +1,5 @@
 nav {
     display: grid;
-   
-    .nav-links {
-        display: flex;
-        justify-content: center;
-            
-        a {
-            font-size: 2.5rem;
-            padding: 1rem;
-            text-decoration: none;
-            color: $black-color;
-
-            &:hover {
-                background-color: $button-color;
-                transition: background-color 300ms linear;
-            }
-        }
-
-        .selected {
-            border-bottom: $border-color solid 0.5rem;
-    
-        } 
-    }
     
     .nav-options {
         font-size: 5.5rem;

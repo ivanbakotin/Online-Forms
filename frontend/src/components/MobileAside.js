@@ -14,7 +14,7 @@ const MobileAside = () => {
     }
 
     return (
-        <>
+        <div className="mobile-menu">
             <div className={open ? "burger-crossed" : "burger-bar"} onClick={openBurger}>
       	        <div className="div1"/>
       	        <div className="div2"/>
@@ -24,7 +24,7 @@ const MobileAside = () => {
                 <Link onClick={openBurger} to="/">My Forms</Link>
                 <div onClick={openBurger} onClick={logOut}>LogOut</div>
             </div>
-        </>
+        </div>
     )
 }
 

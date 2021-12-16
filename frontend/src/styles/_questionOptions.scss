@@ -7,4 +7,19 @@
     button {
         border-radius: 3rem;
     }
+
+    .required {
+        display: flex;
+        align-items: flex-start;
+
+
+        label {
+            margin-inline: 1rem;
+        }
+        
+        input {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
 }

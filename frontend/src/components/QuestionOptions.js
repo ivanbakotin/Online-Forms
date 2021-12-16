@@ -15,7 +15,7 @@ const QuestionOptions = ({ value }) => {
     return (
         <div className="question-options">
             <div className="far fa-trash-alt" onClick={toDeleteQuestions}></div>
-            <div>
+            <div className="required">
                 <label htmlFor="required">Required</label>
                 <input checked={value.required} id="required" type="checkbox" className="checkbox-fake" onClick={toSetRequired} />
             </div>
