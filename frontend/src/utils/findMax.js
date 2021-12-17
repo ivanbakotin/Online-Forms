@@ -6,10 +6,10 @@ export function findMaxSub(array) {
     let max = array[0].qq_id
     
     array.forEach(element => {
-        if (element.qq_id > max) max = element.qq_id + 1
+        if (element.qq_id > max) max = element.qq_id
     })
 
-    return max
+    return max + 1
 }
 
 export function findMaxMain(array) {
@@ -20,8 +20,8 @@ export function findMaxMain(array) {
     let max = array[0].question_id
     
     array.forEach(element => {
-        if (element.question_id > max) max = element.question_id + 1
+        if (element.question_id > max) max = element.question_id
     })
 
-    return max
+    return max + 1
 }

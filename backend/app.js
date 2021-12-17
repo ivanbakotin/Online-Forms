@@ -51,6 +51,7 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
+    info page
     response page
     pagination on all forms page
     skeleton loading

@@ -22,8 +22,8 @@ const FilloutForm = () => {
         e.preventDefault()
         console.log(form)
         receiveFetch("/auth/send_filled_form", "POST", form )
-        .then(() => window.location.href = `/infopage`)
-        .catch(() => window.location.href = `/infopage`)
+        .then(() => window.location.href = `/`)
+        .catch(() => window.location.href = `/`)
     }
 
     return (

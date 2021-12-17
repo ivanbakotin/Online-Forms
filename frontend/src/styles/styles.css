@@ -433,6 +433,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: #6bc999;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
 }
 
 .logged-out-main nav h2 {
@@ -441,24 +444,11 @@
       align-self: center;
   font-size: 2.5rem;
   text-align: center;
-  position: absolute;
 }
 
 .logged-out-main nav h2 a {
   color: black;
   font-size: 2.5rem;
-}
-
-.logged-out-main nav .div-up {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 20rem;
-  background-color: #6bc999;
-  z-index: -1;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
 }
 
 .logged-out-main footer {
@@ -471,29 +461,27 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: #6bc999;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
 
-.logged-out-main footer h2 {
-  font-size: 2.5rem;
+.logged-out-main footer ul {
   text-align: center;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  position: absolute;
+  list-style: none;
 }
 
-.logged-out-main footer .div-down {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 20rem;
-  background-color: #6bc999;
-  z-index: -1;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
+.logged-out-main footer ul li {
+  font-size: 2.5rem;
+  margin: 1rem;
+}
+
+.logged-out-main footer ul li a {
+  font-size: 2.5rem;
+  color: black;
 }
 
 .not-found {

@@ -1,8 +1,10 @@
 const Footer = () => {
     return (
         <footer>
-            <h2>Copyright@2021</h2>
-            <div className="div-down"></div>
+            <ul>
+                <li><a href="https://github.com/ivanbakotin">Github</a></li>
+                <li>Copyright@2021</li>
+            </ul>
         </footer>
     )
 };

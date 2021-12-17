@@ -8,27 +8,19 @@
         display: flex;
         flex: 1;
         justify-content: center;
+        background-color: $button-color;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
 
         h2 {
             align-self: center;
             font-size: 2.5rem;
             text-align: center;
-            position: absolute;
 
             a {
                 color: black;
                 font-size: 2.5rem;
             }
-        }
-
-        .div-up {
-            display: flex;
-            width: 100%;
-            height: 20rem;
-            background-color: $button-color;
-            z-index: -1;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
         }
     }
 
@@ -36,23 +28,24 @@
         display: flex;
         flex: 1;
         justify-content: center;
+        background-color: $button-color;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
 
-        h2 {
-            font-size: 2.5rem;
+        ul {
             text-align: center;
             align-self: center;
-            position: absolute;
-        }
+            list-style: none;
 
-        .div-down {
-            align-self: flex-end;
-            display: flex;
-            width: 100%;
-            height: 20rem;
-            background-color: $button-color;
-            z-index: -1;
-            border-top-left-radius: 50%;
-            border-top-right-radius: 50%;
+            li {
+                font-size: 2.5rem;
+                margin: 1rem;
+
+                a {
+                    font-size: 2.5rem;
+                    color: black;
+                }
+            }
         }
     }
 }
