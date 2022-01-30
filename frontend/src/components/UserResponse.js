@@ -1,7 +1,7 @@
 const UserResponse = ({ answersUser }) => {
     return (
         <section className="responses">
-        {answersUser &&
+        {answersUser?.length ?
         <>
             {Object.entries(answersUser).map((answer, ind) => {
                 return (
@@ -21,7 +21,12 @@ const UserResponse = ({ answersUser }) => {
                     </article>
                 )
             })}
-        </>}
+        </>
+
+        :
+
+        <p>No answers yet!</p>
+        }
         </section>
     )
 }

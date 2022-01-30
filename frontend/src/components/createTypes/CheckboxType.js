@@ -18,7 +18,7 @@ const CheckboxType = ({ value, saveFormQuestions }) => {
 
     return (
         <>
-        <div className="checkbox-create" onChange={saveFormQuestions}>
+        <div className="checkbox-create" onClick={saveFormQuestions} onChange={saveFormQuestions}>
             <TextareaAutosize 
                 onChange={handleInput} 
                 name="quest_title" 
