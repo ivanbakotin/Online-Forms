@@ -585,7 +585,7 @@
   margin: 2rem;
 }
 
-.line-create input {
+.line-create textarea, .line-create input {
   margin: 1rem;
   outline: none;
   border: none;
@@ -596,7 +596,7 @@
   transition: border-bottom 0.3s ease-in-out;
 }
 
-.line-create input:focus {
+.line-create textarea:focus, .line-create input:focus {
   border-bottom: black 0.2rem solid;
 }
 
@@ -669,7 +669,6 @@
   width: 2rem;
   height: 2rem;
   background-color: white;
-  border-radius: 50%;
   vertical-align: middle;
   -webkit-appearance: none;
   border: 0.1rem gray solid;

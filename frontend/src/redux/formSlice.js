@@ -81,7 +81,7 @@ const formSlice = createSlice({
         },
         
         sendQuestionsToApi: ( state ) => {
-            console.log(state.questions)
+            console.log("SENT")
             sendFetch("/api/update_form_questions", "POST", { questions: state.questions })
         },
 

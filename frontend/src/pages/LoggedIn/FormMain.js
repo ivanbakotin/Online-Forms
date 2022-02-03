@@ -26,7 +26,6 @@ const FormMain = () => {
     useEffect(() => {
         async function fetchData() {
             const result = await receiveFetch("/api/get_responses", "POST", { form_id })
-
 			setAnswersUser(groupArray(result, "index_id"))
 			setAnswersQuest(groupArray(result, "question_id"))
 		}

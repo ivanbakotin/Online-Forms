@@ -36,11 +36,8 @@ const CreateForm = ({ form_id }) => {
                             classNames="example"
                             timeout={{ enter: 300, exit: 300 }}
                         >
-                        <div className="question-div">
-                            <SpecificType 
-                                value={quest} 
-                                saveFormQuestions={questForm}
-                            />
+                        <div onClick={questForm} onChange={questForm} className="question-div">
+                            <SpecificType value={quest}/>
                             <QuestionOptions value={quest}/>
                         </div>
                         </CSSTransition>
@@ -48,7 +45,7 @@ const CreateForm = ({ form_id }) => {
             })}
             </TransitionGroup>
 
-            <article className="choose-type-main">
+            <article className="choose-type-main" onClick={questForm}>
                 <div className="fas fa-plus-circle" onClick={openTypes}></div>
                 <AddType form_id={form_id} open={open}/>
             </article>

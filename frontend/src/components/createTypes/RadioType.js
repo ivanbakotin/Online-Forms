@@ -2,23 +2,23 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { useDispatch } from "react-redux"
 import { updateQuestion, updateSubQuestion, addSubQuestion, deleteSubQuestion } from "../../redux/formSlice";
 
-const CheckboxType = ({ value }) => {
+const LineType = ({ value }) => {
 
     const dispatch = useDispatch()
-    
+
     const handleInput = e => dispatch(updateQuestion({id: value.question_id, value: e.target.value}))
-    
+
     const handleCheckbox = e => {
         dispatch(updateSubQuestion({id: value.question_id, qq_id: e.target.id, value: e.target.value}))
     }
 
     const handleAdd = () => dispatch(addSubQuestion({ id: value.question_id, form_id: value.form_id }))
-    
+
     const deleteCheckbox = e => dispatch(deleteSubQuestion({ value, qq_id: e.target.id }))
 
     return (
         <div className="checkbox-create">
-            <TextareaAutosize 
+            <TextareaAutosize
                 onChange={handleInput} 
                 name="quest_title" 
                 value={value.quest_title}
@@ -29,9 +29,11 @@ const CheckboxType = ({ value }) => {
                         <div>
                             <input 
                                 type="text"
-                                className="check"
-                                type="checkbox" 
+                                className="radio"
+                                type="radio" 
                                 value={box.qq_title}
+                                id={box.qq_title}
+                                name={value.question_id}
                             />
                             <input
                                 type="text"
@@ -48,8 +50,9 @@ const CheckboxType = ({ value }) => {
             <div className="fas fa-plus" onClick={handleAdd}>
                 <input placeholder="Add Option..."/>
             </div>
+           
         </div>
     )
 }
 
-export default CheckboxType;
+export default LineType;

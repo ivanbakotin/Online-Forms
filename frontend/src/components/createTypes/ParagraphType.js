@@ -2,14 +2,14 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { useDispatch } from "react-redux"
 import { updateQuestion } from "../../redux/formSlice"
 
-const ParagraphType = ({ value, saveFormQuestions }) => {
+const ParagraphType = ({ value }) => {
 
     const dispatch = useDispatch()
 
     const handleInput = e => dispatch(updateQuestion({id: value.question_id, value: e.target.value}))
 
     return (
-        <div className="paragraph-create" onChange={saveFormQuestions}>
+        <div className="paragraph-create">
             <TextareaAutosize 
                 name="quest_title" 
                 onChange={handleInput} 
