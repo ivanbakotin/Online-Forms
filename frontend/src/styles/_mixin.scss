@@ -6,6 +6,7 @@
     border-bottom: gray 0.2rem solid;
     resize: none;
     transition: border-bottom 0.3s ease-in-out;
+    width: 100%;
 
     &:focus {
         border-bottom: $black-color 0.2rem solid;

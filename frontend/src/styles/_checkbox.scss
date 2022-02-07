@@ -13,6 +13,16 @@
         align-items: center;
         justify-content: space-between;
 
+        div {
+            display: flex;
+            align-items: center;
+
+            .new-option {
+                margin: 1rem;
+                border-bottom: black 1px solid;
+            }
+        }
+
         .check {
             @include check;
         }
@@ -23,8 +33,16 @@
     }
 
     .fa-plus {
-        input {
-            @include textarea-create;
+        display: flex;
+        align-items: center;
+
+        span {
+            margin: 0.5rem;
+            border-bottom: solid black 0.1rem;
+
+            p {
+                font-weight: 100;
+            }
         }
     }
 }

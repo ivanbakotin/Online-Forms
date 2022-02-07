@@ -20,8 +20,8 @@
     .question-div {
         width: 50%;
         margin: 1rem;
-        background-color: $background-div-color;
         padding: 1rem;
+        background-color: $background-div-color;
         border-left: solid 0.5rem $border-color;
         border-radius: 1rem;
         box-shadow: 0 0.5rem 1rem #c5d9d4;
@@ -32,8 +32,13 @@
     }
 
     .choose-type-main {
+        position: absolute;
+        transition: top 0.3s ease-in-out;
+
+        left: 80%;
+        top: 300px;
+
         margin-bottom: 10rem;
-        display: flex;
         margin: 1rem;
         background-color: $background-div-color;
         border-radius: 3rem;
@@ -49,7 +54,6 @@
         }
 
         .choose-type {
-            display: flex;
 
             div {
                 font-size: 5rem; 

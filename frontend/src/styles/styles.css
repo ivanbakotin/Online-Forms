@@ -21,8 +21,8 @@
 .create-form .question-div {
   width: 50%;
   margin: 1rem;
-  background-color: #f7fffa;
   padding: 1rem;
+  background-color: #f7fffa;
   border-left: solid 0.5rem #379683;
   border-radius: 1rem;
   -webkit-box-shadow: 0 0.5rem 1rem #c5d9d4;
@@ -36,10 +36,12 @@
 }
 
 .create-form .choose-type-main {
+  position: absolute;
+  -webkit-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out;
+  left: 80%;
+  top: 300px;
   margin-bottom: 10rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   margin: 1rem;
   background-color: #f7fffa;
   border-radius: 3rem;
@@ -55,12 +57,6 @@
 
 .create-form .choose-type-main .fa-plus-circle:hover {
   opacity: 0.5;
-}
-
-.create-form .choose-type-main .choose-type {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .create-form .choose-type-main .choose-type div {
@@ -594,6 +590,7 @@
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
   transition: border-bottom 0.3s ease-in-out;
+  width: 100%;
 }
 
 .line-create textarea:focus, .line-create input:focus {
@@ -620,6 +617,7 @@
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
   transition: border-bottom 0.3s ease-in-out;
+  width: 100%;
 }
 
 .paragraph-create textarea:focus {
@@ -646,6 +644,7 @@
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
   transition: border-bottom 0.3s ease-in-out;
+  width: 100%;
 }
 
 .checkbox-create textarea:focus {
@@ -663,6 +662,20 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.checkbox-create .check-box div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkbox-create .check-box div .new-option {
+  margin: 1rem;
+  border-bottom: black 1px solid;
 }
 
 .checkbox-create .check-box .check {
@@ -687,25 +700,29 @@
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
   transition: border-bottom 0.3s ease-in-out;
+  width: 100%;
 }
 
 .checkbox-create .check-box .check-input:focus {
   border-bottom: black 0.2rem solid;
 }
 
-.checkbox-create .fa-plus input {
-  margin: 1rem;
-  outline: none;
-  border: none;
-  background-color: #f3fafd;
-  border-bottom: gray 0.2rem solid;
-  resize: none;
-  -webkit-transition: border-bottom 0.3s ease-in-out;
-  transition: border-bottom 0.3s ease-in-out;
+.checkbox-create .fa-plus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.checkbox-create .fa-plus input:focus {
-  border-bottom: black 0.2rem solid;
+.checkbox-create .fa-plus span {
+  margin: 0.5rem;
+  border-bottom: solid black 0.1rem;
+}
+
+.checkbox-create .fa-plus span p {
+  font-weight: 100;
 }
 
 .question-options {
@@ -778,6 +795,7 @@ nav .nav-options div {
   resize: none;
   -webkit-transition: border-bottom 0.3s ease-in-out;
   transition: border-bottom 0.3s ease-in-out;
+  width: 100%;
 }
 
 .form-header textarea:focus {

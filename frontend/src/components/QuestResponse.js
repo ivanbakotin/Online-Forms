@@ -1,7 +1,7 @@
 const QuestResponse = ({ answersQuest }) => {
     return (
         <section className="responses">
-        {answersQuest ?
+        {answersQuest && Object.keys(answersQuest).length ?
         <>
             {Object.entries(answersQuest).map(answer => {
                 return (

@@ -47,10 +47,14 @@ const LineType = ({ value }) => {
                     </div>
                 )
             })}
-            <div className="fas fa-plus" onClick={handleAdd}>
-                <input placeholder="Add Option..."/>
+            <div className="check-box" onClick={handleAdd}>
+                <div>
+                    <span className="fas fa-plus"></span>
+                    <span className='new-option'>
+                        <p>Another Option...</p>           
+                    </span>
+                </div>
             </div>
-           
         </div>
     )
 }
