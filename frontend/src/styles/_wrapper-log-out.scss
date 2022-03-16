@@ -1,51 +1,51 @@
 .logged-out-main {
+  display: flex;
+  min-height: 100vh;
+  flex: 1;
+  flex-direction: column;
+
+  nav {
     display: flex;
-    min-height: 100vh;
-    flex: 1;
-    flex-direction: column;
+    height: clamp(10rem, 20vh, 20rem);
+    justify-content: center;
+    background-color: $button-color;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
 
-    nav {   
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        background-color: $button-color;
-        border-bottom-left-radius: 50%;
-        border-bottom-right-radius: 50%;
+    h2 {
+      align-self: center;
+      font-size: 2.5rem;
+      text-align: center;
 
-        h2 {
-            align-self: center;
-            font-size: 2.5rem;
-            text-align: center;
-
-            a {
-                color: black;
-                font-size: 2.5rem;
-            }
-        }
+      a {
+        color: black;
+        font-size: 2.5rem;
+      }
     }
+  }
 
-    footer {
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        background-color: $button-color;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
+  footer {
+    display: flex;
+    height: clamp(10rem, 20vh, 20rem);
+    justify-content: center;
+    background-color: $button-color;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
 
-        ul {
-            text-align: center;
-            align-self: center;
-            list-style: none;
+    ul {
+      text-align: center;
+      align-self: center;
+      list-style: none;
 
-            li {
-                font-size: 2.5rem;
-                margin: 1rem;
+      li {
+        font-size: 2.5rem;
+        margin: 1rem;
 
-                a {
-                    font-size: 2.5rem;
-                    color: black;
-                }
-            }
+        a {
+          font-size: 2.5rem;
+          color: black;
         }
+      }
     }
+  }
 }

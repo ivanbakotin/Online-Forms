@@ -1,23 +1,23 @@
-import TextareaAutosize from 'react-textarea-autosize';
-import { useDispatch } from "react-redux"
-import { updateQuestion } from "../../redux/formSlice"
+import TextareaAutosize from "react-textarea-autosize";
+import { useDispatch } from "react-redux";
+import { updateQuestion } from "../../redux/formSlice";
 
 const ParagraphType = ({ value }) => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  const handleInput = (e) =>
+    dispatch(updateQuestion({ id: value.question_id, value: e.target.value }));
 
-    const handleInput = e => dispatch(updateQuestion({id: value.question_id, value: e.target.value}))
-
-    return (
-        <div className="paragraph-create">
-            <TextareaAutosize 
-                name="quest_title" 
-                onChange={handleInput} 
-                value={value.quest_title} 
-            />
-            <TextareaAutosize minRows={3} />
-        </div>
-    )
-}
+  return (
+    <div className="paragraph-create">
+      <TextareaAutosize
+        name="quest_title"
+        onChange={handleInput}
+        value={value.quest_title}
+      />
+      <TextareaAutosize minRows={3} />
+    </div>
+  );
+};
 
 export default ParagraphType;

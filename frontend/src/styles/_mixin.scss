@@ -1,39 +1,39 @@
 @mixin textarea-create {
-    margin: 1rem;
-    outline: none;
-    border: none;
-    background-color: $background-input;
-    border-bottom: gray 0.2rem solid;
-    resize: none;
-    transition: border-bottom 0.3s ease-in-out;
-    width: 100%;
+  margin: 1rem;
+  outline: none;
+  border: none;
+  background-color: $background-input;
+  border-bottom: gray 0.2rem solid;
+  resize: none;
+  transition: border-bottom 0.3s ease-in-out;
+  width: 100%;
 
-    &:focus {
-        border-bottom: $black-color 0.2rem solid;
-    }
+  &:focus {
+    border-bottom: $black-color 0.2rem solid;
+  }
 }
 
 @mixin button {
-        background-color: $white-color;
-        margin-top: 1rem;
-        padding: 1rem;
-        border: solid 0.1rem gray;
+  background-color: $white-color;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: solid 0.1rem gray;
 
-        &:hover {
-            background-color: $button-color;
-            transition: background-color 200ms linear;
-        }
+  &:hover {
+    background-color: $button-color;
+    transition: background-color 200ms linear;
+  }
 }
 
 @mixin check {
-    width: 2rem;
-    height: 2rem;
-    background-color: white;
-    vertical-align: middle;
-    -webkit-appearance: none;
-    border: 0.1rem gray solid;
+  width: 2rem;
+  height: 2rem;
+  background-color: white;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  border: 0.1rem gray solid;
 
-    &:checked {
-        background-color: green;
-    }
+  &:checked {
+    background-color: green;
+  }
 }

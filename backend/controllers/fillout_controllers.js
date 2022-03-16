@@ -1,7 +1,8 @@
 const pool = require("../db.js");
 
-exports.get_form_info = async function(req, res, next) {
-    const result = await pool.query(`
+exports.get_form_info = async function (req, res, next) {
+  const result = await pool.query(
+    `
         SELECT json_build_object('form', json_agg(p))
             FROM (
                SELECT *,
@@ -21,36 +22,47 @@ exports.get_form_info = async function(req, res, next) {
                         ) c
                  ) AS questions
                FROM user_forms AS u WHERE u.id=$1
-        ) p`, 
-        [req.body.id])
+        ) p`,
+    [req.body.id]
+  );
 
-    return res.status(200).json(result.rows[0].json_build_object.form[0])
-}
+  return res.status(200).json(result.rows[0].json_build_object.form[0]);
+};
 
-exports.send_filled_form = async function(req, res, next) {
-    console.log(req.body)
-    pool.query (`
+exports.send_filled_form = async function (req, res, next) {
+  console.log(req.body);
+  pool.query(
+    `
             SELECT * FROM user_solved
             ORDER BY index_id DESC
             LIMIT 1
-    `, (error, result) => {
+    `,
+    (error, result) => {
+      let id;
 
-        let id;
+      if (result.rows.length === 0) {
+        id = 0;
+      } else {
+        id = Number(result.rows[0].index_id) + 1;
+      }
 
-        if (result.rows.length === 0) {
-            id = 0
-        } else {
-            id = Number(result.rows[0].index_id) + 1
-        }
-
-        req.body.questions.forEach(quest => {
-            pool.query(`INSERT INTO user_solved 
+      req.body.questions.forEach((quest) => {
+        pool.query(
+          `INSERT INTO user_solved 
                         (form_id, question_id, index_id, answer_text, answer_array) 
                         VALUES ($1, $2, $3, $4, $5)
-                        RETURNING id`, 
-                        [quest.form_id, quest.question_id, id, quest.answer_text, quest.answer_array])
-        })
-    });
+                        RETURNING id`,
+          [
+            quest.form_id,
+            quest.question_id,
+            id,
+            quest.answer_text,
+            quest.answer_array,
+          ]
+        );
+      });
+    }
+  );
 
-    return res.status(200).json()
-}
+  return res.status(200).json();
+};

@@ -1,67 +1,66 @@
 .logged-in-main {
+  display: flex;
+  min-height: 100vh;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  aside {
     display: flex;
     min-height: 100vh;
-    flex: 1;
-    
+    max-height: 100vh;
+    font-size: 4rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: sticky;
+    top: 0;
+    background-color: $aside-color;
+    align-items: center;
 
     @media (max-width: 768px) {
-        flex-direction: column;
-    }
-    
-    aside {  
-        display: flex;
-        min-height: 100vh;
-        max-height: 100vh;
-        font-size: 4rem;
-        flex-direction: column;
-        justify-content: space-evenly;
-        position: sticky;
-        top: 0;
-        background-color: $aside-color;
-        align-items: center;
-
-        @media (max-width: 768px) {
-            display: none;
-        }
-        
-        padding: 2rem;
-
-        a {
-            color: white;
-            padding: 2rem;
-            border-radius: 1rem;
-
-            &:hover {
-                background-color: $border-color;
-                transition: background-color 300ms linear;
-            }
-        }
-
-        div {
-            color: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            text-decoration: underline;
-            cursor: pointer;
-
-            &:hover {
-                background-color: $border-color;
-                transition: background-color 300ms linear;
-            }
-        }
+      display: none;
     }
 
-    main {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
+    padding: 2rem;
 
-        section {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            flex: 1;
-            background-color: $main-color;
-        }
+    a {
+      color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+
+      &:hover {
+        background-color: $border-color;
+        transition: background-color 300ms linear;
+      }
     }
+
+    div {
+      color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $border-color;
+        transition: background-color 300ms linear;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    section {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      flex: 1;
+      background-color: $main-color;
+    }
+  }
 }

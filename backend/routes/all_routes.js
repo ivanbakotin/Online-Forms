@@ -19,6 +19,6 @@ router.delete("/delete_quest_sub", form_controllers.delete_quest_sub);
 
 router.delete("/delete_form", form_controllers.delete_form);
 
-router.post("/get_responses", form_controllers.get_responses)
+router.post("/get_responses", form_controllers.get_responses);
 
 module.exports = router;

@@ -1,25 +1,25 @@
 .question-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border-top: $black-color 0.2rem solid;
+  padding-top: 1.5rem;
+
+  button {
+    border-radius: 3rem;
+  }
+
+  .required {
     display: flex;
-    justify-content: space-evenly;
-    border-top: $black-color 0.2rem solid;
-    padding-top: 1.5rem;
+    align-items: flex-start;
 
-    button {
-        border-radius: 3rem;
+    label {
+      margin-inline: 1rem;
     }
 
-    .required {
-        display: flex;
-        align-items: flex-start;
-
-
-        label {
-            margin-inline: 1rem;
-        }
-        
-        input {
-            height: 2rem;
-            width: 2rem;
-        }
+    input {
+      height: 2rem;
+      width: 2rem;
     }
+  }
 }

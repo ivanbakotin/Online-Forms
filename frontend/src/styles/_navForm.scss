@@ -1,14 +1,14 @@
 nav {
-    display: grid;
-    
-    .nav-options {
-        font-size: 5.5rem;
-        display: flex;
-        justify-self: right;
-        
-        div {
-            margin: 2.5rem;
-            margin-inline: 4rem;
-        }
+  display: grid;
+
+  .nav-options {
+    font-size: 5.5rem;
+    display: flex;
+    justify-self: right;
+
+    div {
+      margin: 2.5rem;
+      margin-inline: 4rem;
     }
+  }
 }

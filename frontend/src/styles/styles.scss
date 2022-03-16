@@ -1,6 +1,6 @@
 @import "./variables";
 @import "./mixin";
-@import './createform';
+@import "./createform";
 @import "./filloutform";
 @import "./auth";
 @import "./_wrapper-log-in";
@@ -18,13 +18,13 @@
 @import "./responsePage";
 
 * {
-    font-family: 'Titillium Web', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 62.5%;
+  font-family: "Titillium Web", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
 
-    @media(max-width: 768px) {
-        font-size: 45%;
-    }
+  @media (max-width: 768px) {
+    font-size: 45%;
+  }
 }

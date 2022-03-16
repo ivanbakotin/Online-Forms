@@ -1,49 +1,49 @@
 .responses {
-    align-items: center;
+  align-items: center;
 
-    article {
-        border: solid black 0.1rem;
+  article {
+    border: solid black 0.1rem;
 
-        h2 {
-            margin: 1rem;
-            border-bottom: solid black 0.1rem;
-        }
-
-        div {
-            background-color: lightgrey;
-
-            p {
-                margin: 0.5rem;
-            }
-        }
+    h2 {
+      margin: 1rem;
+      border-bottom: solid black 0.1rem;
     }
 
-    * {
-        font-size: 2rem;
+    div {
+      background-color: lightgrey;
+
+      p {
+        margin: 0.5rem;
+      }
     }
+  }
+
+  * {
+    font-size: 2rem;
+  }
 }
 
 .nav-links {
-    display: flex;
-    justify-content: center;
-        
-    a {
-        font-size: 2.5rem;
-        padding: 1rem;
-        text-decoration: none;
-        color: $black-color;
+  display: flex;
+  justify-content: center;
 
-        &:hover {
-            background-color: $button-color;
-            transition: background-color 300ms linear;
-        }
+  a {
+    font-size: 2.5rem;
+    padding: 1rem;
+    text-decoration: none;
+    color: $black-color;
+
+    &:hover {
+      background-color: $button-color;
+      transition: background-color 300ms linear;
     }
+  }
 
-    .active {
-        border-bottom: $border-color solid 0.5rem;
-    }
+  .active {
+    border-bottom: $border-color solid 0.5rem;
+  }
 
-    .selected {
-        border-bottom: $border-color solid 0.5rem;
-    } 
+  .selected {
+    border-bottom: $border-color solid 0.5rem;
+  }
 }

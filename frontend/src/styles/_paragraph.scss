@@ -1,9 +1,9 @@
 .paragraph-create {
-    display: flex;
-    flex-direction: column;
-    margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
 
-    textarea {
-        @include textarea-create;
-    }
+  textarea {
+    @include textarea-create;
+  }
 }

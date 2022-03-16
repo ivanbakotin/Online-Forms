@@ -1,60 +1,60 @@
 .form-list {
+  display: flex;
+
+  * {
+    font-size: 2rem;
+  }
+
+  .create-new {
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 20%;
+    min-width: 50%;
+    border-radius: 0.5rem;
+    margin: 2rem;
+    padding: 3rem;
+    text-decoration: underline;
+    align-self: center;
+    text-align: center;
+
+    &:hover {
+      background-color: lightgray;
+      transition: 300ms background-color ease-in-out;
+    }
+  }
+
+  article {
+    background-color: $background-div-color;
+    border-top: black 0.2rem solid;
+    flex: 1;
     display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
 
-    * {
-        font-size: 2rem;
-    }
+    .form-div {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 0.5rem;
+      height: 10rem;
+      width: 20rem;
+      margin: 2rem;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      align-items: center;
+      word-break: break-all;
 
-    .create-new {
+      &:hover {
+        background-color: $button-color;
+        transition: 300ms background-color ease-in-out;
+      }
+
+      a {
+        color: black;
+      }
+
+      div {
         cursor: pointer;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        width: 20%;
-        min-width: 50%;
-        border-radius: 0.5rem;
-        margin: 2rem;
-        padding: 3rem;
-        text-decoration: underline;
-        align-self: center;
-        text-align: center;
-
-        &:hover {
-            background-color: lightgray;
-            transition: 300ms background-color ease-in-out;
-        }
+      }
     }
-
-    article {
-        background-color: $background-div-color;
-        border-top: black 0.2rem solid;
-        flex: 1;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: flex-start;
-
-        .form-div {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            border-radius: 0.5rem;
-            height: 10rem;
-            width: 20rem;
-            margin: 2rem;
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            align-items: center;
-            word-break: break-all;
-
-            &:hover {
-                background-color: $button-color;
-                transition: 300ms background-color ease-in-out;
-            }
-
-            a {
-                color: black;
-            }
-
-            div {
-                cursor: pointer;
-            }
-        }
-    }
+  }
 }
