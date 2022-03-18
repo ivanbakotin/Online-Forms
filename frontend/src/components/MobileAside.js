@@ -14,19 +14,18 @@ const MobileAside = () => {
 
   return (
     <div className="mobile-menu">
-      <div
-        className={open ? "burger-crossed" : "burger-bar"}
-        onClick={openBurger}
-      >
+      <div className={open ? "burger" : "burger crossed"} onClick={openBurger}>
         <div className="div1" />
         <div className="div2" />
         <div className="div3" />
       </div>
-      <div className={open ? "mobile-aside" : "mobile-hidden"}>
+      <div className={open ? "mobile-aside" : "mobile-aside hidden"}>
         <Link onClick={openBurger} to="/">
           My Forms
         </Link>
-        <div onClick={logOut}>LogOut</div>
+        <a href="#" onClick={logOut}>
+          LogOut
+        </a>
       </div>
     </div>
   );
