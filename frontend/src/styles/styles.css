@@ -48,17 +48,23 @@
 .create-form .choose-type-main .fa-plus-circle:hover {
   opacity: 0.5;
 }
-.create-form .choose-type-main .choose-type div {
-  font-size: 3.5rem;
-  margin: 1rem;
-  display: block;
-}
-.create-form .choose-type-main .choose-type div:hover {
-  opacity: 0.5;
-}
 @media (max-width: 768px) {
   .create-form .choose-type-main {
-    display: none;
+    position: fixed;
+    right: 100%;
+    top: 95%;
+    left: 50%;
+    bottom: 10%;
+    background-color: #f7fffa;
+    border-radius: 3rem;
+  }
+  .create-form .choose-type-main .fa-plus-circle {
+    font-size: 3.5rem;
+    align-self: center;
+    margin: 1rem;
+  }
+  .create-form .choose-type-main .fa-plus-circle:hover {
+    opacity: 0.5;
   }
 }
 
@@ -128,6 +134,9 @@
   .fillout-form .fillout-quest-div {
     width: 90%;
   }
+}
+.fillout-form .fillout-quest-div label {
+  word-break: break-all;
 }
 .fillout-form button {
   background-color: white;
@@ -305,7 +314,7 @@
   flex: 1;
   flex-direction: column;
 }
-.logged-out-main nav {
+.logged-out-main .landing-background {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -313,6 +322,8 @@
   gap: 2rem;
   height: clamp(10rem, 20vh, 20rem);
   background-color: #6bc999;
+}
+.logged-out-main nav {
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
 }
@@ -332,24 +343,11 @@
   font-size: inherit;
 }
 .logged-out-main footer {
-  display: flex;
-  height: clamp(10rem, 20vh, 20rem);
-  justify-content: center;
-  background-color: #6bc999;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
-.logged-out-main footer ul {
-  text-align: center;
-  align-self: center;
-  list-style: none;
-}
-.logged-out-main footer ul li {
+.logged-out-main footer a {
   font-size: clamp(2rem, 2vw, 3rem);
-  margin: 1rem;
-}
-.logged-out-main footer ul li a {
-  font-size: inherit;
   color: white;
 }
 
@@ -485,8 +483,6 @@
 .checkbox-create .check-box .check {
   width: 2rem;
   height: 2rem;
-  background-color: white;
-  vertical-align: middle;
   -webkit-appearance: none;
   border: 0.1rem gray solid;
 }

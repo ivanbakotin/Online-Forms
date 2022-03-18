@@ -1,11 +1,7 @@
 const Footer = () => {
   return (
-    <footer>
-      <ul>
-        <li>
-          <a href="https://github.com/ivanbakotin">Github</a>
-        </li>
-      </ul>
+    <footer class="landing-background">
+      <a href="https://github.com/ivanbakotin">Github</a>
     </footer>
   );
 };

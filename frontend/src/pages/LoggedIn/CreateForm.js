@@ -1,12 +1,11 @@
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useCallback, useRef } from "react";
-import { sendQuestionsToApi } from "../../redux/formSlice";
+import { sendQuestionsToApi, addQuestion } from "../../redux/formSlice";
 import debounce from "../../utils/debounce";
 import { componentsCreate } from "../../utils/variables";
 import FormHeader from "../../components/FormHeader";
 import QuestionOptions from "../../components/QuestionOptions";
-import AddType from "../../components/AddType";
 
 const CreateForm = ({ form_id }) => {
   const moveRef = useRef();
@@ -16,10 +15,11 @@ const CreateForm = ({ form_id }) => {
 
   const questions = useSelector((state) => state.form.questions);
 
-  const [open, setOpen] = useState(false);
   const [activeQuestion, setActiveQuestion] = useState();
 
-  const openTypes = () => setOpen(!open);
+  function newQuestion() {
+    dispatch(addQuestion({ question_type: "Line", form_id }));
+  }
 
   const questForm = useCallback(
     debounce(() => dispatch(sendQuestionsToApi())),
@@ -69,8 +69,7 @@ const CreateForm = ({ form_id }) => {
       </TransitionGroup>
 
       <span ref={moveRef} className="choose-type-main" onClick={questForm}>
-        <div className="fas fa-plus-circle" onClick={openTypes}></div>
-        <AddType form_id={form_id} open={open} />
+        <div className="fas fa-plus-circle" onClick={newQuestion}></div>
       </span>
     </section>
   );

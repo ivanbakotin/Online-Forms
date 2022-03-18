@@ -38,10 +38,8 @@
   .choose-type-main {
     position: absolute;
     transition: top 0.3s ease-in-out;
-
     left: 80%;
     top: 300px;
-
     background-color: $background-div-color;
     border-radius: 3rem;
 
@@ -55,20 +53,24 @@
       }
     }
 
-    .choose-type {
-      div {
+    @media (max-width: 768px) {
+      position: fixed;
+      right: 100%;
+      top: 95%;
+      left: 50%;
+      bottom: 10%;
+      background-color: $background-div-color;
+      border-radius: 3rem;
+
+      .fa-plus-circle {
         font-size: 3.5rem;
+        align-self: center;
         margin: 1rem;
-        display: block;
 
         &:hover {
           opacity: 0.5;
         }
       }
-    }
-
-    @media (max-width: 768px) {
-      display: none;
     }
   }
 }
