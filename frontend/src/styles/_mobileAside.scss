@@ -7,7 +7,6 @@
   }
 
   .burger {
-    font-size: 3rem;
     padding: 1rem;
 
     &:focus {
@@ -27,14 +26,12 @@
 
   .crossed {
     .div1 {
-      -webkit-transform: rotate(-45deg) translate(-1.1rem, 1rem);
       transform: rotate(-45deg) translate(-1.1rem, 1rem);
     }
     .div2 {
       opacity: 0;
     }
     .div3 {
-      -webkit-transform: rotate(45deg) translate(-1.1rem, -1rem);
       transform: rotate(45deg) translate(-1.1rem, -1rem);
     }
   }
@@ -56,13 +53,12 @@
     a {
       text-decoration: none;
       text-align: center;
-      font-size: $font-size-medium;
+      font-size: $font-size-large;
       color: $nav-text-color;
     }
   }
 
   .hidden {
     transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
   }
 }

@@ -6,20 +6,30 @@
 
   nav {
     display: flex;
-    height: clamp(10rem, 20vh, 20rem);
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: clamp(10rem, 20vh, 20rem);
     background-color: $button-color;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
 
-    h2 {
-      align-self: center;
-      font-size: 2.5rem;
+    h1 {
+      font-size: $font-size-medium;
       text-align: center;
+      color: white;
+    }
+
+    h2 {
+      font-size: $font-size-light;
+      text-align: center;
+      color: white;
+      font-weight: lighter;
 
       a {
-        color: black;
-        font-size: 2.5rem;
+        color: inherit;
+        font-size: inherit;
       }
     }
   }
@@ -38,12 +48,12 @@
       list-style: none;
 
       li {
-        font-size: 2.5rem;
+        font-size: $font-size-light;
         margin: 1rem;
 
         a {
-          font-size: 2.5rem;
-          color: black;
+          font-size: inherit;
+          color: white;
         }
       }
     }
