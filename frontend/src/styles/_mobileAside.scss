@@ -23,10 +23,6 @@
       background-color: black;
       transition: 0.5s;
     }
-
-    @media (min-width: 769px) {
-      display: none;
-    }
   }
 
   .crossed {
@@ -40,10 +36,6 @@
     .div3 {
       -webkit-transform: rotate(45deg) translate(-1.1rem, -1rem);
       transform: rotate(45deg) translate(-1.1rem, -1rem);
-    }
-
-    @media (min-width: 769px) {
-      display: none;
     }
   }
 
@@ -61,10 +53,6 @@
     transition: transform 0.3s ease-in-out;
     transform: translateX(0);
 
-    @media (min-width: 769px) {
-      transform: translateX(-100%);
-    }
-
     a {
       text-decoration: none;
       text-align: center;
@@ -76,9 +64,5 @@
   .hidden {
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
-
-    @media (min-width: 769px) {
-      transform: translateX(-100%);
-    }
   }
 }

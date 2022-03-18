@@ -14,7 +14,7 @@ const MobileAside = () => {
 
   return (
     <div className="mobile-menu">
-      <div className={open ? "burger" : "burger crossed"} onClick={openBurger}>
+      <div className={open ? "burger crossed" : "burger"} onClick={openBurger}>
         <div className="div1" />
         <div className="div2" />
         <div className="div3" />
