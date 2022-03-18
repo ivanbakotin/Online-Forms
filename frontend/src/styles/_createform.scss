@@ -44,8 +44,8 @@
     border-radius: 3rem;
 
     .fa-plus-circle {
-      font-size: 3.5rem;
       align-self: center;
+      font-size: 4rem;
       margin: 1rem;
 
       &:hover {
@@ -55,22 +55,8 @@
 
     @media (max-width: 768px) {
       position: fixed;
-      right: 100%;
       top: 95%;
       left: 50%;
-      bottom: 10%;
-      background-color: $background-div-color;
-      border-radius: 3rem;
-
-      .fa-plus-circle {
-        font-size: 3.5rem;
-        align-self: center;
-        margin: 1rem;
-
-        &:hover {
-          opacity: 0.5;
-        }
-      }
     }
   }
 }
