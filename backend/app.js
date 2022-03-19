@@ -51,13 +51,9 @@ http.listen(PORT, () => console.log(`Server started on ${PORT}`));
 module.exports = app;
 
 /*
-    info page
     response page
-    pagination on all forms page
     skeleton loading
     form validation errors
-    make anonyomous fillout optional
     add saving portal popup while settimeout active
     required useless currently
-    delete indvid response
 */

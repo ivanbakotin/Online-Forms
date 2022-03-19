@@ -54,9 +54,28 @@
     }
 
     @media (max-width: 768px) {
-      position: fixed;
-      top: 95%;
-      left: 50%;
+      display: none;
+    }
+  }
+
+  .choose-type-main-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 70%;
+    background-color: $background-div-color;
+    border-radius: 3rem;
+
+    .fa-plus-circle {
+      align-self: center;
+      font-size: 4rem;
+      margin: 1rem;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    @media (min-width: 769px) {
+      display: none;
     }
   }
 }

@@ -15,7 +15,6 @@ const QuestionOptions = ({ value }) => {
   return (
     <div className="question-options">
       <div className="far fa-trash-alt" onClick={toDeleteQuestions}></div>
-      <div>Duplicate</div>
       <div className="required">
         <label htmlFor="required">Required</label>
         <input

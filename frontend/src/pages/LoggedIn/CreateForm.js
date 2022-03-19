@@ -9,7 +9,6 @@ import QuestionOptions from "../../components/QuestionOptions";
 
 const CreateForm = ({ form_id }) => {
   const moveRef = useRef();
-  const questRef = useRef([]);
 
   const dispatch = useDispatch();
 
@@ -27,13 +26,12 @@ const CreateForm = ({ form_id }) => {
   );
 
   function openQuestion(e) {
-    if (e.target.hasAttribute("dataindex")) {
-      const index = e.target.getAttribute("dataindex");
-      setActiveQuestion(index);
-      const posY =
-        questRef.current[index].getBoundingClientRect().top + window.scrollY;
-      moveRef.current.style.top = posY + "px";
+    while (!e.target.hasAttribute("dataid")) {
+      e.target = e.target.parentNode;
     }
+    setActiveQuestion(e.target.getAttribute("dataid"));
+    const posY = e.target.getBoundingClientRect().top + window.scrollY;
+    moveRef.current.style.top = posY + "px";
   }
 
   return (
@@ -41,7 +39,7 @@ const CreateForm = ({ form_id }) => {
       <FormHeader />
 
       <TransitionGroup component={null}>
-        {questions?.map((quest, index) => {
+        {questions?.map((quest) => {
           const SpecificType = componentsCreate[quest.question_type];
 
           return (
@@ -51,8 +49,7 @@ const CreateForm = ({ form_id }) => {
               timeout={{ enter: 300, exit: 300 }}
             >
               <div
-                dataindex={index}
-                ref={(el) => (questRef.current[index] = el)}
+                dataid={quest.question_id}
                 onClick={(e) => {
                   questForm();
                   openQuestion(e);
@@ -61,7 +58,9 @@ const CreateForm = ({ form_id }) => {
                 className="question-div"
               >
                 <SpecificType value={quest} />
-                {activeQuestion == index && <QuestionOptions value={quest} />}
+                {activeQuestion == quest.question_id && (
+                  <QuestionOptions value={quest} />
+                )}
               </div>
             </CSSTransition>
           );
@@ -69,6 +68,10 @@ const CreateForm = ({ form_id }) => {
       </TransitionGroup>
 
       <span ref={moveRef} className="choose-type-main" onClick={questForm}>
+        <div className="fas fa-plus-circle" onClick={newQuestion}></div>
+      </span>
+
+      <span className="choose-type-main-mobile" onClick={questForm}>
         <div className="fas fa-plus-circle" onClick={newQuestion}></div>
       </span>
     </section>

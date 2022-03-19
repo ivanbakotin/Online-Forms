@@ -15,7 +15,7 @@ CREATE TABLE users (
     password TEXT
 );
 
-MAYBE CREATE SPECIAL ENTITY FOR LINK (RANDOM STRING) TO FILLOUT CURRENTLY JUST USING FORM ID
+MAYBE CREATE SPECIAL ENTITY FOR LINK (crypto) TO FILLOUT CURRENTLY JUST USING FORM ID
 
 CREATE TABLE user_forms (
     id SERIAL PRIMARY KEY,
@@ -39,6 +39,7 @@ CREATE TABLE questions (
     question_id BIGINT NOT NULL,
     quest_title TEXT DEFAULT '',
     question_type TEXT,
+    position INT,
     required BOOLEAN DEFAULT false,
     UNIQUE (form_id, question_id)
 );

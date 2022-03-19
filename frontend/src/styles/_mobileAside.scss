@@ -1,6 +1,7 @@
 .mobile-menu {
   position: sticky;
   top: 0;
+  width: max-content;
 
   @media (min-width: 769px) {
     display: none;
