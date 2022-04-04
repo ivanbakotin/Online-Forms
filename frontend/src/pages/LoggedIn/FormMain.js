@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getFormInfo } from "../../redux/formSlice";
 import receiveFetch from "../../utils/receiveFetch";
-import groupArray from "../../utils/groupArray";
 
 const FormMain = () => {
   const { id } = useParams();
@@ -27,8 +26,8 @@ const FormMain = () => {
       const result = await receiveFetch("/api/get_responses", "POST", {
         form_id,
       });
-      setAnswersUser(groupArray(result, "index_id"));
-      setAnswersQuest(groupArray(result, "question_id"));
+      setAnswersUser(result[0]);
+      setAnswersQuest(result[1]);
     }
 
     fetchData();

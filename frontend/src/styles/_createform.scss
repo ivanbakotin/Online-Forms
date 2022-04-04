@@ -4,31 +4,23 @@
   }
 
   header {
-    width: 50%;
+    width: min(70rem, 90%);
     margin: 1rem;
     padding: 1rem;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     background-color: $background-div-color;
     border-top: solid 1rem $border-color;
-
-    @media (max-width: 768px) {
-      width: 90%;
-    }
   }
 
   .question-div {
-    width: 50%;
+    width: min(70rem, 90%);
     margin: 1rem;
     padding: 1rem;
     background-color: $background-div-color;
     border-left: solid 0.5rem $border-color;
     border-radius: 1rem;
     box-shadow: 0 0.5rem 1rem #c5d9d4;
-
-    @media (max-width: 768px) {
-      width: 90%;
-    }
 
     &:last-of-type {
       margin-bottom: 10rem;

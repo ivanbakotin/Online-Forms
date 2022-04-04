@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer class="landing-background">
+    <footer className="landing-background">
       <a href="https://github.com/ivanbakotin">Github</a>
     </footer>
   );

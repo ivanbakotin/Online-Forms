@@ -1,4 +1,5 @@
 const pool = require("../db.js");
+const groupArray = require("../utils/groupArray.js");
 
 exports.get_forms = async function (req, res, next) {
   const result = await pool.query(
@@ -152,5 +153,8 @@ exports.get_responses = async function (req, res, next) {
     [req.body.form_id]
   );
 
-  return res.status(200).json(result.rows);
+  const byUser = groupArray(result.rows, "index_id");
+  const byQuestion = groupArray(result.rows, "question_id");
+
+  return res.status(200).json([byUser, byQuestion]);
 };

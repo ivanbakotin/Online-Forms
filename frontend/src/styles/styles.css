@@ -2,7 +2,7 @@
   font-size: 2rem;
 }
 .create-form header {
-  width: 50%;
+  width: min(70rem, 90%);
   margin: 1rem;
   padding: 1rem;
   border-top-left-radius: 1rem;
@@ -10,24 +10,14 @@
   background-color: #f7fffa;
   border-top: solid 1rem #379683;
 }
-@media (max-width: 768px) {
-  .create-form header {
-    width: 90%;
-  }
-}
 .create-form .question-div {
-  width: 50%;
+  width: min(70rem, 90%);
   margin: 1rem;
   padding: 1rem;
   background-color: #f7fffa;
   border-left: solid 0.5rem #379683;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem #c5d9d4;
-}
-@media (max-width: 768px) {
-  .create-form .question-div {
-    width: 90%;
-  }
 }
 .create-form .question-div:last-of-type {
   margin-bottom: 10rem;

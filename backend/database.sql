@@ -39,7 +39,6 @@ CREATE TABLE questions (
     question_id BIGINT NOT NULL,
     quest_title TEXT DEFAULT '',
     question_type TEXT,
-    position INT,
     required BOOLEAN DEFAULT false,
     UNIQUE (form_id, question_id)
 );

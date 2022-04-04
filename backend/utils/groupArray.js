@@ -1,4 +1,4 @@
-export default function groupArray(array, id) {
+module.exports = function groupArray(array, id) {
   const map = {};
 
   array.forEach((element) => {
@@ -12,4 +12,4 @@ export default function groupArray(array, id) {
   });
 
   return map;
-}
+};
