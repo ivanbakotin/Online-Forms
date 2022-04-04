@@ -1,5 +1,6 @@
 const pool = require("../db.js");
 const groupArray = require("../utils/groupArray.js");
+const checkOwner = require("../utils/checkOwner.js");
 
 exports.get_forms = async function (req, res, next) {
   const result = await pool.query(
@@ -13,26 +14,27 @@ exports.get_forms = async function (req, res, next) {
 };
 
 exports.get_form_info = async function (req, res, next) {
-  //ADD CHECK IF USER ID == USER ID
-  const result = await pool.query(
-    `SELECT json_build_object('form', json_agg(p))
-     FROM ( SELECT *, (
-     SELECT json_agg(row_to_json(c))
-     FROM ( SELECT *, (
-     SELECT json_agg(row_to_json(w))
-     FROM (SELECT *
-     FROM questions_questions AS qq
-     WHERE qq.question_id = q.question_id AND qq.form_id=$1 ORDER BY qq.qq_id ASC ) w ) sub_questions
-     FROM questions AS q WHERE q.form_id = u.id ORDER BY q.question_id ASC ) c ) AS questions
-     FROM user_forms AS u WHERE u.id=$1 ) p`, //position
-    [req.body.id]
-  );
+  if (await checkOwner(req.user.id, req.body.id)) {
+    const result = await pool.query(
+      `SELECT json_build_object('form', json_agg(p))
+       FROM ( SELECT *, (
+       SELECT json_agg(row_to_json(c))
+       FROM ( SELECT *, (
+       SELECT json_agg(row_to_json(w))
+       FROM (SELECT *
+       FROM questions_questions AS qq
+       WHERE qq.question_id = q.question_id AND qq.form_id=$1 ORDER BY qq.qq_id ASC ) w ) sub_questions
+       FROM questions AS q WHERE q.form_id = u.id ORDER BY q.question_id ASC ) c ) AS questions
+       FROM user_forms AS u WHERE u.id=$1 ) p`,
+      [req.body.id]
+    );
 
-  if (result?.rows[0]?.json_build_object.form[0]?.questions === null) {
-    result.rows[0].json_build_object.form[0].questions = [];
+    if (result?.rows[0]?.json_build_object?.form[0]?.questions === null) {
+      result.rows[0].json_build_object.form[0].questions = [];
+    }
+
+    return res.status(200).json(result.rows[0].json_build_object.form[0]);
   }
-
-  return res.status(200).json(result.rows[0].json_build_object.form[0]);
 };
 
 exports.create_form = async function (req, res, next) {
