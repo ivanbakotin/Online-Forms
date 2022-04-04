@@ -30,8 +30,6 @@ const CreateForm = ({ form_id }) => {
       e.target = e.target.parentNode;
     }
     setActiveQuestion(e.target.getAttribute("dataid"));
-    const posY = e.target.getBoundingClientRect().top + window.scrollY;
-    moveRef.current.style.top = posY + "px";
   }
 
   return (
@@ -68,10 +66,6 @@ const CreateForm = ({ form_id }) => {
       </TransitionGroup>
 
       <span ref={moveRef} className="choose-type-main" onClick={questForm}>
-        <div className="fas fa-plus-circle" onClick={newQuestion}></div>
-      </span>
-
-      <span className="choose-type-main-mobile" onClick={questForm}>
         <div className="fas fa-plus-circle" onClick={newQuestion}></div>
       </span>
     </section>

@@ -3,10 +3,10 @@ const UserResponse = ({ answersUser }) => {
     <section className="responses">
       {answersUser && Object.keys(answersUser).length ? (
         <>
-          {Object.entries(answersUser).map((answer, ind) => {
+          {Object.entries(answersUser).map((answer, index) => {
             return (
-              <article>
-                <h2>{ind + 1}</h2>
+              <article key={index}>
+                <h2>{index + 1}</h2>
                 <div>
                   {answer[1].map((ans) => {
                     return (

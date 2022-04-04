@@ -23,10 +23,9 @@
   margin-bottom: 10rem;
 }
 .create-form .choose-type-main {
-  position: absolute;
-  transition: top 0.3s ease-in-out;
-  left: 80%;
-  top: 300px;
+  position: fixed;
+  bottom: 0;
+  left: 70%;
   background-color: #f7fffa;
   border-radius: 3rem;
 }
@@ -37,31 +36,6 @@
 }
 .create-form .choose-type-main .fa-plus-circle:hover {
   opacity: 0.5;
-}
-@media (max-width: 768px) {
-  .create-form .choose-type-main {
-    display: none;
-  }
-}
-.create-form .choose-type-main-mobile {
-  position: fixed;
-  bottom: 0;
-  left: 70%;
-  background-color: #f7fffa;
-  border-radius: 3rem;
-}
-.create-form .choose-type-main-mobile .fa-plus-circle {
-  align-self: center;
-  font-size: 4rem;
-  margin: 1rem;
-}
-.create-form .choose-type-main-mobile .fa-plus-circle:hover {
-  opacity: 0.5;
-}
-@media (min-width: 769px) {
-  .create-form .choose-type-main-mobile {
-    display: none;
-  }
 }
 
 .example-enter {
@@ -332,7 +306,6 @@
   font-size: clamp(2rem, 2vw, 3rem);
   text-align: center;
   color: white;
-  font-weight: lighter;
 }
 .logged-out-main nav h2 a {
   color: inherit;
